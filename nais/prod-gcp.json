@@ -1,0 +1,17 @@
+{
+    "app": "omsorgsdager-aleneomsorg-dialog",
+    "cluster": "prod-gcp",
+    "namespace": "dusseldorf",
+    "team": "dusseldorf",
+    "minReplicas": "1",
+    "maxReplicas": "1",
+    "ingresses": ["https://www.nav.no/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg"],
+    "env": {
+        "DEKORATOR_URL": "https://www.nav.no/dekoratoren/?simple=true&chatbot=false",
+        "API_URL": "https://omsorgsdager-aleneomsorg-api.nav.no",
+        "PUBLIC_PATH": "/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg",
+        "LOGIN_URL": "https://loginservice.nav.no/login?redirect=https://www.nav.no/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg/soknad",
+        "APPSTATUS_PROJECT_ID": "ryujtq87",
+        "APPSTATUS_DATASET": "production"
+    }
+}
