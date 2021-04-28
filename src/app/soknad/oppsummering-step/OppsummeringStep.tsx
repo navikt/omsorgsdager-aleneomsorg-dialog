@@ -8,7 +8,7 @@ import VeilederSVG from '@navikt/sif-common-core/lib/components/veileder-svg/Vei
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { validateBekrefterOpplysninger } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { Person } from 'app/types/Person';
-import { SoknadApiData } from 'app/types/SoknadApiData';
+import { ApiBarn, SoknadApiData } from '../../types/SoknadApiData';
 import { Barn, SoknadFormField } from '../../types/SoknadFormData';
 import { useSoknadContext } from '../SoknadContext';
 import SoknadFormComponents from '../SoknadFormComponents';
@@ -16,6 +16,7 @@ import SoknadFormStep from '../SoknadFormStep';
 import { StepID } from '../soknadStepsConfig';
 import OmBarnaSummary from './OmBarnaSummary';
 import SøkerSummary from './SøkerSummary';
+import OmOmsorgenForBarnSummary from './OmOmsorgenForBarnSummary';
 
 type Props = {
     søker: Person;
@@ -26,6 +27,7 @@ type Props = {
 const OppsummeringStep = ({ søker, apiValues }: Props) => {
     const intl = useIntl();
     const { sendSoknadStatus, sendSoknad } = useSoknadContext();
+    const harAleneomsorgFor: ApiBarn[] | undefined = apiValues?.barn.filter((b) => b.aleneomsorg);
     console.log(apiValues);
     return (
         <SoknadFormStep
@@ -46,6 +48,7 @@ const OppsummeringStep = ({ søker, apiValues }: Props) => {
                                 <SøkerSummary søker={søker} apiValues={apiValues} />
 
                                 <OmBarnaSummary apiValues={apiValues} />
+                                {harAleneomsorgFor && <OmOmsorgenForBarnSummary barn={harAleneomsorgFor} />}
                             </ResponsivePanel>
                         </Box>
 
