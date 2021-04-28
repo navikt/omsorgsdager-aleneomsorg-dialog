@@ -50,6 +50,16 @@
     "step.om-barn.hvorMangeBarn.spm": "Hvor mange felles barn har dere? Inkludert eventuelle fosterbarn",
     "step.om-barn.hvorforSpører.svar": "Vi trenger å vite alderen på barn for å kunne beregne hvor mange omsorgsdager du kan ha rett på og hvor lenge du har rett til å bruke omsorgsdager.",
 
+    "step.om-omsorgen-for-barn.pageTitle": "Om omsorgen for barn",
+    "step.om-omsorgen-for-barn.stepTitle": "Om omsorgen for barn",
+    "step.om-omsorgen-for-barn.stepIntro.1": "Du regnes som alene om omsorgen hvis du ikke bor sammen med den andre forelderen, og barnet bor fast bare hos deg.",
+    "step.om-omsorgen-for-barn.stepIntro.2": "Hvis du og den andre forelderen har en avtale om delt bosted, hvor barnet bor fast hos dere begge, vil ingen av dere bli regnet som alene om omsorgen. Hvis dere har avtale om delt bosted skal du ikke registrere at du er alene.",
+
+    "step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg": "Kryss av for barn er du alene omsorgen for:",
+    "step.om-omsorgen-for-barn.form.født": "Født",
+    "step.om-omsorgen-for-barn.form.fnr": "fnr.",
+    "step.om-omsorgen-for-barn.nextButtonLabel": "Fortsett",
+
     "step.oppsummering.pageTitle": "Oppsummering",
     "step.oppsummering.stepTitle": "Oppsummering",
     "step.oppsummering.nextButtonLabel": "Send inn søknaden",
