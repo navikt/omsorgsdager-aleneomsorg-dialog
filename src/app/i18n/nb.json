@@ -89,7 +89,7 @@
     "samtykke.harForståttLabel.lenketekst": "dine plikter",
     "fieldvalidation.mottakersFnrErSøkersFnr": "Du har tastet inn ditt eget fødselsnummer",
 
-    "kvittering.tittel": "Søknad om registrering av aleneomsorg for omsorgsdager",
+    "kvittering.tittel": "Registrering av aleneomsorg i forbindelse med omsorgsdager er mottatt",
     "kvittering.info.tittel": "Hva skjer videre nå?",
-    "kvittering.info.1": "Vi behandler søknaden fra deg om å bli regnet som alene om omsorgen."
+    "kvittering.info.1": "Når vi har registrert aleneomsorg på deg får du tilsendt en bekreftelse i posten og på \"Ditt NAV\""
 }
