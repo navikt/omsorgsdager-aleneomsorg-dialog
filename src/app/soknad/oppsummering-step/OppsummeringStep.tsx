@@ -26,7 +26,7 @@ type Props = {
 const OppsummeringStep = ({ søker, apiValues }: Props) => {
     const intl = useIntl();
     const { sendSoknadStatus, sendSoknad } = useSoknadContext();
-
+    console.log(apiValues);
     return (
         <SoknadFormStep
             id={StepID.OPPSUMMERING}

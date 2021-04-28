@@ -4,4 +4,5 @@ export const initialSoknadFormData: Partial<SoknadFormData> = {
     [SoknadFormField.harForståttRettigheterOgPlikter]: false,
     [SoknadFormField.harBekreftetOpplysninger]: false,
     [SoknadFormField.andreBarn]: [],
+    [SoknadFormField.harAleneomsorgFor]: [],
 };

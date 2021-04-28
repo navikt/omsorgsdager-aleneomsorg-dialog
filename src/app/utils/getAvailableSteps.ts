@@ -1,10 +1,13 @@
 import { Person } from 'app/types/Person';
 import { StepID } from '../soknad/soknadStepsConfig';
 
-import { Barn, OmBarnaFormData, SoknadFormData } from '../types/SoknadFormData';
+import { Barn, OmBarnaFormData, OmOmsorgenForBarnFormData, SoknadFormData } from '../types/SoknadFormData';
 
 const omBarnaIsComplete = ({ andreBarn }: Partial<OmBarnaFormData>, barn: Barn[]): boolean => {
     return barn.length > 0 || (andreBarn || []).length > 0;
+};
+const omOmsorgenForBarnIsComplete = ({ harAleneomsorgFor }: Partial<OmOmsorgenForBarnFormData>): boolean => {
+    return harAleneomsorgFor?.length === 0 ? false : true;
 };
 
 export const getAvailableSteps = (values: Partial<SoknadFormData>, søker: Person, barn: Barn[]): StepID[] => {
@@ -12,6 +15,9 @@ export const getAvailableSteps = (values: Partial<SoknadFormData>, søker: Perso
     steps.push(StepID.OM_BARN);
 
     if (omBarnaIsComplete(values, barn)) {
+        steps.push(StepID.OM_OMSORGEN_FOR_BARN);
+    }
+    if (omOmsorgenForBarnIsComplete(values)) {
         steps.push(StepID.OPPSUMMERING);
     }
 
