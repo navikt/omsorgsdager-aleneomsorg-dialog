@@ -65,11 +65,15 @@
     "step.oppsummering.nextButtonLabel": "Send inn søknaden",
     "step.oppsummering.info": "Les gjennom oppsummeringen og sjekk at alt er riktig før du sender inn søknaden. Hvis du vil gjøre endringer, kan du gå tilbake.",
 
-    "step.oppsummering.søker.header": "Om deg som søker",
+    "step.oppsummering.søker.header": "Om deg",
 
     "step.oppsummering.deres-felles-barn.header": "Dine barn",
     "step.oppsummering.deres-felles-barn.barn": "Barn",
     "step.oppsummering.deres-felles-barn.listItem": " (fnr. {identitetsnummer})",
+
+    "step.oppsummering.om-omsorgen-for-barn.header": "Om barnet ditt",
+    "step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.spm": "Er du alene om omsorgen for barnet ditt?",
+    "step.oppsummering.om-omsorgen-for-barn.barnList.tittle": "Barn du er alene om omsorgen for",
 
     "step.oppsummering.bekrefterOpplysninger": "Jeg bekrefter at opplysningene jeg har gitt er riktige, og at jeg ikke har holdt tilbake opplysninger som har betydning for min rett til omsorgsdager.",
 
@@ -85,7 +89,7 @@
     "samtykke.harForståttLabel.lenketekst": "dine plikter",
     "fieldvalidation.mottakersFnrErSøkersFnr": "Du har tastet inn ditt eget fødselsnummer",
 
-    "kvittering.tittel": "Søknad om registrering av aleneomsorg for omsorgsdager",
+    "kvittering.tittel": "Registrering av aleneomsorg i forbindelse med omsorgsdager er mottatt",
     "kvittering.info.tittel": "Hva skjer videre nå?",
-    "kvittering.info.1": "Vi behandler søknaden fra deg om å bli regnet som alene om omsorgen."
+    "kvittering.info.1": "Når vi har registrert aleneomsorg på deg får du tilsendt en bekreftelse i posten og på \"Ditt NAV\""
 }
