@@ -45,7 +45,9 @@ const SoknadRoutes = ({ soknadId, søker, barn = [] }: Props) => {
                 return <TidspunktForAleneomsorgStep barn={barn} />;
             case StepID.OPPSUMMERING:
                 const apiValues = mapFormDataToApiData(id, intl.locale, values, barn);
-                return <OppsummeringStep apiValues={apiValues} søker={søker} barn={barn} />;
+                return (
+                    <OppsummeringStep apiValues={apiValues} søker={søker} barn={barn} annetBarn={values.andreBarn} />
+                );
         }
     };
 

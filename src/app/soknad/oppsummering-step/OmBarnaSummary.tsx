@@ -2,21 +2,37 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import SummarySection from '@navikt/sif-common-soknad/lib/soknad-summary/summary-section/SummarySection';
-import { SoknadApiData } from '../../types/SoknadApiData';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
-import BarnSummaryList from './BarnSummaryList';
+import BarnSummaryList, { AlleBarnSummary } from './BarnSummaryList';
+import { AndreBarn } from 'app/pre-common/question-visibility/forms/barn';
+import { Barn } from '../../types/SoknadFormData';
+import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 
 interface Props {
-    apiValues: SoknadApiData;
+    registrertBarn: Barn[];
+    annetBarn: AndreBarn[];
 }
+const mapAndreBarnToAlleBarnSummary = (barn: AndreBarn): AlleBarnSummary => {
+    return { navn: barn.navn, identitetsnummer: barn.fnr };
+};
 
-const OmBarnaSummary = ({ apiValues: { barn } }: Props) => {
+const mapBarnToAlleBarnSummary = (barn: Barn): AlleBarnSummary => {
+    return {
+        navn: formatName(barn.fornavn, barn.etternavn, barn.mellomnavn),
+    };
+};
+
+const OmBarnaSummary = ({ registrertBarn, annetBarn }: Props) => {
     const intl = useIntl();
 
+    const alleBarn: AlleBarnSummary[] = [
+        ...annetBarn.map((barn) => mapAndreBarnToAlleBarnSummary(barn)),
+        ...registrertBarn.map((barn) => mapBarnToAlleBarnSummary(barn)),
+    ];
     return (
         <SummarySection header={intlHelper(intl, 'step.oppsummering.deres-felles-barn.header')}>
             <Box margin="l">
-                <BarnSummaryList barn={barn} />
+                <BarnSummaryList barn={alleBarn} />
             </Box>
         </SummarySection>
     );

@@ -8,7 +8,6 @@ export interface ApiBarn {
     navn: string;
     aktørId?: string;
     identitetsnummer?: string;
-    aleneomsorg?: boolean;
     tidspunktForAleneomsorg: TidspunktForAleneomsorgApi;
     dato?: string;
 }

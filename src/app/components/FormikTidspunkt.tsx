@@ -14,6 +14,7 @@ import SoknadFormComponents from '../soknad/SoknadFormComponents';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import { BarnMedAleneomsorg } from '../utils/tidspunktForAleneomsorgUtils';
 import { IntlShape } from 'react-intl';
+import { validateRequiredField } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 
 interface Props {
     barnMedAleneomsorg: BarnMedAleneomsorg;
@@ -85,6 +86,7 @@ const FormikTidspunkt = ({ barnMedAleneomsorg, index }: Props) => {
                         <SoknadFormComponents.RadioPanelGroup
                             legend={tidspunktItemLabelRenderer(barnMedAleneomsorg.navn, intl)}
                             name={getFieldName(AleneomsorgTidspunktField.tidspunktForAleneomsorg)}
+                            validate={validateRequiredField}
                             radios={[
                                 {
                                     // label: intlHelper(intl, 'steg.tilsyn.ja.årsak.vetHelePerioden'),
@@ -110,6 +112,7 @@ const FormikTidspunkt = ({ barnMedAleneomsorg, index }: Props) => {
                                         showYearSelector={true}
                                         // minDate={datepickerUtils.getDateFromDateString(frilans_startdato)}
                                         // maxDate={dateToday}
+                                        validate={validateRequiredField}
                                     />
                                 </Box>
                             )}

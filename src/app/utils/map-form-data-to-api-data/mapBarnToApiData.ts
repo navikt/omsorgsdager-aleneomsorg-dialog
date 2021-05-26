@@ -17,8 +17,8 @@ export const mapBarnStepToApiData = (
     const registrerteBarnMedAleneomsorg = registrerteBarn.filter((b) => barnFinnesIArray(b.aktørId, harAleneomsorgFor));
 
     const barn: ApiBarn[] = [
-        ...andreBarnMedAleneomsorg.map((barn) => mapAndreBarnToApiBarn(barn, harAleneomsorgFor, aleneomsorgTidspunkt)),
-        ...registrerteBarnMedAleneomsorg.map((barn) => mapBarnToApiBarn(barn, harAleneomsorgFor, aleneomsorgTidspunkt)),
+        ...andreBarnMedAleneomsorg.map((barn) => mapAndreBarnToApiBarn(barn, aleneomsorgTidspunkt)),
+        ...registrerteBarnMedAleneomsorg.map((barn) => mapBarnToApiBarn(barn, aleneomsorgTidspunkt)),
     ];
     return {
         barn: barn,

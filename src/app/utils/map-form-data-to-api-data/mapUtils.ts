@@ -3,10 +3,6 @@ import { AndreBarn } from 'app/pre-common/question-visibility/forms/barn/types';
 import { ApiBarn, TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
 import { AleneomsorgTidspunkt, Barn, TidspunktForAleneomsorgFormData } from '../../types/SoknadFormData';
 
-const barnFinnesIArray = (barnId: string, idArray: string[]): boolean => {
-    return (idArray || []).find((id) => id === barnId) !== undefined;
-};
-
 const getTidspunktForAleneomsorg = (
     barnId: string,
     aleneomsorgTidspunkter: AleneomsorgTidspunkt[]
@@ -24,14 +20,12 @@ const getDateForAleneomsorg = (barnId: string, aleneomsorgTidspunkter: Aleneomso
 
 export const mapAndreBarnToApiBarn = (
     annetBarn: AndreBarn,
-    harAleneomsorgFor: string[],
     aleneomsorgTidspunkter: AleneomsorgTidspunkt[]
 ): ApiBarn => {
     const tidspunktForAleneomsorg = getTidspunktForAleneomsorg(annetBarn.fnr, aleneomsorgTidspunkter);
     return {
         navn: annetBarn.navn,
         identitetsnummer: annetBarn.fnr,
-        aleneomsorg: barnFinnesIArray(annetBarn.fnr, harAleneomsorgFor),
         tidspunktForAleneomsorg: tidspunktForAleneomsorg,
         dato:
             tidspunktForAleneomsorg === TidspunktForAleneomsorgApi.SISTE_2_ÅRENE
@@ -40,16 +34,11 @@ export const mapAndreBarnToApiBarn = (
     };
 };
 
-export const mapBarnToApiBarn = (
-    registrertBarn: Barn,
-    harAleneomsorgFor: string[],
-    aleneomsorgTidspunkter: AleneomsorgTidspunkt[]
-): ApiBarn => {
+export const mapBarnToApiBarn = (registrertBarn: Barn, aleneomsorgTidspunkter: AleneomsorgTidspunkt[]): ApiBarn => {
     const tidspunktForAleneomsorg = getTidspunktForAleneomsorg(registrertBarn.aktørId, aleneomsorgTidspunkter);
     return {
         navn: formatName(registrertBarn.fornavn, registrertBarn.etternavn, registrertBarn.mellomnavn),
         aktørId: registrertBarn.aktørId,
-        aleneomsorg: barnFinnesIArray(registrertBarn.aktørId, harAleneomsorgFor),
         tidspunktForAleneomsorg: tidspunktForAleneomsorg,
         dato:
             tidspunktForAleneomsorg === TidspunktForAleneomsorgApi.SISTE_2_ÅRENE
