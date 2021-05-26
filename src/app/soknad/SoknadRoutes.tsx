@@ -21,6 +21,7 @@ import { useSoknadContext } from './SoknadContext';
 import { StepID } from './soknadStepsConfig';
 import VelkommenPage from './velkommen-page/VelkommenPage';
 import OmOmsorgenForBarnStep from './om-omsorgen-for-barn-step/OmOmsorgenForBarnStep';
+import TidspunktForAleneomsorgStep from './tidspunkt-for-aleneomsorg-step/TidspunktForAleneomsorgStep';
 
 interface Props {
     soknadId?: string;
@@ -40,6 +41,8 @@ const SoknadRoutes = ({ soknadId, søker, barn = [] }: Props) => {
                 return <OmBarnStep barn={barn} />;
             case StepID.OM_OMSORGEN_FOR_BARN:
                 return <OmOmsorgenForBarnStep barn={barn} />;
+            case StepID.TIDSPUNKT_FOR_ALENEOMSORG:
+                return <TidspunktForAleneomsorgStep barn={barn} />;
             case StepID.OPPSUMMERING:
                 const apiValues = mapFormDataToApiData(id, intl.locale, values, barn);
                 return <OppsummeringStep apiValues={apiValues} søker={søker} barn={barn} />;

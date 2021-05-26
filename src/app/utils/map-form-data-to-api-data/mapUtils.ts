@@ -1,26 +1,52 @@
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { AndreBarn } from 'app/pre-common/question-visibility/forms/barn/types';
-import { ApiBarn } from '../../types/SoknadApiData';
-import { Barn } from '../../types/SoknadFormData';
+import { ApiBarn, TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
+import { AleneomsorgTidspunkt, Barn, TidspunktForAleneomsorgFormData } from '../../types/SoknadFormData';
 
 const barnFinnesIArray = (barnId: string, idArray: string[]): boolean => {
     return (idArray || []).find((id) => id === barnId) !== undefined;
 };
 
-export const mapAndreBarnToApiBarn = (annetBarn: AndreBarn, harAleneomsorgFor: string[]): ApiBarn => {
+const getTidspunktForAleneomsorg = (
+    barnId: string,
+    aleneomsorgTidspunkter: AleneomsorgTidspunkt[]
+): TidspunktForAleneomsorgApi => {
+    const tidspunkt = aleneomsorgTidspunkter.find((aleneomsorgTidspunkt) => aleneomsorgTidspunkt.fnrId === barnId);
+    if (tidspunkt?.tidspunktForAleneomsorg === TidspunktForAleneomsorgFormData.SISTE_2_ÅRENE)
+        return TidspunktForAleneomsorgApi.SISTE_2_ÅRENE;
+    else return TidspunktForAleneomsorgApi.TIDLIGERE;
+};
+
+const getDateForAleneomsorg = (barnId: string, aleneomsorgTidspunkter: AleneomsorgTidspunkt[]): string | undefined => {
+    return aleneomsorgTidspunkter.find((aleneomsorgTidspunkt) => aleneomsorgTidspunkt.fnrId === barnId)?.dato;
+};
+
+export const mapAndreBarnToApiBarn = (
+    annetBarn: AndreBarn,
+    harAleneomsorgFor: string[],
+    aleneomsorgTidspunkter: AleneomsorgTidspunkt[]
+): ApiBarn => {
     return {
         navn: annetBarn.navn,
         aktørId: undefined,
         identitetsnummer: annetBarn.fnr,
         aleneomsorg: barnFinnesIArray(annetBarn.fnr, harAleneomsorgFor),
+        tidspunktForAleneomsorg: getTidspunktForAleneomsorg(annetBarn.fnr, aleneomsorgTidspunkter),
+        dato: getDateForAleneomsorg(annetBarn.fnr, aleneomsorgTidspunkter),
     };
 };
 
-export const mapBarnToApiBarn = (registrertBarn: Barn, harAleneomsorgFor: string[]): ApiBarn => {
+export const mapBarnToApiBarn = (
+    registrertBarn: Barn,
+    harAleneomsorgFor: string[],
+    aleneomsorgTidspunkter: AleneomsorgTidspunkt[]
+): ApiBarn => {
     return {
         navn: formatName(registrertBarn.fornavn, registrertBarn.etternavn, registrertBarn.mellomnavn),
         aktørId: registrertBarn.aktørId,
         identitetsnummer: undefined,
         aleneomsorg: barnFinnesIArray(registrertBarn.aktørId, harAleneomsorgFor),
+        tidspunktForAleneomsorg: getTidspunktForAleneomsorg(registrertBarn.aktørId, aleneomsorgTidspunkter),
+        dato: getDateForAleneomsorg(registrertBarn.aktørId, aleneomsorgTidspunkter),
     };
 };

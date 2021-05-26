@@ -60,6 +60,10 @@
     "step.om-omsorgen-for-barn.form.fnr": "fnr.",
     "step.om-omsorgen-for-barn.nextButtonLabel": "Fortsett",
 
+    "step.tidspunkt-for-aleneomsorg.pageTitle": "Tidspunkt for aleneomsorg",
+    "step.tidspunkt-for-aleneomsorg.stepTitle": "Tidspunkt for aleneomsorg",
+    "step.tidspunkt-for-aleneomsorg.nextButtonLabel": "Fortsett",
+
     "step.oppsummering.pageTitle": "Oppsummering",
     "step.oppsummering.stepTitle": "Oppsummering",
     "step.oppsummering.nextButtonLabel": "Send inn søknaden",
