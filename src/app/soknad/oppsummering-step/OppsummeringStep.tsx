@@ -28,7 +28,7 @@ const OppsummeringStep = ({ søker, apiValues }: Props) => {
     const intl = useIntl();
     const { sendSoknadStatus, sendSoknad } = useSoknadContext();
     const harAleneomsorgFor: ApiBarn[] | undefined = apiValues?.barn.filter((b) => b.aleneomsorg);
-    console.log(apiValues);
+    // console.log(apiValues);
     return (
         <SoknadFormStep
             id={StepID.OPPSUMMERING}

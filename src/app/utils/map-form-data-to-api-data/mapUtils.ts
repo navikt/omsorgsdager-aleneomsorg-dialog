@@ -12,6 +12,7 @@ const getTidspunktForAleneomsorg = (
     aleneomsorgTidspunkter: AleneomsorgTidspunkt[]
 ): TidspunktForAleneomsorgApi => {
     const tidspunkt = aleneomsorgTidspunkter.find((aleneomsorgTidspunkt) => aleneomsorgTidspunkt.fnrId === barnId);
+
     if (tidspunkt?.tidspunktForAleneomsorg === TidspunktForAleneomsorgFormData.SISTE_2_ÅRENE)
         return TidspunktForAleneomsorgApi.SISTE_2_ÅRENE;
     else return TidspunktForAleneomsorgApi.TIDLIGERE;
@@ -26,13 +27,16 @@ export const mapAndreBarnToApiBarn = (
     harAleneomsorgFor: string[],
     aleneomsorgTidspunkter: AleneomsorgTidspunkt[]
 ): ApiBarn => {
+    const tidspunktForAleneomsorg = getTidspunktForAleneomsorg(annetBarn.fnr, aleneomsorgTidspunkter);
     return {
         navn: annetBarn.navn,
-        aktørId: undefined,
         identitetsnummer: annetBarn.fnr,
         aleneomsorg: barnFinnesIArray(annetBarn.fnr, harAleneomsorgFor),
-        tidspunktForAleneomsorg: getTidspunktForAleneomsorg(annetBarn.fnr, aleneomsorgTidspunkter),
-        dato: getDateForAleneomsorg(annetBarn.fnr, aleneomsorgTidspunkter),
+        tidspunktForAleneomsorg: tidspunktForAleneomsorg,
+        dato:
+            tidspunktForAleneomsorg === TidspunktForAleneomsorgApi.SISTE_2_ÅRENE
+                ? getDateForAleneomsorg(annetBarn.fnr, aleneomsorgTidspunkter)
+                : undefined,
     };
 };
 
@@ -41,12 +45,15 @@ export const mapBarnToApiBarn = (
     harAleneomsorgFor: string[],
     aleneomsorgTidspunkter: AleneomsorgTidspunkt[]
 ): ApiBarn => {
+    const tidspunktForAleneomsorg = getTidspunktForAleneomsorg(registrertBarn.aktørId, aleneomsorgTidspunkter);
     return {
         navn: formatName(registrertBarn.fornavn, registrertBarn.etternavn, registrertBarn.mellomnavn),
         aktørId: registrertBarn.aktørId,
-        identitetsnummer: undefined,
         aleneomsorg: barnFinnesIArray(registrertBarn.aktørId, harAleneomsorgFor),
-        tidspunktForAleneomsorg: getTidspunktForAleneomsorg(registrertBarn.aktørId, aleneomsorgTidspunkter),
-        dato: getDateForAleneomsorg(registrertBarn.aktørId, aleneomsorgTidspunkter),
+        tidspunktForAleneomsorg: tidspunktForAleneomsorg,
+        dato:
+            tidspunktForAleneomsorg === TidspunktForAleneomsorgApi.SISTE_2_ÅRENE
+                ? getDateForAleneomsorg(registrertBarn.aktørId, aleneomsorgTidspunkter)
+                : undefined,
     };
 };

@@ -1,56 +1,89 @@
 import React from 'react';
-// import { useIntl } from 'react-intl';
-// import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import { FieldArray, useFormikContext } from 'formik';
-
-// import AppForm from '../app-form/AppForm';
-// import RedusertArbeidsforholdDetaljerPart from './RedusertArbeidsforholdDetaljerPart';
+import { useIntl } from 'react-intl';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 // import ExpandableInfo from '@navikt/sif-common-core/lib/components/expandable-content/ExpandableInfo';
-
+import { FieldArray, useFormikContext } from 'formik';
 import {
     AleneomsorgTidspunktField,
     SoknadFormData,
+    // SoknadFormData,
     SoknadFormField,
     TidspunktForAleneomsorgFormData,
 } from '../types/SoknadFormData';
 import SoknadFormComponents from '../soknad/SoknadFormComponents';
-import { BarnMedAleneomsorg } from '../soknad/tidspunkt-for-aleneomsorg-step/TidspunktForAleneomsorgStep';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
+import { BarnMedAleneomsorg } from '../utils/tidspunktForAleneomsorgUtils';
+import { IntlShape } from 'react-intl';
 
 interface Props {
     barnMedAleneomsorg: BarnMedAleneomsorg;
     index: number;
 }
 
-const FormikTidspunkt = ({ barnMedAleneomsorg, index }: Props) => {
-    // const intl = useIntl();
-    const { values, setFieldValue } = useFormikContext<SoknadFormData>();
+const tidspunktItemLabelRenderer = (navn: string, intl: IntlShape): React.ReactNode => {
+    return (
+        <>
+            <div>
+                <span>{navn}</span>
+            </div>
 
+            <div>
+                <span>{intlHelper(intl, 'step.tidspunkt-for-aleneomsorg.spm', { navn })}</span>
+            </div>
+        </>
+    );
+};
+
+const FormikTidspunkt = ({ barnMedAleneomsorg, index }: Props) => {
+    const intl = useIntl();
+    const {
+        values: { aleneomsorgTidspunkt },
+        setFieldValue,
+    } = useFormikContext<SoknadFormData>();
+
+    React.useEffect(() => {
+        if (aleneomsorgTidspunkt) {
+            const tp = aleneomsorgTidspunkt.find((tp) => tp.fnrId);
+            if (tp && tp.tidspunktForAleneomsorg === TidspunktForAleneomsorgFormData.TIDLIGERE && tp.dato) {
+                setFieldValue(`${SoknadFormField.aleneomsorgTidspunkt}.${index}.dato` as SoknadFormField, undefined);
+            }
+        }
+        if (!aleneomsorgTidspunkt) {
+            setFieldValue(
+                `${SoknadFormField.aleneomsorgTidspunkt}.${index}.fnrId` as SoknadFormField,
+                barnMedAleneomsorg.idFnr
+            );
+        }
+
+        if (
+            aleneomsorgTidspunkt &&
+            !aleneomsorgTidspunkt[index] &&
+            !aleneomsorgTidspunkt.find((tp) => tp.fnrId === barnMedAleneomsorg.idFnr)
+        ) {
+            setFieldValue(
+                `${SoknadFormField.aleneomsorgTidspunkt}.${index}.fnrId` as SoknadFormField,
+                barnMedAleneomsorg.idFnr
+            );
+        }
+
+        if (aleneomsorgTidspunkt && !aleneomsorgTidspunkt.find((tp) => tp.fnrId === barnMedAleneomsorg.idFnr)) {
+            setFieldValue(
+                `${SoknadFormField.aleneomsorgTidspunkt}.${index}.fnrId` as SoknadFormField,
+                barnMedAleneomsorg.idFnr
+            );
+        }
+    }, [setFieldValue, aleneomsorgTidspunkt, barnMedAleneomsorg.idFnr, index]);
+    // console.log(aleneomsorgTidspunkt);
     return (
         <FieldArray name={SoknadFormField.aleneomsorgTidspunkt}>
             {({ name }) => {
                 const getFieldName = (field: AleneomsorgTidspunktField) =>
                     `${name}.${index}.${field}` as SoknadFormField;
 
-                if (
-                    values.aleneomsorgTidspunkt &&
-                    (!values.aleneomsorgTidspunkt[index] || values.aleneomsorgTidspunkt[index].fnrId === undefined)
-                )
-                    setFieldValue(getFieldName(AleneomsorgTidspunktField.fnrId), barnMedAleneomsorg.idFnr);
-
-                if (
-                    values.aleneomsorgTidspunkt &&
-                    values.aleneomsorgTidspunkt[index] &&
-                    values.aleneomsorgTidspunkt[index].dato &&
-                    values.aleneomsorgTidspunkt[index].tidspunktForAleneomsorg ===
-                        TidspunktForAleneomsorgFormData.TIDLIGERE
-                )
-                    setFieldValue(getFieldName(AleneomsorgTidspunktField.dato), undefined);
-
                 return (
                     <Box margin="xl">
                         <SoknadFormComponents.RadioPanelGroup
-                            legend={`Hvilket år ble du alene om omsorgen for ${barnMedAleneomsorg.navn}`}
+                            legend={tidspunktItemLabelRenderer(barnMedAleneomsorg.navn, intl)}
                             name={getFieldName(AleneomsorgTidspunktField.tidspunktForAleneomsorg)}
                             radios={[
                                 {
@@ -64,9 +97,10 @@ const FormikTidspunkt = ({ barnMedAleneomsorg, index }: Props) => {
                                 },
                             ]}
                         />
-                        {values.aleneomsorgTidspunkt &&
-                            values.aleneomsorgTidspunkt[index] &&
-                            values.aleneomsorgTidspunkt[index].tidspunktForAleneomsorg ===
+
+                        {aleneomsorgTidspunkt &&
+                            aleneomsorgTidspunkt[index] &&
+                            aleneomsorgTidspunkt[index].tidspunktForAleneomsorg ===
                                 TidspunktForAleneomsorgFormData.SISTE_2_ÅRENE && (
                                 <Box margin="xl">
                                     <SoknadFormComponents.DatePicker

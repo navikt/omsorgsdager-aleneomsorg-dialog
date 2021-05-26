@@ -8,39 +8,34 @@ import { Barn, SoknadFormData } from '../../types/SoknadFormData';
 import SoknadFormStep from '../SoknadFormStep';
 import { StepID } from '../soknadStepsConfig';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
-import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
+
 // import { prettifyDate } from '@navikt/sif-common-core/lib/utils/dateUtils';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
 // import { CheckboksPanelProps } from 'nav-frontend-skjema';
-import { AndreBarn } from '../../pre-common/question-visibility/forms/barn';
+
 // import SoknadFormComponents from '../SoknadFormComponents';
 
 import FormikTidspunkt from '../../components/FormikTidspunkt';
+import {
+    barnFinnesIkkeIArray,
+    BarnMedAleneomsorg,
+    mapAndreBarnToBarnMedAleneomsorg,
+    mapRegistrerteBarnToBarnMedAleneomsorg,
+} from '../../utils/tidspunktForAleneomsorgUtils';
+import { barnFinnesIArray } from '../../utils/map-form-data-to-api-data/mapBarnToApiData';
 
 interface Props {
     barn: Barn[];
 }
 
-export interface BarnMedAleneomsorg {
-    idFnr: string;
-    navn: string;
-}
-export const barnFinnesIkkeIArray = (barnId: string, idArray: string[]): boolean => {
-    return (idArray || []).find((id) => id === barnId) !== undefined;
-};
+export const cleanupTidspunktForAleneomsorgStep = (formValues: SoknadFormData): SoknadFormData => {
+    const values: SoknadFormData = { ...formValues };
 
-export const mapAndreBarnToBarnMedAleneomsorg = (andreBarn: AndreBarn): BarnMedAleneomsorg => {
-    return {
-        idFnr: andreBarn.fnr,
-        navn: andreBarn.navn,
-    };
-};
+    values.aleneomsorgTidspunkt = values.aleneomsorgTidspunkt.filter((b) =>
+        barnFinnesIArray(b.fnrId, values.harAleneomsorgFor)
+    );
 
-export const mapRegistrerteBarnToBarnMedAleneomsorg = (registrertBarn: Barn): BarnMedAleneomsorg => {
-    return {
-        idFnr: registrertBarn.aktørId,
-        navn: formatName(registrertBarn.fornavn, registrertBarn.etternavn, registrertBarn.mellomnavn),
-    };
+    return values;
 };
 
 const TidspunktForAleneomsorgStep = ({ barn }: Props) => {
@@ -55,10 +50,9 @@ const TidspunktForAleneomsorgStep = ({ barn }: Props) => {
         ...andreBarnMedAleneomsorg.map((barn) => mapAndreBarnToBarnMedAleneomsorg(barn)),
         ...registrerteBarnMedAleneOmsorg.map((barn) => mapRegistrerteBarnToBarnMedAleneomsorg(barn)),
     ];
-    console.log(barnMedAleneomsorg);
-    console.log(values);
+
     return (
-        <SoknadFormStep id={StepID.TIDSPUNKT_FOR_ALENEOMSORG}>
+        <SoknadFormStep id={StepID.TIDSPUNKT_FOR_ALENEOMSORG} onStepCleanup={cleanupTidspunktForAleneomsorgStep}>
             <CounsellorPanel>
                 <p>TEKST HER</p>
             </CounsellorPanel>
