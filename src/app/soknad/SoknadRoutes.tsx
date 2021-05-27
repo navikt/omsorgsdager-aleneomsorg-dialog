@@ -35,7 +35,7 @@ const SoknadRoutes = ({ soknadId, søker, barn = [] }: Props) => {
     const availableSteps = getAvailableSteps(values, søker, barn);
     const { soknadStepsConfig, sendSoknadStatus } = useSoknadContext();
 
-    const renderSoknadStep = (id: string, søker: Person, barn: Barn[], stepID: StepID): React.ReactNode => {
+    const renderSoknadStep = (søker: Person, barn: Barn[], stepID: StepID): React.ReactNode => {
         switch (stepID) {
             case StepID.OM_BARN:
                 return <OmBarnStep barn={barn} />;
@@ -44,7 +44,7 @@ const SoknadRoutes = ({ soknadId, søker, barn = [] }: Props) => {
             case StepID.TIDSPUNKT_FOR_ALENEOMSORG:
                 return <TidspunktForAleneomsorgStep barn={barn} />;
             case StepID.OPPSUMMERING:
-                const apiValues = mapFormDataToApiData(id, intl.locale, values, barn);
+                const apiValues = mapFormDataToApiData(intl.locale, values, barn);
                 return (
                     <OppsummeringStep apiValues={apiValues} søker={søker} barn={barn} annetBarn={values.andreBarn} />
                 );
@@ -86,7 +86,7 @@ const SoknadRoutes = ({ soknadId, søker, barn = [] }: Props) => {
                             key={step}
                             path={soknadStepsConfig[step].route}
                             exact={true}
-                            render={() => renderSoknadStep(soknadId, søker, barn, step)}
+                            render={() => renderSoknadStep(søker, barn, step)}
                         />
                     );
                 })}
