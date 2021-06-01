@@ -5,7 +5,7 @@ import {
 } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { hasValue } from '@navikt/sif-common-core/lib/validation/hasValue';
 import { FieldValidationResult } from '@navikt/sif-common-core/lib/validation/types';
-import { AndreBarn } from '../pre-common/question-visibility/forms/barn';
+import { AndreBarn } from '../pre-common/forms/barn';
 
 export enum AppFieldValidationErrors {
     fnr_lik_søkerFnr = 'fieldvalidation.mottakersFnrErSøkersFnr',

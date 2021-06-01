@@ -1,5 +1,5 @@
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
-import { AndreBarn } from 'app/pre-common/question-visibility/forms/barn/types';
+import { AndreBarn } from 'app/pre-common/forms/barn/types';
 import { ApiBarn, TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
 import { AleneomsorgTidspunkt, Barn, TidspunktForAleneomsorgFormData } from '../../types/SoknadFormData';
 

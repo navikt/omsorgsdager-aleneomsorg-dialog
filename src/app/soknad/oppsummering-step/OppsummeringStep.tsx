@@ -17,7 +17,7 @@ import { StepID } from '../soknadStepsConfig';
 import OmBarnaSummary from './OmBarnaSummary';
 import SøkerSummary from './SøkerSummary';
 import OmOmsorgenForBarnSummary from './OmOmsorgenForBarnSummary';
-import { AndreBarn } from 'app/pre-common/question-visibility/forms/barn';
+import { AndreBarn } from 'app/pre-common/forms/barn';
 
 type Props = {
     søker: Person;

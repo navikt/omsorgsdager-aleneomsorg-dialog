@@ -5,7 +5,7 @@ import ItemList from '@navikt/sif-common-core/lib/components/item-list/ItemList'
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { useFormikContext } from 'formik';
 import AlertStripe from 'nav-frontend-alertstriper';
-import BarnListAndDialog from '../../pre-common/question-visibility/forms/barn/BarnListAndDialog';
+import BarnListAndDialog from '../../pre-common/forms/barn/BarnListAndDialog';
 import { Barn, SoknadFormData, SoknadFormField } from '../../types/SoknadFormData';
 import SoknadFormStep from '../SoknadFormStep';
 import { StepID } from '../soknadStepsConfig';
