@@ -1,69 +1,77 @@
 import React from 'react';
-// import { FormattedMessage, IntlShape, useIntl } from 'react-intl';
-//import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { useFormikContext } from 'formik';
-//import AlertStripe from 'nav-frontend-alertstriper';
-// import { Barn, SoknadFormData, SoknadFormField, TidspunktForAleneomsorgFormData } from '../../types/SoknadFormData';
-import { Barn, SoknadFormData } from '../../types/SoknadFormData';
+import {
+    AleneomsorgTidspunkt,
+    AleneomsorgTidspunktField,
+    Barn,
+    SoknadFormData,
+    TidspunktForAleneomsorgFormData,
+} from '../../types/SoknadFormData';
 import SoknadFormStep from '../SoknadFormStep';
 import { StepID } from '../soknadStepsConfig';
-import Box from '@navikt/sif-common-core/lib/components/box/Box';
-
-// import { prettifyDate } from '@navikt/sif-common-core/lib/utils/dateUtils';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
-// import { CheckboksPanelProps } from 'nav-frontend-skjema';
-
-// import SoknadFormComponents from '../SoknadFormComponents';
-
-import FormikTidspunkt from '../../components/FormikTidspunkt';
 import {
-    barnFinnesIkkeIArray,
+    barnFinnesIArray,
     BarnMedAleneomsorg,
     mapAndreBarnToBarnMedAleneomsorg,
     mapRegistrerteBarnToBarnMedAleneomsorg,
 } from '../../utils/tidspunktForAleneomsorgUtils';
-import { barnFinnesIArray } from '../../utils/map-form-data-to-api-data/mapBarnToApiData';
+import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
+import TidspunktForBarn from '../../components/TidspunktForBarn';
 
 interface Props {
     barn: Barn[];
 }
 
-export const cleanupTidspunktForAleneomsorgStep = (formValues: SoknadFormData): SoknadFormData => {
-    const values: SoknadFormData = { ...formValues };
-
-    values.aleneomsorgTidspunkt = values.aleneomsorgTidspunkt.filter((b) =>
-        barnFinnesIArray(b.fnrId, values.harAleneomsorgFor)
-    );
-
-    return values;
-};
-
 const TidspunktForAleneomsorgStep = ({ barn }: Props) => {
-    // const intl = useIntl();
     const { values } = useFormikContext<SoknadFormData>();
     const { andreBarn, harAleneomsorgFor } = values;
 
-    const andreBarnMedAleneomsorg = andreBarn.filter((b) => barnFinnesIkkeIArray(b.fnr, harAleneomsorgFor));
-    const registrerteBarnMedAleneOmsorg = barn.filter((b) => barnFinnesIkkeIArray(b.aktørId, harAleneomsorgFor));
+    const andreBarnMedAleneomsorg = andreBarn.filter((b) => barnFinnesIArray(b.fnr, harAleneomsorgFor));
+    const registrerteBarnMedAleneOmsorg = barn.filter((b) => barnFinnesIArray(b.aktørId, harAleneomsorgFor));
 
     const barnMedAleneomsorg: BarnMedAleneomsorg[] = [
         ...andreBarnMedAleneomsorg.map((barn) => mapAndreBarnToBarnMedAleneomsorg(barn)),
         ...registrerteBarnMedAleneOmsorg.map((barn) => mapRegistrerteBarnToBarnMedAleneomsorg(barn)),
     ];
 
+    const getFieldName = (key: string, fieldName: AleneomsorgTidspunktField): string => {
+        return `${fieldName}_${key}`;
+    };
+
+    const cleanupStep = (formData: SoknadFormData): SoknadFormData => {
+        const aleneomsorgTidspunkt: AleneomsorgTidspunkt[] = [];
+
+        formData.harAleneomsorgFor.forEach((fnrId) => {
+            const fieldNameFnr = getFieldName(fnrId, AleneomsorgTidspunktField.tidspunktForAleneomsorg);
+
+            aleneomsorgTidspunkt.push({
+                fnrId: fnrId,
+                tidspunktForAleneomsorg: formData[fieldNameFnr],
+                dato:
+                    formData[fieldNameFnr] === TidspunktForAleneomsorgFormData.SISTE_2_ÅRENE
+                        ? formData[getFieldName(fnrId, AleneomsorgTidspunktField.dato)]
+                        : undefined,
+            });
+        });
+        formData.aleneomsorgTidspunkt = aleneomsorgTidspunkt;
+        return formData;
+    };
+
     return (
-        <SoknadFormStep id={StepID.TIDSPUNKT_FOR_ALENEOMSORG} onStepCleanup={cleanupTidspunktForAleneomsorgStep}>
+        <SoknadFormStep id={StepID.TIDSPUNKT_FOR_ALENEOMSORG} onStepCleanup={cleanupStep}>
             <CounsellorPanel>
                 <p>TEKST HER</p>
             </CounsellorPanel>
             <p>Oppgi tidspunkt for når du ble alene om omsorgen</p>
-            {barnMedAleneomsorg.length > 0 && (
-                <Box margin="xl">
-                    {barnMedAleneomsorg.map((value, index) => (
-                        <FormikTidspunkt barnMedAleneomsorg={value} index={index} key={index} />
-                    ))}
-                </Box>
-            )}
+
+            {barnMedAleneomsorg.map((barnMedAleneomsorg) => {
+                return (
+                    <FormBlock key={barnMedAleneomsorg.idFnr}>
+                        <TidspunktForBarn barnMedAleneomsorg={barnMedAleneomsorg} />
+                    </FormBlock>
+                );
+            })}
         </SoknadFormStep>
     );
 };

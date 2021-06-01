@@ -1,8 +1,9 @@
 import React from 'react';
 import SummaryList from '@navikt/sif-common-core/lib/components/summary-list/SummaryList';
-import { useIntl } from 'react-intl';
+import { IntlShape, useIntl } from 'react-intl';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
+import { getYear } from '../../utils/tidspunktForAleneomsorgUtils';
 
 export interface AlleBarnSummary {
     navn: string;
@@ -14,6 +15,7 @@ interface Props {
     barn: AlleBarnSummary[];
 }
 const tidspunktRenderer = (
+    intl: IntlShape,
     navn: string,
     fnr: string,
     tidspunktForAleneomsorg: TidspunktForAleneomsorgApi,
@@ -25,18 +27,35 @@ const tidspunktRenderer = (
                 <span>{`${navn}${fnr}`}</span>
             </div>
             <div>
-                <span>{`Hvilket år ble du alene om omsorgen for ${navn}?`}</span>
+                <span>{intlHelper(intl, 'step.oppsummering.om-omsorgen-for-barn.tidspunkt.spm', { navn })}</span>
             </div>
             <div>
                 {tidspunktForAleneomsorg === TidspunktForAleneomsorgApi.TIDLIGERE && (
                     <>
-                        <span>I 2019 eller tidligere</span>
+                        <span>
+                            {intlHelper(
+                                intl,
+                                'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt.tidlegere',
+                                {
+                                    twoYearsAgo: getYear(2),
+                                }
+                            )}
+                        </span>
                     </>
                 )}
                 {tidspunktForAleneomsorg === TidspunktForAleneomsorgApi.SISTE_2_ÅRENE && dato && (
                     <>
                         <div>
-                            <span>I 2020 eller 2021</span>
+                            <span>
+                                {intlHelper(
+                                    intl,
+                                    'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt.siste2årene',
+                                    {
+                                        yearAgo: getYear(1),
+                                        yearNow: getYear(0),
+                                    }
+                                )}
+                            </span>
                         </div>
                         <div>
                             <span>{`Dato: ${dato}`}</span>
@@ -62,7 +81,7 @@ const BarnSummaryList = ({ barn }: Props) => {
                     ? intlHelper(intl, 'step.oppsummering.deres-felles-barn.listItem', { identitetsnummer })
                     : '';
                 if (tidspunktForAleneomsorg) {
-                    return tidspunktRenderer(navn, fnr, tidspunktForAleneomsorg, dato);
+                    return tidspunktRenderer(intl, navn, fnr, tidspunktForAleneomsorg, dato);
                 } else return `${navn}${fnr}`;
             }}
         />

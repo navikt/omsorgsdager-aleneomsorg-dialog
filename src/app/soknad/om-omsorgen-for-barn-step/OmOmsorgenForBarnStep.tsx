@@ -14,6 +14,7 @@ import { CheckboksPanelProps } from 'nav-frontend-skjema';
 import { AndreBarn } from '../../pre-common/question-visibility/forms/barn';
 import SoknadFormComponents from '../SoknadFormComponents';
 import { validateRequiredList } from '@navikt/sif-common-core/lib/validation/fieldValidations';
+import { barnFinnesIArray } from '../../utils/map-form-data-to-api-data/mapBarnToApiData';
 
 interface Props {
     barn: Barn[];
@@ -39,6 +40,18 @@ export const getBarnOptions = (
     ];
 };
 
+export const cleanupOmOmsorgenForBarnStep = (formValues: SoknadFormData): SoknadFormData => {
+    const values: SoknadFormData = { ...formValues };
+
+    if (values.aleneomsorgTidspunkt) {
+        values.aleneomsorgTidspunkt = values.aleneomsorgTidspunkt.filter((b) =>
+            barnFinnesIArray(b.fnrId, values.harAleneomsorgFor)
+        );
+    }
+
+    return values;
+};
+
 const OmOmsorgenForBarnStep = ({ barn }: Props) => {
     const intl = useIntl();
     const { values } = useFormikContext<SoknadFormData>();
@@ -47,7 +60,10 @@ const OmOmsorgenForBarnStep = ({ barn }: Props) => {
 
     const kanFortsette = (barn !== undefined && barn.length > 0) || andreBarn.length > 0;
     return (
-        <SoknadFormStep id={StepID.OM_OMSORGEN_FOR_BARN} showSubmitButton={kanFortsette}>
+        <SoknadFormStep
+            id={StepID.OM_OMSORGEN_FOR_BARN}
+            showSubmitButton={kanFortsette}
+            onStepCleanup={cleanupOmOmsorgenForBarnStep}>
             <CounsellorPanel>
                 <p>
                     <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.1" />

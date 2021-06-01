@@ -10,7 +10,7 @@ export interface Barn {
 
 export interface AleneomsorgTidspunkt {
     fnrId: string;
-    tidspunktForAleneomsorg: TidspunktForAleneomsorgFormData;
+    tidspunktForAleneomsorg?: TidspunktForAleneomsorgFormData;
     dato?: string;
 }
 
