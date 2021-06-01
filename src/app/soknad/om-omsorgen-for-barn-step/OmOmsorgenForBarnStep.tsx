@@ -13,8 +13,8 @@ import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-p
 import { CheckboksPanelProps } from 'nav-frontend-skjema';
 import { AndreBarn } from '../../pre-common/forms/barn';
 import SoknadFormComponents from '../SoknadFormComponents';
-import { validateRequiredList } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { barnFinnesIArray } from '../../utils/map-form-data-to-api-data/mapBarnToApiData';
+import { getListValidator } from '@navikt/sif-common-formik/lib/validation';
 
 interface Props {
     barn: Barn[];
@@ -33,7 +33,6 @@ export const getBarnOptions = (
             value: barnet.aktørId,
         })),
         ...andreBarn.map((barnet) => ({
-            // label: `${intlHelper(intl, 'step.om-barna.form.fnr)} ${prettifyDate(barnet.fødselsdato)} ${barnet.navn}`,
             label: `${barnet.navn} (${intlHelper(intl, 'step.om-omsorgen-for-barn.form.fnr')} ${barnet.fnr})`,
             value: barnet.fnr,
         })),
@@ -79,7 +78,7 @@ const OmOmsorgenForBarnStep = ({ barn }: Props) => {
                         legend={intlHelper(intl, 'step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg')}
                         name={SoknadFormField.harAleneomsorgFor}
                         checkboxes={barnOptions}
-                        validate={validateRequiredList}
+                        validate={getListValidator({ required: true })}
                     />
                 </Box>
             )}

@@ -3,16 +3,15 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import InfoDialog from '@navikt/sif-common-core/lib/components/dialogs/info-dialog/InfoDialog';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
-import { commonFieldErrorRenderer } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import { validateSamtykke } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { Hovedknapp } from 'nav-frontend-knapper';
 import Lenke from 'nav-frontend-lenker';
 import SoknadFormComponents from '../../soknad/SoknadFormComponents';
 import { SoknadFormField } from '../../types/SoknadFormData';
 import DinePlikterContent from './dine-plikter/DinePlikter';
 import BehandlingAvPersonopplysningerContent from './personopplysninger/Personopplysninger';
-
+import { getCheckedValidator } from '@navikt/sif-common-formik/lib/validation';
+import intlFormErrorHandler from '@navikt/sif-common-formik/lib/validation/intlFormErrorHandler';
 interface DialogState {
     dinePlikterModalOpen?: boolean;
     behandlingAvPersonopplysningerModalOpen?: boolean;
@@ -31,12 +30,12 @@ const VelkommenPageForm = ({ onStart }: Props) => {
         <SoknadFormComponents.Form
             onValidSubmit={onStart}
             includeButtons={false}
-            fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}>
+            formErrorHandler={intlFormErrorHandler(intl, 'validation')}>
             <FormBlock>
                 <SoknadFormComponents.ConfirmationCheckbox
                     label={intlHelper(intl, 'samtykke.tekst')}
                     name={SoknadFormField.harForståttRettigheterOgPlikter}
-                    validate={validateSamtykke}>
+                    validate={getCheckedValidator()}>
                     <FormattedMessage
                         id="samtykke.harForståttLabel"
                         values={{

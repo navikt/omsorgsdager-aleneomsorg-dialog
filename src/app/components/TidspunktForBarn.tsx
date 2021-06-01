@@ -5,7 +5,6 @@ import SoknadFormComponents from '../soknad/SoknadFormComponents';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import { BarnMedAleneomsorg, getMinDateYearAgo, getYear } from '../utils/tidspunktForAleneomsorgUtils';
 import { IntlShape } from 'react-intl';
-import { validateRequiredField } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { useFormikContext } from 'formik';
 import { dateToday } from '@navikt/sif-common-core/lib/utils/dateUtils';
 import {
@@ -14,6 +13,7 @@ import {
     SoknadFormField,
     TidspunktForAleneomsorgFormData,
 } from '../types/SoknadFormData';
+import { getRequiredFieldValidator, getDateValidator } from '@navikt/sif-common-formik/lib/validation';
 
 interface Props {
     barnMedAleneomsorg: BarnMedAleneomsorg;
@@ -61,7 +61,17 @@ const TidspunktForBarn = ({ barnMedAleneomsorg }: Props) => {
                         value: TidspunktForAleneomsorgFormData.TIDLIGERE,
                     },
                 ]}
-                validate={validateRequiredField}
+                validate={(value) => {
+                    const error = getRequiredFieldValidator()(value);
+                    return error
+                        ? {
+                              key: 'validation.tidspunktForAleneomsorg.noValue',
+
+                              values: { barnMedAleneomsorg },
+                              keepKeyUnaltered: true,
+                          }
+                        : undefined;
+                }}
             />
 
             {values[getFieldName(AleneomsorgTidspunktField.tidspunktForAleneomsorg)] ===
@@ -69,13 +79,26 @@ const TidspunktForBarn = ({ barnMedAleneomsorg }: Props) => {
                 <Box margin="xl">
                     <SoknadFormComponents.DatePicker
                         name={getFieldName(AleneomsorgTidspunktField.dato) as SoknadFormField}
-                        label={intlHelper(intl, 'step.tidspunkt-for-aleneomsorg.spm', {
+                        label={intlHelper(intl, 'step.tidspunkt-for-aleneomsorg.siste2årene.dato.spm', {
                             navn: barnMedAleneomsorg.navn,
                         })}
                         showYearSelector={true}
                         minDate={getMinDateYearAgo()}
                         maxDate={dateToday}
-                        validate={validateRequiredField}
+                        validate={(value) => {
+                            const error = getDateValidator({
+                                required: true,
+                                min: getMinDateYearAgo(),
+                                max: dateToday,
+                            })(value);
+                            return error
+                                ? {
+                                      key: `validation.tidspunktForAleneomsorg.dato.${error}`,
+                                      values: { barnMedAleneomsorg },
+                                      keepKeyUnaltered: true,
+                                  }
+                                : undefined;
+                        }}
                     />
                 </Box>
             )}

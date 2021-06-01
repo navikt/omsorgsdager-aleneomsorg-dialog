@@ -8,6 +8,7 @@
         "allowJs": true,
         "allowSyntheticDefaultImports": true,
         "jsx": "react",
+        "esModuleInterop": true,
         "moduleResolution": "node",
         "forceConsistentCasingInFileNames": true,
         "noImplicitReturns": true,

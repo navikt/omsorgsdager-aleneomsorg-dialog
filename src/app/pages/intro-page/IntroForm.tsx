@@ -1,19 +1,20 @@
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { YesOrNo } from '@navikt/sif-common-core/lib/types/YesOrNo';
-import { commonFieldErrorRenderer } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import { validateYesOrNoIsAnswered } from '@navikt/sif-common-core/lib/validation/fieldValidations';
-import { getTypedFormComponents, UnansweredQuestionsInfo } from '@navikt/sif-common-formik/lib';
 import { QuestionVisibilityContext } from '@navikt/sif-common-soknad/lib/question-visibility/QuestionVisibilityContext';
 import { IntroFormData, IntroFormField, introFormInitialValues, IntroFormQuestions } from './introFormConfig';
 import IntroFormQuestion from './IntroFormQuestion';
+import { getTypedFormComponents, UnansweredQuestionsInfo } from '@navikt/sif-common-formik';
+import getIntlFormErrorHandler from '@navikt/sif-common-formik/lib/validation/intlFormErrorHandler';
+import { ValidationError } from '@navikt/sif-common-formik/lib/validation/types';
+import { getYesOrNoValidator } from '@navikt/sif-common-formik/lib/validation';
 
 interface Props {
     onValidSubmit: () => void;
 }
 
-const IntroFormComponents = getTypedFormComponents<IntroFormField, IntroFormData>();
+const IntroFormComponents = getTypedFormComponents<IntroFormField, IntroFormData, ValidationError>();
 
 const IntroForm = ({ onValidSubmit }: Props) => {
     const intl = useIntl();
@@ -32,7 +33,7 @@ const IntroForm = ({ onValidSubmit }: Props) => {
                     <IntroFormComponents.Form
                         includeValidationSummary={true}
                         includeButtons={kanFortsette}
-                        fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}
+                        formErrorHandler={getIntlFormErrorHandler(intl, 'introForm.validation')}
                         submitButtonLabel={intlHelper(intl, 'introForm.start')}
                         noButtonsContentRenderer={() =>
                             visibility.areAllQuestionsAnswered() ? undefined : (
@@ -44,7 +45,7 @@ const IntroForm = ({ onValidSubmit }: Props) => {
                         <QuestionVisibilityContext.Provider value={{ visibility }}>
                             <IntroFormQuestion
                                 name={IntroFormField.erSokerAleneOmsorg}
-                                validate={validateYesOrNoIsAnswered}
+                                validate={getYesOrNoValidator()}
                                 showStop={values.erSokerAleneOmsorg === YesOrNo.NO}
                                 stopMessage={<>{intlHelper(intl, 'introForm.erSokerAleneOmsorg.stopMessage')}</>}
                             />
