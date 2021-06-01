@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { useIntl } from 'react-intl';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
@@ -7,7 +8,7 @@ import { IntroFormField } from './introFormConfig';
 
 type Props = FormQuestionProps<IntroFormField>;
 
-const IntroFormQuestion = (props: Props) => {
+const IntroFormQuestion: React.FC<Props> = (props) => {
     const intl = useIntl();
     return (
         <QuestionVisibilityBlock fieldName={props.name}>
@@ -15,5 +16,4 @@ const IntroFormQuestion = (props: Props) => {
         </QuestionVisibilityBlock>
     );
 };
-
 export default IntroFormQuestion;

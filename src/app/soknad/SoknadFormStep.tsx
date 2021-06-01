@@ -1,7 +1,6 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
-import { commonFieldErrorRenderer } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import soknadStepUtils from '@navikt/sif-common-soknad/lib/soknad-step/soknadStepUtils';
 import StepSubmitButton from '@navikt/sif-common-soknad/lib/soknad-step/step-submit-button/StepSubmitButton';
@@ -11,7 +10,7 @@ import { useSoknadContext } from './SoknadContext';
 import SoknadFormComponents from './SoknadFormComponents';
 import { StepID } from './soknadStepsConfig';
 import { useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
-
+import intlFormErrorHandler from '@navikt/sif-common-formik/lib/validation/intlFormErrorHandler';
 interface OwnProps {
     id: StepID;
     onStepCleanup?: (values: SoknadFormData) => SoknadFormData;
@@ -56,7 +55,7 @@ const SoknadFormStep = ({
                 runDelayedFormValidation={true}
                 cleanup={onStepCleanup}
                 onValidSubmit={onSendSoknad ? onSendSoknad : () => gotoNextStepFromStep(id)}
-                fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}>
+                formErrorHandler={intlFormErrorHandler(intl, 'validation')}>
                 {children}
                 {showSubmitButton && (
                     <Box textAlignCenter={true} margin="xl">

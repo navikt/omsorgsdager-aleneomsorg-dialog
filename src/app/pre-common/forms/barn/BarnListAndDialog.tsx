@@ -1,21 +1,32 @@
 import React from 'react';
-import { FormikModalFormAndList, FormikValidateFunction, ModalFormAndListLabels } from '@navikt/sif-common-formik';
+import {
+    FormikModalFormAndList,
+    ModalFormAndListLabels,
+    TypedFormInputValidationProps,
+} from '@navikt/sif-common-formik';
 import BarnForm from './BarnForm';
 import BarnList from './BarnList';
 import { AndreBarn } from './types';
-
-interface Props<FieldNames> {
+import { ValidationError } from '@navikt/sif-common-formik/lib/validation/types';
+interface Props<FieldNames> extends TypedFormInputValidationProps<FieldNames, ValidationError> {
     name: FieldNames;
-    validate?: FormikValidateFunction;
     labels: ModalFormAndListLabels;
+    disallowedFødselsnumre?: string[];
     placeholderFnr?: string;
     placeholderNavn?: string;
 }
 
-function BarnListAndDialog<FieldNames>({ name, validate, labels, placeholderFnr, placeholderNavn }: Props<FieldNames>) {
+function BarnListAndDialog<FieldNames>({
+    name,
+    validate,
+    labels,
+    disallowedFødselsnumre,
+    placeholderFnr,
+    placeholderNavn,
+}: Props<FieldNames>) {
     return (
         <>
-            <FormikModalFormAndList<FieldNames, AndreBarn>
+            <FormikModalFormAndList<FieldNames, AndreBarn, ValidationError>
                 name={name}
                 labels={labels}
                 dialogWidth="narrow"
@@ -25,6 +36,7 @@ function BarnListAndDialog<FieldNames>({ name, validate, labels, placeholderFnr,
                         barn={item}
                         onSubmit={onSubmit}
                         onCancel={onCancel}
+                        disallowedFødselsnumre={disallowedFødselsnumre}
                         labels={{
                             placeholderFnr: placeholderFnr,
                             placeholderNavn: placeholderNavn,

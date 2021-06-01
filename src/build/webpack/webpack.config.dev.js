@@ -23,8 +23,9 @@ webpackConfig.plugins.push(
 
 webpackConfig.module.rules.push({
     test: /\.js$/,
-    use: 'source-map-loader',
+    use: ['source-map-loader'],
     enforce: 'pre',
+    exclude: /node_modules/,
 });
 
 module.exports = Object.assign(webpackConfig, {
