@@ -4,7 +4,7 @@ import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import SummarySection from '@navikt/sif-common-soknad/lib/soknad-summary/summary-section/SummarySection';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import BarnSummaryList, { AlleBarnSummary } from './BarnSummaryList';
-import { AndreBarn } from 'app/pre-common/question-visibility/forms/barn';
+import { AndreBarn } from 'app/pre-common/forms/barn';
 import { Barn } from '../../types/SoknadFormData';
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 

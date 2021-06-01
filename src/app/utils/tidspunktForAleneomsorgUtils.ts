@@ -1,6 +1,6 @@
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { Barn } from '../types/SoknadFormData';
-import { AndreBarn } from '../pre-common/question-visibility/forms/barn';
+import { AndreBarn } from '../pre-common/forms/barn';
 import dayjs from 'dayjs';
 import dayOfYear from 'dayjs/plugin/dayOfYear';
 

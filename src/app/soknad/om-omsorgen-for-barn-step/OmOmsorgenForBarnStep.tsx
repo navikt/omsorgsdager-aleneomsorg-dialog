@@ -11,7 +11,7 @@ import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { prettifyDate } from '@navikt/sif-common-core/lib/utils/dateUtils';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
 import { CheckboksPanelProps } from 'nav-frontend-skjema';
-import { AndreBarn } from '../../pre-common/question-visibility/forms/barn';
+import { AndreBarn } from '../../pre-common/forms/barn';
 import SoknadFormComponents from '../SoknadFormComponents';
 import { validateRequiredList } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { barnFinnesIArray } from '../../utils/map-form-data-to-api-data/mapBarnToApiData';
