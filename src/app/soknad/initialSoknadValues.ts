@@ -5,4 +5,5 @@ export const initialSoknadFormData: Partial<SoknadFormData> = {
     [SoknadFormField.harBekreftetOpplysninger]: false,
     [SoknadFormField.andreBarn]: [],
     [SoknadFormField.harAleneomsorgFor]: [],
+    [SoknadFormField.aleneomsorgTidspunkt]: [],
 };

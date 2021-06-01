@@ -21,6 +21,7 @@ import { useSoknadContext } from './SoknadContext';
 import { StepID } from './soknadStepsConfig';
 import VelkommenPage from './velkommen-page/VelkommenPage';
 import OmOmsorgenForBarnStep from './om-omsorgen-for-barn-step/OmOmsorgenForBarnStep';
+import TidspunktForAleneomsorgStep from './tidspunkt-for-aleneomsorg-step/TidspunktForAleneomsorgStep';
 
 interface Props {
     soknadId?: string;
@@ -34,15 +35,19 @@ const SoknadRoutes = ({ soknadId, søker, barn = [] }: Props) => {
     const availableSteps = getAvailableSteps(values, søker, barn);
     const { soknadStepsConfig, sendSoknadStatus } = useSoknadContext();
 
-    const renderSoknadStep = (id: string, søker: Person, barn: Barn[], stepID: StepID): React.ReactNode => {
+    const renderSoknadStep = (søker: Person, barn: Barn[], stepID: StepID): React.ReactNode => {
         switch (stepID) {
             case StepID.OM_BARN:
                 return <OmBarnStep barn={barn} />;
             case StepID.OM_OMSORGEN_FOR_BARN:
                 return <OmOmsorgenForBarnStep barn={barn} />;
+            case StepID.TIDSPUNKT_FOR_ALENEOMSORG:
+                return <TidspunktForAleneomsorgStep barn={barn} />;
             case StepID.OPPSUMMERING:
-                const apiValues = mapFormDataToApiData(id, intl.locale, values, barn);
-                return <OppsummeringStep apiValues={apiValues} søker={søker} barn={barn} />;
+                const apiValues = mapFormDataToApiData(intl.locale, values, barn);
+                return (
+                    <OppsummeringStep apiValues={apiValues} søker={søker} barn={barn} annetBarn={values.andreBarn} />
+                );
         }
     };
 
@@ -81,7 +86,7 @@ const SoknadRoutes = ({ soknadId, søker, barn = [] }: Props) => {
                             key={step}
                             path={soknadStepsConfig[step].route}
                             exact={true}
-                            render={() => renderSoknadStep(soknadId, søker, barn, step)}
+                            render={() => renderSoknadStep(søker, barn, step)}
                         />
                     );
                 })}

@@ -8,7 +8,7 @@ import VeilederSVG from '@navikt/sif-common-core/lib/components/veileder-svg/Vei
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { validateBekrefterOpplysninger } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { Person } from 'app/types/Person';
-import { ApiBarn, SoknadApiData } from '../../types/SoknadApiData';
+import { SoknadApiData } from '../../types/SoknadApiData';
 import { Barn, SoknadFormField } from '../../types/SoknadFormData';
 import { useSoknadContext } from '../SoknadContext';
 import SoknadFormComponents from '../SoknadFormComponents';
@@ -17,18 +17,19 @@ import { StepID } from '../soknadStepsConfig';
 import OmBarnaSummary from './OmBarnaSummary';
 import SøkerSummary from './SøkerSummary';
 import OmOmsorgenForBarnSummary from './OmOmsorgenForBarnSummary';
+import { AndreBarn } from 'app/pre-common/question-visibility/forms/barn';
 
 type Props = {
     søker: Person;
     barn: Barn[];
+    annetBarn: AndreBarn[];
     apiValues?: SoknadApiData;
 };
 
-const OppsummeringStep = ({ søker, apiValues }: Props) => {
+const OppsummeringStep = ({ søker, barn, annetBarn, apiValues }: Props) => {
     const intl = useIntl();
     const { sendSoknadStatus, sendSoknad } = useSoknadContext();
-    const harAleneomsorgFor: ApiBarn[] | undefined = apiValues?.barn.filter((b) => b.aleneomsorg);
-    console.log(apiValues);
+
     return (
         <SoknadFormStep
             id={StepID.OPPSUMMERING}
@@ -47,8 +48,8 @@ const OppsummeringStep = ({ søker, apiValues }: Props) => {
                             <ResponsivePanel border={true}>
                                 <SøkerSummary søker={søker} apiValues={apiValues} />
 
-                                <OmBarnaSummary apiValues={apiValues} />
-                                {harAleneomsorgFor && <OmOmsorgenForBarnSummary barn={harAleneomsorgFor} />}
+                                <OmBarnaSummary registrertBarn={barn} annetBarn={annetBarn} />
+                                <OmOmsorgenForBarnSummary barn={apiValues.barn} />
                             </ResponsivePanel>
                         </Box>
 

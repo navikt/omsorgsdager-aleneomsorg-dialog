@@ -10,6 +10,11 @@ const omOmsorgenForBarnIsComplete = ({ harAleneomsorgFor }: Partial<OmOmsorgenFo
     return harAleneomsorgFor?.length === 0 ? false : true;
 };
 
+// TODO: endre
+const tidspunktForAleneomsorgIsComplete = (): boolean => {
+    return true;
+};
+
 export const getAvailableSteps = (values: Partial<SoknadFormData>, søker: Person, barn: Barn[]): StepID[] => {
     const steps: StepID[] = [];
     steps.push(StepID.OM_BARN);
@@ -17,7 +22,11 @@ export const getAvailableSteps = (values: Partial<SoknadFormData>, søker: Perso
     if (omBarnaIsComplete(values, barn)) {
         steps.push(StepID.OM_OMSORGEN_FOR_BARN);
     }
+
     if (omOmsorgenForBarnIsComplete(values)) {
+        steps.push(StepID.TIDSPUNKT_FOR_ALENEOMSORG);
+    }
+    if (tidspunktForAleneomsorgIsComplete()) {
         steps.push(StepID.OPPSUMMERING);
     }
 

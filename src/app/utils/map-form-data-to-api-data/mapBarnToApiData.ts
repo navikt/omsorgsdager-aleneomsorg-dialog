@@ -5,14 +5,20 @@ import { mapAndreBarnToApiBarn, mapBarnToApiBarn } from './mapUtils';
 export interface BarnApiData {
     barn: ApiBarn[];
 }
+export const barnFinnesIArray = (barnId: string, idArray: string[]): boolean => {
+    return (idArray || []).find((id) => id === barnId) !== undefined;
+};
 
 export const mapBarnStepToApiData = (
-    { andreBarn, harAleneomsorgFor }: SoknadFormData,
+    { andreBarn, harAleneomsorgFor, aleneomsorgTidspunkt }: SoknadFormData,
     registrerteBarn: Barn[]
 ): BarnApiData => {
+    const andreBarnMedAleneomsorg = andreBarn.filter((b) => barnFinnesIArray(b.fnr, harAleneomsorgFor));
+    const registrerteBarnMedAleneomsorg = registrerteBarn.filter((b) => barnFinnesIArray(b.aktørId, harAleneomsorgFor));
+
     const barn: ApiBarn[] = [
-        ...andreBarn.map((barn) => mapAndreBarnToApiBarn(barn, harAleneomsorgFor)),
-        ...registrerteBarn.map((barn) => mapBarnToApiBarn(barn, harAleneomsorgFor)),
+        ...andreBarnMedAleneomsorg.map((barn) => mapAndreBarnToApiBarn(barn, aleneomsorgTidspunkt)),
+        ...registrerteBarnMedAleneomsorg.map((barn) => mapBarnToApiBarn(barn, aleneomsorgTidspunkt)),
     ];
     return {
         barn: barn,

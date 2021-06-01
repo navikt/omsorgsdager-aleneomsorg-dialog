@@ -60,6 +60,14 @@
     "step.om-omsorgen-for-barn.form.fnr": "fnr.",
     "step.om-omsorgen-for-barn.nextButtonLabel": "Fortsett",
 
+    "step.tidspunkt-for-aleneomsorg.pageTitle": "Tidspunkt for aleneomsorg",
+    "step.tidspunkt-for-aleneomsorg.stepTitle": "Tidspunkt for aleneomsorg",
+    "step.tidspunkt-for-aleneomsorg.spm": "Hvilket år ble du alene om omsorgen for {navn}?",
+    "step.tidspunkt-for-aleneomsorg.radioPanelGroupLabel.siste2årene": "I {yearAgo} eller {yearNow}",
+    "step.tidspunkt-for-aleneomsorg.radioPanelGroupLabel.tidlegere": "I {twoYearsAgo} eller tidlegere",
+    "step.tidspunkt-for-aleneomsorg.siste2årene.dato.spm": "Hvilken dato ble du alene om omsorgen for {navn}?",
+    "step.tidspunkt-for-aleneomsorg.nextButtonLabel": "Fortsett",
+
     "step.oppsummering.pageTitle": "Oppsummering",
     "step.oppsummering.stepTitle": "Oppsummering",
     "step.oppsummering.nextButtonLabel": "Send inn søknaden",
@@ -74,6 +82,9 @@
     "step.oppsummering.om-omsorgen-for-barn.header": "Om barnet ditt",
     "step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.spm": "Er du alene om omsorgen for barnet ditt?",
     "step.oppsummering.om-omsorgen-for-barn.barnList.tittle": "Barn du er alene om omsorgen for",
+    "step.oppsummering.om-omsorgen-for-barn.tidspunkt.spm": "Hvilket år ble du alene om omsorgen for {navn}?",
+    "step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt.siste2årene": "I {yearAgo} eller {yearNow}",
+    "step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt.tidlegere": "I {twoYearsAgo} eller tidlegere",
 
     "step.oppsummering.bekrefterOpplysninger": "Jeg bekrefter at opplysningene jeg har gitt er riktige, og at jeg ikke har holdt tilbake opplysninger som har betydning for min rett til omsorgsdager.",
 
