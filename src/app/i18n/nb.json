@@ -108,7 +108,7 @@
     "validation.harBekreftetOpplysninger.notChecked": "Du må bekrefte opplysningene.",
     "validation.harAleneomsorgFor.listIsEmpty": "Du må kryss av for barn er du alene omsorgen for.",
     "validation.tidspunktForAleneomsorg.noValue": "Du må oppgi i hvilket år ble du alene om omsorgen for barnet.",
-    "validation.tidspunktForAleneomsorg.dato.noValue": "Du må oppgi i hvilken dato ble du alene om omsorgen for barnet.",
+    "validation.tidspunktForAleneomsorg.dato.dateHasNoValue": "Du må oppgi i hvilken dato ble du alene om omsorgen for barnet.",
     "validation.tidspunktForAleneomsorg.dato.dateIsAfterMax": "Du må oppgi dagensdato eller tidlegere.",
     "validation.tidspunktForAleneomsorg.dato.dateIsBeforeMin": "Du kan ikke oppgi dato tidlegere enn to år fra dagensår.",
     "validation.tidspunktForAleneomsorg.dato.dateHasInvalidFormat": "Datoen når du ble du alene om omsorgen for barnet er ugyldig. Gyldig format er dd.mm.åååå."
