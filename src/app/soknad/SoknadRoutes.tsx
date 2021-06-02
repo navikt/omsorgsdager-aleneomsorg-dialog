@@ -38,7 +38,7 @@ const SoknadRoutes = ({ soknadId, søker, barn = [] }: Props) => {
     const renderSoknadStep = (søker: Person, barn: Barn[], stepID: StepID): React.ReactNode => {
         switch (stepID) {
             case StepID.OM_BARN:
-                return <OmBarnStep barn={barn} />;
+                return <OmBarnStep barn={barn} søkerFnr={søker.fødselsnummer} />;
             case StepID.OM_OMSORGEN_FOR_BARN:
                 return <OmOmsorgenForBarnStep barn={barn} />;
             case StepID.TIDSPUNKT_FOR_ALENEOMSORG:

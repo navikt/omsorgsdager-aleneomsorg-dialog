@@ -1,32 +1,44 @@
 import { Person } from 'app/types/Person';
 import { StepID } from '../soknad/soknadStepsConfig';
 
-import { Barn, OmBarnaFormData, OmOmsorgenForBarnFormData, SoknadFormData } from '../types/SoknadFormData';
+import { Barn, SoknadFormData } from '../types/SoknadFormData';
+import { barnFinnesIkkeIArray } from './tidspunktForAleneomsorgUtils';
 
-const omBarnaIsComplete = ({ andreBarn }: Partial<OmBarnaFormData>, barn: Barn[]): boolean => {
-    return barn.length > 0 || (andreBarn || []).length > 0;
+const welcomingPageIsComplete = ({ harForståttRettigheterOgPlikter }: SoknadFormData) =>
+    harForståttRettigheterOgPlikter === true;
+
+const omBarnaIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
+    return welcomingPageIsComplete(values) && (barn.length > 0 || (values.andreBarn || []).length > 0);
 };
-const omOmsorgenForBarnIsComplete = ({ harAleneomsorgFor }: Partial<OmOmsorgenForBarnFormData>): boolean => {
-    return harAleneomsorgFor?.length === 0 ? false : true;
+const omOmsorgenForBarnIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
+    return omBarnaIsComplete(values, barn) && (values.harAleneomsorgFor || []).length > 0;
 };
 
-// TODO: endre
-const tidspunktForAleneomsorgIsComplete = (): boolean => {
-    return true;
+const tidspunktForAleneomsorgIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
+    const barnUtenAleneomsorgITidspunkt = values.aleneomsorgTidspunkt.filter((b) =>
+        barnFinnesIkkeIArray(b.fnrId, values.harAleneomsorgFor)
+    );
+    return (
+        omOmsorgenForBarnIsComplete(values, barn) &&
+        (values.aleneomsorgTidspunkt || []).length > 0 &&
+        barnUtenAleneomsorgITidspunkt.length === 0
+    );
 };
 
-export const getAvailableSteps = (values: Partial<SoknadFormData>, søker: Person, barn: Barn[]): StepID[] => {
+export const getAvailableSteps = (values: SoknadFormData, søker: Person, barn: Barn[]): StepID[] => {
     const steps: StepID[] = [];
-    steps.push(StepID.OM_BARN);
 
+    if (welcomingPageIsComplete(values)) {
+        steps.push(StepID.OM_BARN);
+    }
     if (omBarnaIsComplete(values, barn)) {
         steps.push(StepID.OM_OMSORGEN_FOR_BARN);
     }
 
-    if (omOmsorgenForBarnIsComplete(values)) {
+    if (omOmsorgenForBarnIsComplete(values, barn)) {
         steps.push(StepID.TIDSPUNKT_FOR_ALENEOMSORG);
     }
-    if (tidspunktForAleneomsorgIsComplete()) {
+    if (tidspunktForAleneomsorgIsComplete(values, barn)) {
         steps.push(StepID.OPPSUMMERING);
     }
 

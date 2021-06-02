@@ -15,6 +15,7 @@ import { prettifyDate } from '@navikt/sif-common-core/lib/utils/dateUtils';
 
 interface Props {
     barn: Barn[];
+    søkerFnr: string;
 }
 
 const barnItemLabelRenderer = (barnet: Barn, intl: IntlShape): React.ReactNode => {
@@ -30,11 +31,13 @@ const barnItemLabelRenderer = (barnet: Barn, intl: IntlShape): React.ReactNode =
     );
 };
 
-const OmBarnStep = ({ barn }: Props) => {
+const OmBarnStep = ({ barn, søkerFnr }: Props) => {
     const intl = useIntl();
     const {
         values: { andreBarn },
     } = useFormikContext<SoknadFormData>();
+
+    const disallowedFødselsnumre = [...[søkerFnr], ...andreBarn.map((b) => b.fnr)];
 
     const kanFortsette = (barn !== undefined && barn.length > 0) || andreBarn.length > 0;
     return (
@@ -70,6 +73,7 @@ const OmBarnStep = ({ barn }: Props) => {
                         listTitle: intlHelper(intl, 'step.om-barn.listDialog.listTitle'),
                         modalTitle: intlHelper(intl, 'step.om-barn.listDialog.modalTitle'),
                     }}
+                    disallowedFødselsnumre={disallowedFødselsnumre}
                 />
             </Box>
             {andreBarn.length === 0 && barn.length === 0 && (

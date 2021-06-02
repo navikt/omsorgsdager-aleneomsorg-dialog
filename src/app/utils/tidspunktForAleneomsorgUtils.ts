@@ -13,6 +13,10 @@ export const barnFinnesIArray = (barnId: string, idArray: string[]): boolean => 
     return (idArray || []).find((id) => id === barnId) !== undefined;
 };
 
+export const barnFinnesIkkeIArray = (barnId: string, idArray: string[]): boolean => {
+    return (idArray || []).find((id) => id === barnId) === undefined;
+};
+
 export const mapAndreBarnToBarnMedAleneomsorg = (andreBarn: AndreBarn): BarnMedAleneomsorg => {
     return {
         idFnr: andreBarn.fnr,
