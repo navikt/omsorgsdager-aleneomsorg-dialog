@@ -35,7 +35,7 @@ const tidspunktRenderer = (
                         <span>
                             {intlHelper(
                                 intl,
-                                'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt.tidlegere',
+                                'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt.tidligere',
                                 {
                                     twoYearsAgo: getYear(2),
                                 }

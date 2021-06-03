@@ -2,9 +2,8 @@ import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { YesOrNo } from '@navikt/sif-common-core/lib/types/YesOrNo';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import { QuestionVisibilityContext } from '@navikt/sif-common-soknad/lib/question-visibility/QuestionVisibilityContext';
-import { IntroFormData, IntroFormField, introFormInitialValues, IntroFormQuestions } from './introFormConfig';
-import IntroFormQuestion from './IntroFormQuestion';
+import { IntroFormData, IntroFormField, introFormInitialValues } from './introFormConfig';
+import FormQuestion from '@navikt/sif-common-soknad/lib/form-question/FormQuestion';
 import { getTypedFormComponents, UnansweredQuestionsInfo } from '@navikt/sif-common-formik';
 import getIntlFormErrorHandler from '@navikt/sif-common-formik/lib/validation/intlFormErrorHandler';
 import { ValidationError } from '@navikt/sif-common-formik/lib/validation/types';
@@ -24,11 +23,11 @@ const IntroForm = ({ onValidSubmit }: Props) => {
             onSubmit={() => {
                 onValidSubmit();
             }}
-            renderForm={({ values }) => {
-                const visibility = IntroFormQuestions.getVisbility({
-                    ...values,
-                });
-                const kanFortsette = visibility.areAllQuestionsAnswered();
+            renderForm={({ values: { erSokerlestInformasjonen, erSokerAleneOmsorg } }) => {
+                const lestInformasjonenBesvart = erSokerlestInformasjonen === YesOrNo.YES;
+                const AleneOmsorgBesvart = erSokerAleneOmsorg === YesOrNo.YES;
+                const kanFortsette: boolean = lestInformasjonenBesvart && AleneOmsorgBesvart;
+
                 return (
                     <IntroFormComponents.Form
                         includeValidationSummary={true}
@@ -36,20 +35,28 @@ const IntroForm = ({ onValidSubmit }: Props) => {
                         formErrorHandler={getIntlFormErrorHandler(intl, 'introForm.validation')}
                         submitButtonLabel={intlHelper(intl, 'introForm.start')}
                         noButtonsContentRenderer={() =>
-                            visibility.areAllQuestionsAnswered() ? undefined : (
+                            kanFortsette ? undefined : (
                                 <UnansweredQuestionsInfo>
                                     <FormattedMessage id="page.form.ubesvarteSpørsmålInfo" />
                                 </UnansweredQuestionsInfo>
                             )
                         }>
-                        <QuestionVisibilityContext.Provider value={{ visibility }}>
-                            <IntroFormQuestion
+                        <FormQuestion
+                            legend={intlHelper(intl, `introForm.erSokerlestInformasjonen.spm`)}
+                            name={IntroFormField.erSokerlestInformasjonen}
+                            validate={getYesOrNoValidator()}
+                            showStop={erSokerlestInformasjonen === YesOrNo.NO}
+                            stopMessage={intlHelper(intl, 'introForm.erSokerlestInformasjonen.stopMessage')}
+                        />
+                        {lestInformasjonenBesvart && (
+                            <FormQuestion
+                                legend={intlHelper(intl, `introForm.erSokerAleneOmsorg.spm`)}
                                 name={IntroFormField.erSokerAleneOmsorg}
                                 validate={getYesOrNoValidator()}
-                                showStop={values.erSokerAleneOmsorg === YesOrNo.NO}
-                                stopMessage={<>{intlHelper(intl, 'introForm.erSokerAleneOmsorg.stopMessage')}</>}
+                                showStop={erSokerAleneOmsorg === YesOrNo.NO}
+                                stopMessage={intlHelper(intl, 'introForm.erSokerAleneOmsorg.stopMessage')}
                             />
-                        </QuestionVisibilityContext.Provider>
+                        )}
                     </IntroFormComponents.Form>
                 );
             }}

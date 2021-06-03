@@ -18,12 +18,17 @@ import {
 } from '../../utils/tidspunktForAleneomsorgUtils';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import TidspunktForBarn from '../../components/TidspunktForBarn';
+import { useIntl } from 'react-intl';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import { Ingress } from 'nav-frontend-typografi';
+import Box from '@navikt/sif-common-core/lib/components/box/Box';
 
 interface Props {
     barn: Barn[];
 }
 
 const TidspunktForAleneomsorgStep = ({ barn }: Props) => {
+    const intl = useIntl();
     const { values } = useFormikContext<SoknadFormData>();
     const { andreBarn, harAleneomsorgFor } = values;
 
@@ -60,10 +65,10 @@ const TidspunktForAleneomsorgStep = ({ barn }: Props) => {
 
     return (
         <SoknadFormStep id={StepID.TIDSPUNKT_FOR_ALENEOMSORG} onStepCleanup={cleanupStep}>
-            <CounsellorPanel>
-                <p>TEKST HER</p>
-            </CounsellorPanel>
-            <p>Oppgi tidspunkt for når du ble alene om omsorgen</p>
+            <CounsellorPanel>{intlHelper(intl, 'step.tidspunkt-for-aleneomsorg.stepIntro')}</CounsellorPanel>
+            <Box margin="xl">
+                <Ingress>{intlHelper(intl, 'step.tidspunkt-for-aleneomsorg.info')}</Ingress>
+            </Box>
 
             {barnMedAleneomsorg.map((barnMedAleneomsorg) => {
                 return (
