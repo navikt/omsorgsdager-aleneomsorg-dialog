@@ -28,8 +28,8 @@
     "lesMerOmFastBostedOgSamvær": "Les mer om fast bosted og samvær",
 
     "step.velkommen.banner.tittel": "Hei!",
-    "step.velkommen.banner.tekst": "Jeg vil hjelpe deg med å registrere av aleneomsorg i forbindelse med omsorgsdager.",
-    "step.velkommen.tittel": "Registrering av aleneomsorg i forbindelse med omsorgsdager",
+    "step.velkommen.banner.tekst": "Jeg vil hjelpe deg med å registrere aleneomsorg for omsorgsdager.",
+    "step.velkommen.tittel": "Registrering av aleneomsorg for omsorgsdager",
     "step.velkommen.personopplysninger.lenketekst": "Les om hvordan NAV behandler personopplysningene dine",
     "step.velkommen.button.start": "Fortsett",
 
@@ -39,7 +39,8 @@
     "step.om-barn.spm.andreBarn": "Har du andre barn?",
     "step.om-barn.spm.flereBarn": "Har du flere barn?",
     "step.om-barn.info.ingenbarn.2": "Du må legge til minst ett barn for å kunne gå videre.",
-    "step.om-barn.info.spm.text": "Har du barn som ikke er registrert her, kan du legge inn disse selv. Det kan for eksempel være fosterbarn.",
+    "step.om-barn.info.spm.text.1": "Har du barn som ikke er registrert her, kan du legge inn disse selv. Det kan for eksempel være fosterbarn.",
+    "step.om-barn.info.spm.text.2": "Du trenger kun registrere inn barn som er under 13 år, eller barn som er over 13 år hvis du har fått innvilget ekstra omsorgsdager fordi barnet har en kronisk sykdom eller funksjonshemning.",
     "step.om-barn.født": "Født",
     "step.om-barn.listDialog.knapplabel": "Legg til barn",
     "step.om-barn.listDialog.listTitle": "Andre barn",
@@ -52,39 +53,39 @@
 
     "step.om-omsorgen-for-barn.pageTitle": "Om omsorgen for barn",
     "step.om-omsorgen-for-barn.stepTitle": "Om omsorgen for barn",
-    "step.om-omsorgen-for-barn.stepIntro.1": "Du regnes som alene om omsorgen hvis du ikke bor sammen med den andre forelderen, og barnet bor fast bare hos deg.",
-    "step.om-omsorgen-for-barn.stepIntro.2": "Hvis du og den andre forelderen har en avtale om delt bosted, hvor barnet bor fast hos dere begge, vil ingen av dere bli regnet som alene om omsorgen. Hvis dere har avtale om delt bosted skal du ikke registrere at du er alene.",
+    "step.om-omsorgen-for-barn.stepIntro.1": "Når det gjelder omsorgsdager blir du ansett som at du er alene om omsorgen når barnet bor fast bare hos deg. Det vil si at barnet har folkeregistrert adresse hos deg.",
+    "step.om-omsorgen-for-barn.stepIntro.2": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge og ingen av dere blir ansett som alene om omsorgen. Det betyr at hvis dere har en slik avtale om delt bosted, skal du ikke registrere aleneomsorg.",
 
-    "step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg": "Kryss av for barn er du alene omsorgen for:",
+    "step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg": "Kryss av for barn du er alene om omsorgen for:",
     "step.om-omsorgen-for-barn.form.født": "Født",
     "step.om-omsorgen-for-barn.form.fnr": "fnr.",
     "step.om-omsorgen-for-barn.nextButtonLabel": "Fortsett",
 
     "step.tidspunkt-for-aleneomsorg.pageTitle": "Tidspunkt for aleneomsorg",
     "step.tidspunkt-for-aleneomsorg.stepTitle": "Tidspunkt for aleneomsorg",
+    "step.tidspunkt-for-aleneomsorg.stepIntro": "Nå trenger vi å vite når du ble alene om omsorgen for barn. Hvis du ble alene om omsorgen tidligere enn i fjor trenger vi ikke å vite konkret dato.",
+    "step.tidspunkt-for-aleneomsorg.info": "Oppgi tidspunkt for når du ble alene om omsorgen",
     "step.tidspunkt-for-aleneomsorg.spm": "Hvilket år ble du alene om omsorgen for {navn}?",
     "step.tidspunkt-for-aleneomsorg.radioPanelGroupLabel.siste2årene": "I {yearAgo} eller {yearNow}",
-    "step.tidspunkt-for-aleneomsorg.radioPanelGroupLabel.tidlegere": "I {twoYearsAgo} eller tidlegere",
+    "step.tidspunkt-for-aleneomsorg.radioPanelGroupLabel.tidligere": "I {twoYearsAgo} eller tidligere",
     "step.tidspunkt-for-aleneomsorg.siste2årene.dato.spm": "Hvilken dato ble du alene om omsorgen for {navn}?",
     "step.tidspunkt-for-aleneomsorg.nextButtonLabel": "Fortsett",
 
     "step.oppsummering.pageTitle": "Oppsummering",
     "step.oppsummering.stepTitle": "Oppsummering",
-    "step.oppsummering.nextButtonLabel": "Send inn søknaden",
-    "step.oppsummering.info": "Les gjennom oppsummeringen og sjekk at alt er riktig før du sender inn søknaden. Hvis du vil gjøre endringer, kan du gå tilbake.",
+    "step.oppsummering.nextButtonLabel": "Send inn registrering",
+    "step.oppsummering.info": "Les gjennom oppsummeringen og sjekk at alt er riktig før du sender inn registreringen. Hvis du vil gjøre endringer, kan du gå tilbake.",
 
     "step.oppsummering.søker.header": "Om deg",
 
-    "step.oppsummering.deres-felles-barn.header": "Dine barn",
+    "step.oppsummering.deres-felles-barn.header": "Om barn",
     "step.oppsummering.deres-felles-barn.barn": "Barn",
     "step.oppsummering.deres-felles-barn.listItem": " (fnr. {identitetsnummer})",
 
-    "step.oppsummering.om-omsorgen-for-barn.header": "Om barnet ditt",
-    "step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.spm": "Er du alene om omsorgen for barnet ditt?",
     "step.oppsummering.om-omsorgen-for-barn.barnList.tittle": "Barn du er alene om omsorgen for",
     "step.oppsummering.om-omsorgen-for-barn.tidspunkt.spm": "Hvilket år ble du alene om omsorgen for {navn}?",
     "step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt.siste2årene": "I {yearAgo} eller {yearNow}",
-    "step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt.tidlegere": "I {twoYearsAgo} eller tidlegere",
+    "step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt.tidligere": "I {twoYearsAgo} eller tidligere",
 
     "step.oppsummering.bekrefterOpplysninger": "Jeg bekrefter at opplysningene jeg har gitt er riktige, og at jeg ikke har holdt tilbake opplysninger som har betydning for min rett til omsorgsdager.",
 
@@ -100,16 +101,16 @@
     "samtykke.harForståttLabel.lenketekst": "dine plikter",
     "fieldvalidation.mottakersFnrErSøkersFnr": "Du har tastet inn ditt eget fødselsnummer",
 
-    "kvittering.tittel": "Registrering av aleneomsorg i forbindelse med omsorgsdager er mottatt",
+    "kvittering.tittel": "Registrering av aleneomsorg for omsorgsdager er mottatt",
     "kvittering.info.tittel": "Hva skjer videre nå?",
-    "kvittering.info.1": "Når vi har registrert aleneomsorg på deg får du tilsendt en bekreftelse i posten og på \"Ditt NAV\"",
+    "kvittering.info.1": "Når vi har behandlet registreringen din får du en bekreftelse både per post og på Ditt NAV.",
 
     "validation.harForståttRettigheterOgPlikter.notChecked": "Du må bekrefte at du har lest og forstått dine plikter.",
-    "validation.harBekreftetOpplysninger.notChecked": "Du må bekrefte opplysningene.",
-    "validation.harAleneomsorgFor.listIsEmpty": "Du må kryss av for barn er du alene omsorgen for.",
-    "validation.tidspunktForAleneomsorg.noValue": "Du må oppgi i hvilket år ble du alene om omsorgen for barnet.",
-    "validation.tidspunktForAleneomsorg.dato.dateHasNoValue": "Du må oppgi i hvilken dato ble du alene om omsorgen for barnet.",
-    "validation.tidspunktForAleneomsorg.dato.dateIsAfterMax": "Du må oppgi dagensdato eller tidlegere.",
-    "validation.tidspunktForAleneomsorg.dato.dateIsBeforeMin": "Du kan ikke oppgi dato tidlegere enn to år fra dagensår.",
+    "validation.harBekreftetOpplysninger.notChecked": "Du må bekrefte at opplysningene du har gitt er riktige.",
+    "validation.harAleneomsorgFor.listIsEmpty": "Du må krysse av for barn du er alene om omsorgen for.",
+    "validation.tidspunktForAleneomsorg.noValue": "Du må oppgi hvilket år du ble alene om omsorgen for barnet.",
+    "validation.tidspunktForAleneomsorg.dato.dateHasNoValue": "Du må oppgi hvilken dato du ble alene om omsorgen for barnet.",
+    "validation.tidspunktForAleneomsorg.dato.dateIsAfterMax": "Du må oppgi dagensdato eller tidligere.",
+    "validation.tidspunktForAleneomsorg.dato.dateIsBeforeMin": "Du kan ikke oppgi dato tidligere enn to år fra dagensår.",
     "validation.tidspunktForAleneomsorg.dato.dateHasInvalidFormat": "Datoen når du ble du alene om omsorgen for barnet er ugyldig. Gyldig format er dd.mm.åååå."
 }

@@ -1,31 +1,16 @@
 import { YesOrNo } from '@navikt/sif-common-core/lib/types/YesOrNo';
-import { QuestionConfig, Questions } from '@navikt/sif-common-question-config/lib';
-import { yesOrNoIsAnswered } from '@navikt/sif-common-core/lib/utils/yesOrNoUtils';
 
 export enum IntroFormField {
+    'erSokerlestInformasjonen' = 'erSokerlestInformasjonen',
     'erSokerAleneOmsorg' = 'erSokerAleneOmsorg',
 }
 
 export interface IntroFormData {
+    [IntroFormField.erSokerlestInformasjonen]: YesOrNo;
     [IntroFormField.erSokerAleneOmsorg]: YesOrNo;
 }
 
 export const introFormInitialValues: Partial<IntroFormData> = {
+    [IntroFormField.erSokerlestInformasjonen]: YesOrNo.UNANSWERED,
     [IntroFormField.erSokerAleneOmsorg]: YesOrNo.UNANSWERED,
 };
-
-export enum IntroFormAvslag {
-    erSokerAleneOmsorg = 'erSokerAleneOmsorg',
-}
-
-const Q = IntroFormField;
-
-type IntroFormQuestionsPayload = IntroFormData;
-
-const IntroFormConfig: QuestionConfig<IntroFormQuestionsPayload, IntroFormField> = {
-    [Q.erSokerAleneOmsorg]: {
-        isAnswered: ({ erSokerAleneOmsorg }) => yesOrNoIsAnswered(erSokerAleneOmsorg),
-    },
-};
-
-export const IntroFormQuestions = Questions<IntroFormQuestionsPayload, IntroFormField>(IntroFormConfig);

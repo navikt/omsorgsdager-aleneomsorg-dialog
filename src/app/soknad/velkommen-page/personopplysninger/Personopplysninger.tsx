@@ -27,16 +27,10 @@ const BehandlingAvPersonopplysningerContent: React.FunctionComponent = () => {
                         <Normaltekst>{getText('opplysninger.2')}</Normaltekst>
                     </li>
                     <li>
+                        <Normaltekst>{getText('opplysninger.3')}</Normaltekst>
+                    </li>
+                    <li>
                         <Normaltekst>{getText('opplysninger.4')}</Normaltekst>
-                    </li>
-                    <li>
-                        <Normaltekst>{getText('opplysninger.5')}</Normaltekst>
-                    </li>
-                    <li>
-                        <Normaltekst>{getText('opplysninger.6')}</Normaltekst>
-                    </li>
-                    <li>
-                        <Normaltekst>{getText('opplysninger.7')}</Normaltekst>
                     </li>
                 </ul>
             </Box>

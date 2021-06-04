@@ -55,7 +55,7 @@ const TidspunktForBarn = ({ barnMedAleneomsorg }: Props) => {
                         value: TidspunktForAleneomsorgFormData.SISTE_2_ÅRENE,
                     },
                     {
-                        label: intlHelper(intl, 'step.tidspunkt-for-aleneomsorg.radioPanelGroupLabel.tidlegere', {
+                        label: intlHelper(intl, 'step.tidspunkt-for-aleneomsorg.radioPanelGroupLabel.tidligere', {
                             twoYearsAgo: getYear(2),
                         }),
                         value: TidspunktForAleneomsorgFormData.TIDLIGERE,

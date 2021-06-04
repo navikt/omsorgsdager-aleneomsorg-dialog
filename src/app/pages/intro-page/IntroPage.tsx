@@ -1,9 +1,9 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
-// import FormattedHtmlMessage from '@navikt/sif-common-core/lib/components/formatted-html-message/FormattedHtmlMessage';
+import FormattedHtmlMessage from '@navikt/sif-common-core/lib/components/formatted-html-message/FormattedHtmlMessage';
 import InformationPoster from '@navikt/sif-common-core/lib/components/information-poster/InformationPoster';
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
 import StepBanner from '@navikt/sif-common-core/lib/components/step-banner/StepBanner';
@@ -11,6 +11,8 @@ import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { navigateToSoknadFrontpage } from '../../utils/navigationUtils';
 import IntroForm from './IntroForm';
 import { SIFCommonPageKey, useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
+import getLenker from '../../lenker';
+import Lenke from 'nav-frontend-lenker';
 
 const IntroPage = () => {
     const intl = useIntl();
@@ -23,22 +25,25 @@ const IntroPage = () => {
             topContentRenderer={() => <StepBanner tag="h1" text={intlHelper(intl, 'application.title')} />}>
             <Box margin="xxxl">
                 <InformationPoster>
+                    <FormattedMessage id="introform.informationPoster.avsnitt.1" />
+
                     <p>
-                        Her kan du registrere at du er alene om omsorg for barn i forbindelse med bruk av omsorgsdager.
+                        <FormattedHtmlMessage id="introform.informationPoster.avsnitt.2.html" />{' '}
+                        <Lenke href={getLenker(intl.locale).aleneMedBarn} target="_blank">
+                            <FormattedMessage id="introform.informationPoster.avsnitt.2.lenkeTittel" />
+                        </Lenke>
                     </p>
                     <p>
-                        Når du er alene om omsorg for barn får du doblet antall omsorgsdager. Dette må registreres hos
-                        NAV slik at vi kan utbetale riktig antall dager hvis arbeidstaker søker refusjon eller hvis du
-                        selv skal søke om utbetaling av dager.
+                        <FormattedHtmlMessage id="introform.informationPoster.avsnitt.3" />
                     </p>
                     <p>
-                        Du regnes som alene om omsorgen hvis du ikke bor sammen med den andre forelderen, og barnet bor
-                        fast bare hos deg. Hvis du og den andre forelderen har en avtale om delt bosted, hvor barnet bor
-                        fast hos dere begge, vil ingen av dere bli regnet som alene om omsorgen.
+                        <FormattedHtmlMessage id="introform.informationPoster.avsnitt.4" />
                     </p>
                     <p>
-                        Hvis du registrerer aleneomsorg og senere flytter sammen med forelder til barn du har sagt du er
-                        alene for må du gi beskjed til oss ved å sende en melding via skriv til oss (lenke)
+                        <FormattedHtmlMessage id="introform.informationPoster.avsnitt.5" />{' '}
+                        <Lenke href={getLenker(intl.locale).skrivTilOss} target="_blank">
+                            <FormattedMessage id="introform.informationPoster.avsnitt.5.lenkeTittel" />
+                        </Lenke>
                     </p>
                 </InformationPoster>
             </Box>
