@@ -56,7 +56,7 @@
     "step.om-omsorgen-for-barn.stepIntro.1": "Når det gjelder omsorgsdager blir du ansett som at du er alene om omsorgen når barnet bor fast bare hos deg. Det vil si at barnet har folkeregistrert adresse hos deg.",
     "step.om-omsorgen-for-barn.stepIntro.2": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge og ingen av dere blir ansett som alene om omsorgen. Det betyr at hvis dere har en slik avtale om delt bosted, skal du ikke registrere aleneomsorg.",
 
-    "step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg": "Kryss av for barn er du alene omsorgen for:",
+    "step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg": "Kryss av for barn du er alene om omsorgen for:",
     "step.om-omsorgen-for-barn.form.født": "Født",
     "step.om-omsorgen-for-barn.form.fnr": "fnr.",
     "step.om-omsorgen-for-barn.nextButtonLabel": "Fortsett",
@@ -106,10 +106,10 @@
     "kvittering.info.1": "Når vi har behandlet registreringen din får du en bekreftelse både per post og på Ditt NAV.",
 
     "validation.harForståttRettigheterOgPlikter.notChecked": "Du må bekrefte at du har lest og forstått dine plikter.",
-    "validation.harBekreftetOpplysninger.notChecked": "Du må bekrefte opplysningene.",
-    "validation.harAleneomsorgFor.listIsEmpty": "Du må kryss av for barn er du alene omsorgen for.",
-    "validation.tidspunktForAleneomsorg.noValue": "Du må oppgi i hvilket år ble du alene om omsorgen for barnet.",
-    "validation.tidspunktForAleneomsorg.dato.dateHasNoValue": "Du må oppgi i hvilken dato ble du alene om omsorgen for barnet.",
+    "validation.harBekreftetOpplysninger.notChecked": "Du må bekrefte at opplysningene du har gitt er riktige.",
+    "validation.harAleneomsorgFor.listIsEmpty": "Du må krysse av for barn du er alene om omsorgen for.",
+    "validation.tidspunktForAleneomsorg.noValue": "Du må oppgi hvilket år du ble alene om omsorgen for barnet.",
+    "validation.tidspunktForAleneomsorg.dato.dateHasNoValue": "Du må oppgi hvilken dato du ble alene om omsorgen for barnet.",
     "validation.tidspunktForAleneomsorg.dato.dateIsAfterMax": "Du må oppgi dagensdato eller tidligere.",
     "validation.tidspunktForAleneomsorg.dato.dateIsBeforeMin": "Du kan ikke oppgi dato tidligere enn to år fra dagensår.",
     "validation.tidspunktForAleneomsorg.dato.dateHasInvalidFormat": "Datoen når du ble du alene om omsorgen for barnet er ugyldig. Gyldig format er dd.mm.åååå."

@@ -57,12 +57,8 @@ const OmOmsorgenForBarnStep = ({ barn }: Props) => {
     const { andreBarn } = values;
     const barnOptions = getBarnOptions(barn, andreBarn, intl);
 
-    const kanFortsette = (barn !== undefined && barn.length > 0) || andreBarn.length > 0;
     return (
-        <SoknadFormStep
-            id={StepID.OM_OMSORGEN_FOR_BARN}
-            showSubmitButton={kanFortsette}
-            onStepCleanup={cleanupOmOmsorgenForBarnStep}>
+        <SoknadFormStep id={StepID.OM_OMSORGEN_FOR_BARN} onStepCleanup={cleanupOmOmsorgenForBarnStep}>
             <CounsellorPanel>
                 <p>
                     <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.1" />

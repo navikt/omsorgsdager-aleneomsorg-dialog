@@ -8,9 +8,9 @@
     "introform.informationPoster.avsnitt.5.lenkeTittel": "skrive en beskjed til oss.",
 
     "introForm.erSokerlestInformasjonen.spm": "Har du lest informasjonen over?",
-    "introForm.erSokerlestInformasjonen.stopMessage": "Du bør lese informasjonen over for å gå videre.",
+    "introForm.erSokerlestInformasjonen.stopMessage": "Du må lese informasjonen over for å gå videre.",
     "introForm.erSokerAleneOmsorg.spm": "Er du alene om omsorgen for barn?",
-    "introForm.erSokerAleneOmsorg.stopMessage": "Du må være alene om omsorgen for barn for å starte registreringen.",
+    "introForm.erSokerAleneOmsorg.stopMessage": "Du må være alene om omsorgen for minst ett barn for å kunne registrere deg med aleneomsorg.",
 
     "introForm.start": "Start registrering"
 }
