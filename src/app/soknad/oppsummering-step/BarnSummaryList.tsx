@@ -4,6 +4,7 @@ import { IntlShape, useIntl } from 'react-intl';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
 import { getYear } from '../../utils/tidspunktForAleneomsorgUtils';
+import { apiStringDateToDate, prettifyDateExtended } from '@navikt/sif-common-core/lib/utils/dateUtils';
 
 export interface AlleBarnSummary {
     navn: string;
@@ -58,7 +59,10 @@ const tidspunktRenderer = (
                             </span>
                         </div>
                         <div>
-                            <span>{`Dato: ${dato}`}</span>
+                            <span>{`${intlHelper(
+                                intl,
+                                'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt'
+                            )} ${prettifyDateExtended(apiStringDateToDate(dato))}`}</span>
                         </div>
                     </>
                 )}
