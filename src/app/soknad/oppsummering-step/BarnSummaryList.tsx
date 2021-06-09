@@ -3,7 +3,6 @@ import SummaryList from '@navikt/sif-common-core/lib/components/summary-list/Sum
 import { IntlShape, useIntl } from 'react-intl';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
-import { getYear } from '../../utils/tidspunktForAleneomsorgUtils';
 import { apiStringDateToDate, prettifyDateExtended } from '@navikt/sif-common-core/lib/utils/dateUtils';
 
 export interface AlleBarnSummary {
@@ -28,51 +27,25 @@ const tidspunktRenderer = (
                 <span>{`${navn}${fnr}`}</span>
             </div>
             <div>
-                <span>{intlHelper(intl, 'step.oppsummering.om-omsorgen-for-barn.tidspunkt.spm', { navn })}</span>
-            </div>
-            <div>
                 {tidspunktForAleneomsorg === TidspunktForAleneomsorgApi.TIDLIGERE && (
                     <>
                         <span>
                             {intlHelper(
                                 intl,
-                                'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt.tidligere',
-                                {
-                                    twoYearsAgo: getYear(2),
-                                }
+                                'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunktForAleneomsorg.tidligere'
                             )}
                         </span>
-                        <div>
-                            <span>{`${intlHelper(
-                                intl,
-                                'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunktForAleneomsorg'
-                            )} ${intlHelper(
-                                intl,
-                                'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunktForAleneomsorg.tidligere'
-                            )}`}</span>
-                        </div>
                     </>
                 )}
                 {tidspunktForAleneomsorg === TidspunktForAleneomsorgApi.SISTE_2_ÅRENE && dato && (
                     <>
-                        <div>
-                            <span>
-                                {intlHelper(
-                                    intl,
-                                    'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt.siste2årene',
-                                    {
-                                        yearAgo: getYear(1),
-                                        yearNow: getYear(0),
-                                    }
-                                )}
-                            </span>
-                        </div>
-                        <div>
-                            <span>{`${intlHelper(
+                        <span>
+                            {intlHelper(
                                 intl,
-                                'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunktForAleneomsorg'
-                            )} ${prettifyDateExtended(apiStringDateToDate(dato))}`}</span>
-                        </div>
+                                'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunktForAleneomsorg',
+                                { dato: prettifyDateExtended(apiStringDateToDate(dato)) }
+                            )}
+                        </span>
                     </>
                 )}
             </div>
