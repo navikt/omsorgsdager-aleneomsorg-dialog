@@ -42,6 +42,15 @@ const tidspunktRenderer = (
                                 }
                             )}
                         </span>
+                        <div>
+                            <span>{`${intlHelper(
+                                intl,
+                                'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunktForAleneomsorg'
+                            )} ${intlHelper(
+                                intl,
+                                'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunktForAleneomsorg.tidligere'
+                            )}`}</span>
+                        </div>
                     </>
                 )}
                 {tidspunktForAleneomsorg === TidspunktForAleneomsorgApi.SISTE_2_ÅRENE && dato && (
@@ -61,7 +70,7 @@ const tidspunktRenderer = (
                         <div>
                             <span>{`${intlHelper(
                                 intl,
-                                'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt'
+                                'step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunktForAleneomsorg'
                             )} ${prettifyDateExtended(apiStringDateToDate(dato))}`}</span>
                         </div>
                     </>

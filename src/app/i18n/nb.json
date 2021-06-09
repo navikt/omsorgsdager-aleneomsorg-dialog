@@ -86,7 +86,8 @@
     "step.oppsummering.om-omsorgen-for-barn.tidspunkt.spm": "Hvilket år ble du alene om omsorgen for {navn}?",
     "step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt.siste2årene": "I {yearAgo} eller {yearNow}",
     "step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt.tidligere": "I {twoYearsAgo} eller tidligere",
-    "step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunkt": "Tidspunkt for aleneomsorg:",
+    "step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunktForAleneomsorg": "Tidspunkt for aleneomsorg:",
+    "step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunktForAleneomsorg.tidligere": "Du ble alene om omsorgen for over 2 år siden.",
 
     "step.oppsummering.bekrefterOpplysninger": "Jeg bekrefter at opplysningene jeg har gitt er riktige, og at jeg ikke har holdt tilbake opplysninger som har betydning for min rett til omsorgsdager.",
 
