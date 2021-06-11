@@ -14,15 +14,15 @@ import './styles/app.less';
 
 Modal.setAppElement('#app');
 
-export const APPLICATION_KEY = 'omsorgsdager-midlertidig-alene';
-export const SKJEMANAVN = 'Søknad om å bli regnet som alene om omsorgen for barn';
+export const APPLICATION_KEY = 'omsorgsdager-aleneomsorg-dialog';
+export const SKJEMANAVN = 'Registrering av aleneomsorg for omsorgsdager';
 
 const publicPath = getEnvironmentVariable('PUBLIC_PATH');
 
 render(
     <AmplitudeProvider applicationKey={APPLICATION_KEY}>
         <SoknadApplication
-            appName="Søknad om å bli regnet som midertidig alene for omsorgen"
+            appName="Registrering av aleneomsorg for omsorgsdager"
             intlMessages={applicationIntlMessages}
             sentryKey={APPLICATION_KEY}
             appStatus={{
