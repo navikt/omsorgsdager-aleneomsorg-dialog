@@ -63,7 +63,7 @@ const OmBarnStep = ({ barn, søkerFnr }: Props) => {
                             : intlHelper(intl, 'step.om-barn.spm.flereBarn')
                     }>
                     {intlHelper(intl, 'step.om-barn.info.spm.text.1')}
-                    <div>{intlHelper(intl, 'step.om-barn.info.spm.text.2')}</div>
+                    <Box margin="m">{intlHelper(intl, 'step.om-barn.info.spm.text.2')}</Box>
                 </ContentWithHeader>
             </Box>
             <Box margin="l">
