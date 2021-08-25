@@ -59,7 +59,7 @@ const OmOmsorgenForBarnStep = ({ barn }: Props) => {
 
     return (
         <SoknadFormStep id={StepID.OM_OMSORGEN_FOR_BARN} onStepCleanup={cleanupOmOmsorgenForBarnStep}>
-            <CounsellorPanel>
+            <CounsellorPanel switchToPlakatOnSmallScreenSize={true}>
                 <p>
                     <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.1" />
                 </p>

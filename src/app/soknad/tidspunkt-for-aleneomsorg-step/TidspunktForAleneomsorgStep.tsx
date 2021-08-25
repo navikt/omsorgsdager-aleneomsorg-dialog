@@ -65,7 +65,9 @@ const TidspunktForAleneomsorgStep = ({ barn }: Props) => {
 
     return (
         <SoknadFormStep id={StepID.TIDSPUNKT_FOR_ALENEOMSORG} onStepCleanup={cleanupStep}>
-            <CounsellorPanel>{intlHelper(intl, 'step.tidspunkt-for-aleneomsorg.stepIntro')}</CounsellorPanel>
+            <CounsellorPanel switchToPlakatOnSmallScreenSize={true}>
+                {intlHelper(intl, 'step.tidspunkt-for-aleneomsorg.stepIntro')}
+            </CounsellorPanel>
             <Box margin="xl">
                 <Ingress>{intlHelper(intl, 'step.tidspunkt-for-aleneomsorg.info')}</Ingress>
             </Box>
