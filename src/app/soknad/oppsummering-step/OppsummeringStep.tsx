@@ -2,9 +2,7 @@ import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { isPending } from '@devexperts/remote-data-ts';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
-import Guide from '@navikt/sif-common-core/lib/components/guide/Guide';
 import ResponsivePanel from '@navikt/sif-common-core/lib/components/responsive-panel/ResponsivePanel';
-import VeilederSVG from '@navikt/sif-common-core/lib/components/veileder-svg/VeilederSVG';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { Person } from 'app/types/Person';
 import { SoknadApiData } from '../../types/SoknadApiData';
@@ -19,6 +17,7 @@ import { AndreBarn } from 'app/pre-common/forms/barn';
 import { getCheckedValidator } from '@navikt/sif-common-formik/lib/validation';
 import SummarySection from '@navikt/sif-common-soknad/lib/soknad-summary/summary-section/SummarySection';
 import BarnSummaryList from './BarnSummaryList';
+import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
 
 type Props = {
     søker: Person;
@@ -39,9 +38,9 @@ const OppsummeringStep = ({ søker, barn, annetBarn, apiValues }: Props) => {
             buttonDisabled={isPending(sendSoknadStatus.status)}
             onSendSoknad={apiValues ? () => sendSoknad(apiValues) : undefined}>
             <Box margin="xxxl">
-                <Guide kompakt={true} type="normal" svg={<VeilederSVG />}>
+                <CounsellorPanel kompakt={true} type="normal">
                     <FormattedMessage id="step.oppsummering.info" />
-                </Guide>
+                </CounsellorPanel>
                 {apiValues === undefined && <div>Api verdier mangler</div>}
                 {apiValues !== undefined && (
                     <>
