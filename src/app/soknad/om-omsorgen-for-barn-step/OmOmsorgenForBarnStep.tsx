@@ -67,7 +67,9 @@ const OmOmsorgenForBarnStep = ({ barn }: Props) => {
 
             {barn.length === 0 && (
                 <Box margin="l">
-                    <AlertStripe type={'advarsel'}>{intlHelper(intl, 'step.om-barn.info.ingenbarn.2')}</AlertStripe>
+                    <AlertStripe type={'advarsel'}>
+                        {intlHelper(intl, 'step.om-omsorgen-for-barn.ingenbarn')}
+                    </AlertStripe>
                 </Box>
             )}
         </SoknadFormStep>

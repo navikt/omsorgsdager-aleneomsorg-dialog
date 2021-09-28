@@ -45,7 +45,7 @@
 
     "step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg": "Kryss av for barn du er alene om omsorgen for:",
     "step.om-omsorgen-for-barn.form.født": "Født",
-    "step.om-omsorgen-for-barn.form.fnr": "fnr.",
+    "step.om-omsorgen-for-barn.ingenbarn": "Du må ha minst ett barn for å kunne gå videre.",
     "step.om-omsorgen-for-barn.nextButtonLabel": "Fortsett",
 
     "step.tidspunkt-for-aleneomsorg.pageTitle": "Tidspunkt for aleneomsorg",
