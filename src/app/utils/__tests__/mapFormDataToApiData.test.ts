@@ -6,7 +6,6 @@ import {
     SoknadFormData,
     SoknadFormField,
 } from '../../types/SoknadFormData';
-import { AndreBarn } from '../../pre-common/forms/barn/types';
 import { ApiBarn, SoknadApiData, TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
 import { mapFormDataToApiData } from '../map-form-data-to-api-data/mapFormDataToApiData';
 
@@ -15,7 +14,6 @@ const registrerteBarnMock: Barn[] = [
     { fødselsdato: barnsFødselsdato, fornavn: 'Mock', etternavn: 'Mocknes', aktørId: '84589' },
     { fødselsdato: barnsFødselsdato, fornavn: 'Mock2', etternavn: 'Mocknes2', aktørId: '87857' },
 ];
-const andreBarnMock: AndreBarn[] = [{ id: '676478', navn: 'Jack ONeil', fnr: '18058522232' }];
 const aleneomsorgTidspunkt: AleneomsorgTidspunkt[] = [
     {
         fnrId: '18058522232',
@@ -29,23 +27,14 @@ const harAleneomsorgFor = ['84589', '87857', '18058522232'];
 
 const mockApiBarn: ApiBarn[] = [
     {
-        navn: 'Jack ONeil',
-        aktørId: undefined,
-        identitetsnummer: '18058522232',
-        tidspunktForAleneomsorg: TidspunktForAleneomsorgApi.SISTE_2_ÅRENE,
-        dato: '2021-04-15',
-    },
-    {
         navn: 'Mock Mocknes',
         aktørId: '84589',
-        identitetsnummer: undefined,
         tidspunktForAleneomsorg: TidspunktForAleneomsorgApi.TIDLIGERE,
         dato: undefined,
     },
     {
         navn: 'Mock2 Mocknes2',
         aktørId: '87857',
-        identitetsnummer: undefined,
         tidspunktForAleneomsorg: TidspunktForAleneomsorgApi.TIDLIGERE,
         dato: undefined,
     },
@@ -53,7 +42,6 @@ const mockApiBarn: ApiBarn[] = [
 const formDataMock: SoknadFormData = {
     [SoknadFormField.harForståttRettigheterOgPlikter]: true,
     [SoknadFormField.harBekreftetOpplysninger]: true,
-    [SoknadFormField.andreBarn]: andreBarnMock,
     [SoknadFormField.harAleneomsorgFor]: harAleneomsorgFor,
     [SoknadFormField.aleneomsorgTidspunkt]: aleneomsorgTidspunkt,
 };

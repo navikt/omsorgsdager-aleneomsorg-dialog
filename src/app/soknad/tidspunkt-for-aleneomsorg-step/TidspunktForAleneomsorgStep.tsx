@@ -13,7 +13,6 @@ import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-p
 import {
     barnFinnesIArray,
     BarnMedAleneomsorg,
-    mapAndreBarnToBarnMedAleneomsorg,
     mapRegistrerteBarnToBarnMedAleneomsorg,
 } from '../../utils/tidspunktForAleneomsorgUtils';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
@@ -30,16 +29,13 @@ interface Props {
 const TidspunktForAleneomsorgStep = ({ barn }: Props) => {
     const intl = useIntl();
     const { values } = useFormikContext<SoknadFormData>();
-    const { andreBarn, harAleneomsorgFor } = values;
+    const { harAleneomsorgFor } = values;
 
-    const andreBarnMedAleneomsorg = andreBarn.filter((b) => barnFinnesIArray(b.fnr, harAleneomsorgFor));
     const registrerteBarnMedAleneOmsorg = barn.filter((b) => barnFinnesIArray(b.aktørId, harAleneomsorgFor));
 
-    const barnMedAleneomsorg: BarnMedAleneomsorg[] = [
-        ...andreBarnMedAleneomsorg.map((barn) => mapAndreBarnToBarnMedAleneomsorg(barn)),
-        ...registrerteBarnMedAleneOmsorg.map((barn) => mapRegistrerteBarnToBarnMedAleneomsorg(barn)),
-    ];
-
+    const barnMedAleneomsorg: BarnMedAleneomsorg[] = registrerteBarnMedAleneOmsorg.map((barn) =>
+        mapRegistrerteBarnToBarnMedAleneomsorg(barn)
+    );
     const getFieldName = (key: string, fieldName: AleneomsorgTidspunktField): string => {
         return `${fieldName}_${key}`;
     };

@@ -8,7 +8,7 @@ const welcomingPageIsComplete = ({ harForståttRettigheterOgPlikter }: SoknadFor
     harForståttRettigheterOgPlikter === true;
 
 const omBarnaIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
-    return welcomingPageIsComplete(values) && (barn.length > 0 || (values.andreBarn || []).length > 0);
+    return welcomingPageIsComplete(values) && barn.length > 0;
 };
 const omOmsorgenForBarnIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
     return omBarnaIsComplete(values, barn) && (values.harAleneomsorgFor || []).length > 0;
@@ -29,9 +29,6 @@ export const getAvailableSteps = (values: SoknadFormData, søker: Person, barn: 
     const steps: StepID[] = [];
 
     if (welcomingPageIsComplete(values)) {
-        steps.push(StepID.OM_BARN);
-    }
-    if (omBarnaIsComplete(values, barn)) {
         steps.push(StepID.OM_OMSORGEN_FOR_BARN);
     }
 
