@@ -18,7 +18,7 @@ interface Props {
     barn: Barn[];
 }
 
-export const getBarnOptions = (barn: Barn[] = [], intl: IntlShape): CheckboksPanelProps[] => {
+const getBarnOptions = (barn: Barn[] = [], intl: IntlShape): CheckboksPanelProps[] => {
     return barn.map((barnet) => ({
         label: `${intlHelper(intl, 'step.om-omsorgen-for-barn.form.født')} ${prettifyDate(
             barnet.fødselsdato
@@ -27,7 +27,7 @@ export const getBarnOptions = (barn: Barn[] = [], intl: IntlShape): CheckboksPan
     }));
 };
 
-export const cleanupOmOmsorgenForBarnStep = (formValues: SoknadFormData): SoknadFormData => {
+const cleanupOmOmsorgenForBarnStep = (formValues: SoknadFormData): SoknadFormData => {
     const values: SoknadFormData = { ...formValues };
 
     if (values.aleneomsorgTidspunkt) {
@@ -41,8 +41,7 @@ export const cleanupOmOmsorgenForBarnStep = (formValues: SoknadFormData): Soknad
 
 const OmOmsorgenForBarnStep = ({ barn }: Props) => {
     const intl = useIntl();
-    const barnOptions = getBarnOptions(barn, intl);
-
+    console.log('Barn i steg:', barn);
     return (
         <SoknadFormStep
             id={StepID.OM_OMSORGEN_FOR_BARN}
@@ -62,7 +61,7 @@ const OmOmsorgenForBarnStep = ({ barn }: Props) => {
                     <SoknadFormComponents.CheckboxPanelGroup
                         legend={intlHelper(intl, 'step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg')}
                         name={SoknadFormField.harAleneomsorgFor}
-                        checkboxes={barnOptions}
+                        checkboxes={getBarnOptions(barn, intl)}
                         validate={getListValidator({ required: true })}
                     />
                 </Box>
