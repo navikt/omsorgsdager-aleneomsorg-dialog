@@ -44,7 +44,10 @@ const OmOmsorgenForBarnStep = ({ barn }: Props) => {
     const barnOptions = getBarnOptions(barn, intl);
 
     return (
-        <SoknadFormStep id={StepID.OM_OMSORGEN_FOR_BARN} onStepCleanup={cleanupOmOmsorgenForBarnStep}>
+        <SoknadFormStep
+            id={StepID.OM_OMSORGEN_FOR_BARN}
+            onStepCleanup={cleanupOmOmsorgenForBarnStep}
+            buttonDisabled={barn.length === 0}>
             <CounsellorPanel>
                 <p>
                     <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.1" />
