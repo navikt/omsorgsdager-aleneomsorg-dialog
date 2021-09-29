@@ -7,11 +7,8 @@ import { barnFinnesIkkeIArray } from './tidspunktForAleneomsorgUtils';
 const welcomingPageIsComplete = ({ harForståttRettigheterOgPlikter }: SoknadFormData) =>
     harForståttRettigheterOgPlikter === true;
 
-const omBarnaIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
-    return welcomingPageIsComplete(values) && barn.length > 0;
-};
 const omOmsorgenForBarnIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
-    return omBarnaIsComplete(values, barn) && (values.harAleneomsorgFor || []).length > 0;
+    return welcomingPageIsComplete(values) && barn.length > 0 && (values.harAleneomsorgFor || []).length > 0;
 };
 
 const tidspunktForAleneomsorgIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
