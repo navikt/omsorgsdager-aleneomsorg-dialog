@@ -33,8 +33,12 @@ const SoknadRoutes = ({ soknadId, søker, barn = [] }: Props) => {
     const { values } = useFormikContext<SoknadFormData>();
     const availableSteps = getAvailableSteps(values, barn);
     const { soknadStepsConfig, sendSoknadStatus } = useSoknadContext();
-
+    console.log('available steps', availableSteps);
     const renderSoknadStep = (søker: Person, barn: Barn[], stepID: StepID): React.ReactNode => {
+        console.log('rendersøknad:');
+        console.log(søker);
+        console.log(barn);
+        console.log(stepID);
         switch (stepID) {
             case StepID.OM_OMSORGEN_FOR_BARN:
                 return <OmOmsorgenForBarnStep barn={barn} />;
@@ -76,6 +80,7 @@ const SoknadRoutes = ({ soknadId, søker, barn = [] }: Props) => {
             {soknadId === undefined && <Redirect key="redirectToWelcome" to={AppRoutes.SOKNAD} />}
             {soknadId &&
                 availableSteps.map((step) => {
+                    console.log('step:', step);
                     return (
                         <Route
                             key={step}
