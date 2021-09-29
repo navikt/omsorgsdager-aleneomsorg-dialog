@@ -3,10 +3,14 @@ import { StepID } from '../soknad/soknadStepsConfig';
 import { Barn, SoknadFormData } from '../types/SoknadFormData';
 import { barnFinnesIkkeIArray } from './tidspunktForAleneomsorgUtils';
 
-const welcomingPageIsComplete = ({ harForståttRettigheterOgPlikter }: SoknadFormData) =>
-    harForståttRettigheterOgPlikter === true;
+const welcomingPageIsComplete = ({ harForståttRettigheterOgPlikter }: SoknadFormData) => {
+    console.log('welcoming complete ', harForståttRettigheterOgPlikter);
+    return harForståttRettigheterOgPlikter === true;
+};
 
 const omOmsorgenForBarnIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
+    console.log('omOmsorgenForBarnIsComplete: values', values);
+    console.log('omOmsorgenForBarnIsComplete: barn', values);
     return welcomingPageIsComplete(values) && barn.length > 0 && (values.harAleneomsorgFor || []).length > 0;
 };
 
