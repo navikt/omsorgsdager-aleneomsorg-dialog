@@ -31,7 +31,7 @@ interface Props {
 const SoknadRoutes = ({ soknadId, søker, barn = [] }: Props) => {
     const intl = useIntl();
     const { values } = useFormikContext<SoknadFormData>();
-    const availableSteps = getAvailableSteps(values, søker, barn);
+    const availableSteps = getAvailableSteps(values, barn);
     const { soknadStepsConfig, sendSoknadStatus } = useSoknadContext();
 
     const renderSoknadStep = (søker: Person, barn: Barn[], stepID: StepID): React.ReactNode => {

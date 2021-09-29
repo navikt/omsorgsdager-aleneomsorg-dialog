@@ -1,4 +1,3 @@
-import { Person } from 'app/types/Person';
 import { StepID } from '../soknad/soknadStepsConfig';
 
 import { Barn, SoknadFormData } from '../types/SoknadFormData';
@@ -22,7 +21,7 @@ const tidspunktForAleneomsorgIsComplete = (values: SoknadFormData, barn: Barn[])
     );
 };
 
-export const getAvailableSteps = (values: SoknadFormData, søker: Person, barn: Barn[]): StepID[] => {
+export const getAvailableSteps = (values: SoknadFormData, barn: Barn[]): StepID[] => {
     const steps: StepID[] = [];
 
     if (welcomingPageIsComplete(values)) {
