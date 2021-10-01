@@ -40,7 +40,7 @@
 
     "step.om-omsorgen-for-barn.pageTitle": "Om aleneomsorg for barn",
     "step.om-omsorgen-for-barn.stepTitle": "Om aleneomsorg for barn",
-    "step.om-omsorgen-for-barn.stepIntro.1": "Når det gjelder omsorgsdager blir du ansett som at du er alene om omsorgen når barnet bor fast bare hos deg. Barnet må ha folkeregistrert adresse hos deg.",
+    "step.om-omsorgen-for-barn.stepIntro.1": "Når det gjelder omsorgsdager blir du ansett som at du er alene om omsorgen når du og den andre forelderen til barnet ikke bor sammen, og barnet bor fast bare hos deg. Det betyr at barnet må ha folkeregistrert adresse hos deg.",
     "step.om-omsorgen-for-barn.stepIntro.2": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge og ingen av dere blir ansett som alene om omsorgen. Det betyr at hvis dere har en slik avtale om delt bosted, skal du ikke registrere aleneomsorg.",
 
     "step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg": "Kryss av for barn du er alene om omsorgen for:",
@@ -65,7 +65,7 @@
 
     "step.oppsummering.søker.header": "Om deg",
 
-    "step.oppsummering.deres-felles-barn.header": "Om barn",
+    "step.oppsummering.deres-felles-barn.header": "Barn",
     "step.oppsummering.deres-felles-barn.barn": "Barn",
 
     "step.oppsummering.om-omsorgen-for-barn.barnList.tittle": "Barn du er alene om omsorgen for",

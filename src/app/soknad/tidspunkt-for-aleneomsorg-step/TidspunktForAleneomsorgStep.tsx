@@ -19,7 +19,6 @@ import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlo
 import TidspunktForBarn from '../../components/TidspunktForBarn';
 import { useIntl } from 'react-intl';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import { Ingress } from 'nav-frontend-typografi';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 
 interface Props {
@@ -64,17 +63,16 @@ const TidspunktForAleneomsorgStep = ({ barn }: Props) => {
             <CounsellorPanel switchToPlakatOnSmallScreenSize={true}>
                 {intlHelper(intl, 'step.tidspunkt-for-aleneomsorg.stepIntro')}
             </CounsellorPanel>
-            <Box margin="xl">
-                <Ingress>{intlHelper(intl, 'step.tidspunkt-for-aleneomsorg.info')}</Ingress>
-            </Box>
 
-            {barnMedAleneomsorg.map((barnMedAleneomsorg) => {
-                return (
-                    <FormBlock key={barnMedAleneomsorg.idFnr}>
-                        <TidspunktForBarn barnMedAleneomsorg={barnMedAleneomsorg} />
-                    </FormBlock>
-                );
-            })}
+            <Box margin="xl" padBottom="xl">
+                {barnMedAleneomsorg.map((barnMedAleneomsorg) => {
+                    return (
+                        <FormBlock key={barnMedAleneomsorg.idFnr}>
+                            <TidspunktForBarn barnMedAleneomsorg={barnMedAleneomsorg} />
+                        </FormBlock>
+                    );
+                })}
+            </Box>
         </SoknadFormStep>
     );
 };
