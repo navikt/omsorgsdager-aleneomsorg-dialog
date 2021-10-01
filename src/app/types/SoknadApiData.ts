@@ -6,8 +6,7 @@ export enum TidspunktForAleneomsorgApi {
 }
 export interface ApiBarn {
     navn: string;
-    aktørId?: string;
-    identitetsnummer?: string;
+    aktørId: string;
     tidspunktForAleneomsorg: TidspunktForAleneomsorgApi;
     dato?: string;
 }

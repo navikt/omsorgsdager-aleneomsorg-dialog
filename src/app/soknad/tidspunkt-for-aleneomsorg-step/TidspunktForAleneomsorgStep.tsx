@@ -13,14 +13,12 @@ import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-p
 import {
     barnFinnesIArray,
     BarnMedAleneomsorg,
-    mapAndreBarnToBarnMedAleneomsorg,
     mapRegistrerteBarnToBarnMedAleneomsorg,
 } from '../../utils/tidspunktForAleneomsorgUtils';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import TidspunktForBarn from '../../components/TidspunktForBarn';
 import { useIntl } from 'react-intl';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import { Ingress } from 'nav-frontend-typografi';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 
 interface Props {
@@ -30,16 +28,13 @@ interface Props {
 const TidspunktForAleneomsorgStep = ({ barn }: Props) => {
     const intl = useIntl();
     const { values } = useFormikContext<SoknadFormData>();
-    const { andreBarn, harAleneomsorgFor } = values;
+    const { harAleneomsorgFor } = values;
 
-    const andreBarnMedAleneomsorg = andreBarn.filter((b) => barnFinnesIArray(b.fnr, harAleneomsorgFor));
     const registrerteBarnMedAleneOmsorg = barn.filter((b) => barnFinnesIArray(b.aktørId, harAleneomsorgFor));
 
-    const barnMedAleneomsorg: BarnMedAleneomsorg[] = [
-        ...andreBarnMedAleneomsorg.map((barn) => mapAndreBarnToBarnMedAleneomsorg(barn)),
-        ...registrerteBarnMedAleneOmsorg.map((barn) => mapRegistrerteBarnToBarnMedAleneomsorg(barn)),
-    ];
-
+    const barnMedAleneomsorg: BarnMedAleneomsorg[] = registrerteBarnMedAleneOmsorg.map((barn) =>
+        mapRegistrerteBarnToBarnMedAleneomsorg(barn)
+    );
     const getFieldName = (key: string, fieldName: AleneomsorgTidspunktField): string => {
         return `${fieldName}_${key}`;
     };
@@ -68,17 +63,16 @@ const TidspunktForAleneomsorgStep = ({ barn }: Props) => {
             <CounsellorPanel switchToPlakatOnSmallScreenSize={true}>
                 {intlHelper(intl, 'step.tidspunkt-for-aleneomsorg.stepIntro')}
             </CounsellorPanel>
-            <Box margin="xl">
-                <Ingress>{intlHelper(intl, 'step.tidspunkt-for-aleneomsorg.info')}</Ingress>
-            </Box>
 
-            {barnMedAleneomsorg.map((barnMedAleneomsorg) => {
-                return (
-                    <FormBlock key={barnMedAleneomsorg.idFnr}>
-                        <TidspunktForBarn barnMedAleneomsorg={barnMedAleneomsorg} />
-                    </FormBlock>
-                );
-            })}
+            <Box margin="xl" padBottom="xl">
+                {barnMedAleneomsorg.map((barnMedAleneomsorg) => {
+                    return (
+                        <FormBlock key={barnMedAleneomsorg.idFnr}>
+                            <TidspunktForBarn barnMedAleneomsorg={barnMedAleneomsorg} />
+                        </FormBlock>
+                    );
+                })}
+            </Box>
         </SoknadFormStep>
     );
 };

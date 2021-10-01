@@ -7,7 +7,6 @@ import { apiStringDateToDate, prettifyDateExtended } from '@navikt/sif-common-co
 
 export interface AlleBarnSummary {
     navn: string;
-    identitetsnummer?: string;
     tidspunktForAleneomsorg?: TidspunktForAleneomsorgApi;
     dato?: string;
 }
@@ -17,14 +16,13 @@ interface Props {
 const tidspunktRenderer = (
     intl: IntlShape,
     navn: string,
-    fnr: string,
     tidspunktForAleneomsorg: TidspunktForAleneomsorgApi,
     dato?: string
 ): React.ReactNode => {
     return (
         <>
             <div>
-                <span>{`${navn}${fnr}`}</span>
+                <span>{navn}</span>
             </div>
             <div>
                 {tidspunktForAleneomsorg === TidspunktForAleneomsorgApi.TIDLIGERE && (
@@ -57,18 +55,10 @@ const BarnSummaryList = ({ barn }: Props) => {
     return (
         <SummaryList
             items={barn}
-            itemRenderer={({
-                identitetsnummer,
-                navn,
-                tidspunktForAleneomsorg,
-                dato,
-            }: AlleBarnSummary): string | React.ReactNode => {
-                const fnr = identitetsnummer
-                    ? intlHelper(intl, 'step.oppsummering.deres-felles-barn.listItem', { identitetsnummer })
-                    : '';
+            itemRenderer={({ navn, tidspunktForAleneomsorg, dato }: AlleBarnSummary): string | React.ReactNode => {
                 if (tidspunktForAleneomsorg) {
-                    return tidspunktRenderer(intl, navn, fnr, tidspunktForAleneomsorg, dato);
-                } else return `${navn}${fnr}`;
+                    return tidspunktRenderer(intl, navn, tidspunktForAleneomsorg, dato);
+                } else return navn;
             }}
         />
     );

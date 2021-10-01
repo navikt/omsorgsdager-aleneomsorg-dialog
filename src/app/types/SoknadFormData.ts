@@ -1,5 +1,3 @@
-import { AndreBarn } from 'app/pre-common/forms/barn/types';
-
 export interface Barn {
     fødselsdato: Date;
     fornavn: string;
@@ -28,7 +26,6 @@ export enum AleneomsorgTidspunktField {
 export enum SoknadFormField {
     harForståttRettigheterOgPlikter = 'harForståttRettigheterOgPlikter',
     harBekreftetOpplysninger = 'harBekreftetOpplysninger',
-    andreBarn = 'andreBarn',
     harAleneomsorgFor = 'harAleneomsorgFor',
     aleneomsorgTidspunkt = 'aleneomsorgTidspunkt',
 }
@@ -36,12 +33,9 @@ export enum SoknadFormField {
 export interface SoknadFormData {
     [SoknadFormField.harForståttRettigheterOgPlikter]: boolean;
     [SoknadFormField.harBekreftetOpplysninger]: boolean;
-    [SoknadFormField.andreBarn]: AndreBarn[];
     [SoknadFormField.harAleneomsorgFor]: Array<string>;
     [SoknadFormField.aleneomsorgTidspunkt]: AleneomsorgTidspunkt[];
 }
-
-export type OmBarnaFormData = Pick<SoknadFormData, SoknadFormField.andreBarn>;
 
 export type OmOmsorgenForBarnFormData = Pick<SoknadFormData, SoknadFormField.harAleneomsorgFor>;
 

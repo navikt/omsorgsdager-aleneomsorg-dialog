@@ -1,17 +1,17 @@
-import { Person } from 'app/types/Person';
 import { StepID } from '../soknad/soknadStepsConfig';
 
 import { Barn, SoknadFormData } from '../types/SoknadFormData';
 import { barnFinnesIkkeIArray } from './tidspunktForAleneomsorgUtils';
 
-const welcomingPageIsComplete = ({ harForståttRettigheterOgPlikter }: SoknadFormData) =>
-    harForståttRettigheterOgPlikter === true;
-
-const omBarnaIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
-    return welcomingPageIsComplete(values) && (barn.length > 0 || (values.andreBarn || []).length > 0);
+const welcomingPageIsComplete = ({ harForståttRettigheterOgPlikter }: SoknadFormData) => {
+    console.log('welcoming complete ', harForståttRettigheterOgPlikter);
+    return harForståttRettigheterOgPlikter === true;
 };
+
 const omOmsorgenForBarnIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
-    return omBarnaIsComplete(values, barn) && (values.harAleneomsorgFor || []).length > 0;
+    console.log('omOmsorgenForBarnIsComplete: values', values);
+    console.log('omOmsorgenForBarnIsComplete: barn', values);
+    return welcomingPageIsComplete(values) && barn.length > 0 && (values.harAleneomsorgFor || []).length > 0;
 };
 
 const tidspunktForAleneomsorgIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
@@ -25,13 +25,10 @@ const tidspunktForAleneomsorgIsComplete = (values: SoknadFormData, barn: Barn[])
     );
 };
 
-export const getAvailableSteps = (values: SoknadFormData, søker: Person, barn: Barn[]): StepID[] => {
+export const getAvailableSteps = (values: SoknadFormData, barn: Barn[]): StepID[] => {
     const steps: StepID[] = [];
 
     if (welcomingPageIsComplete(values)) {
-        steps.push(StepID.OM_BARN);
-    }
-    if (omBarnaIsComplete(values, barn)) {
         steps.push(StepID.OM_OMSORGEN_FOR_BARN);
     }
 

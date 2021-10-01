@@ -15,7 +15,6 @@ import { Person } from '../types/Person';
 import { Barn, SoknadFormData } from '../types/SoknadFormData';
 import { getAvailableSteps } from '../utils/getAvailableSteps';
 import { mapFormDataToApiData } from '../utils/map-form-data-to-api-data/mapFormDataToApiData';
-import OmBarnStep from './om-barn/OmBarn';
 import OppsummeringStep from './oppsummering-step/OppsummeringStep';
 import { useSoknadContext } from './SoknadContext';
 import { StepID } from './soknadStepsConfig';
@@ -32,22 +31,22 @@ interface Props {
 const SoknadRoutes = ({ soknadId, søker, barn = [] }: Props) => {
     const intl = useIntl();
     const { values } = useFormikContext<SoknadFormData>();
-    const availableSteps = getAvailableSteps(values, søker, barn);
+    const availableSteps = getAvailableSteps(values, barn);
     const { soknadStepsConfig, sendSoknadStatus } = useSoknadContext();
-
+    console.log('available steps', availableSteps);
     const renderSoknadStep = (søker: Person, barn: Barn[], stepID: StepID): React.ReactNode => {
+        console.log('rendersøknad:');
+        console.log(søker);
+        console.log(barn);
+        console.log(stepID);
         switch (stepID) {
-            case StepID.OM_BARN:
-                return <OmBarnStep barn={barn} søkerFnr={søker.fødselsnummer} />;
             case StepID.OM_OMSORGEN_FOR_BARN:
                 return <OmOmsorgenForBarnStep barn={barn} />;
             case StepID.TIDSPUNKT_FOR_ALENEOMSORG:
                 return <TidspunktForAleneomsorgStep barn={barn} />;
             case StepID.OPPSUMMERING:
                 const apiValues = mapFormDataToApiData(intl.locale, values, barn);
-                return (
-                    <OppsummeringStep apiValues={apiValues} søker={søker} barn={barn} annetBarn={values.andreBarn} />
-                );
+                return <OppsummeringStep apiValues={apiValues} søker={søker} barn={barn} />;
         }
     };
 
@@ -81,6 +80,7 @@ const SoknadRoutes = ({ soknadId, søker, barn = [] }: Props) => {
             {soknadId === undefined && <Redirect key="redirectToWelcome" to={AppRoutes.SOKNAD} />}
             {soknadId &&
                 availableSteps.map((step) => {
+                    console.log('step:', step);
                     return (
                         <Route
                             key={step}

@@ -13,7 +13,6 @@ import SoknadFormStep from '../SoknadFormStep';
 import { StepID } from '../soknadStepsConfig';
 import OmBarnaSummary from './OmBarnaSummary';
 import SøkerSummary from './SøkerSummary';
-import { AndreBarn } from 'app/pre-common/forms/barn';
 import { getCheckedValidator } from '@navikt/sif-common-formik/lib/validation';
 import SummarySection from '@navikt/sif-common-soknad/lib/soknad-summary/summary-section/SummarySection';
 import BarnSummaryList from './BarnSummaryList';
@@ -22,11 +21,10 @@ import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-p
 type Props = {
     søker: Person;
     barn: Barn[];
-    annetBarn: AndreBarn[];
     apiValues?: SoknadApiData;
 };
 
-const OppsummeringStep = ({ søker, barn, annetBarn, apiValues }: Props) => {
+const OppsummeringStep = ({ søker, barn, apiValues }: Props) => {
     const intl = useIntl();
     const { sendSoknadStatus, sendSoknad } = useSoknadContext();
 
@@ -48,7 +46,7 @@ const OppsummeringStep = ({ søker, barn, annetBarn, apiValues }: Props) => {
                             <ResponsivePanel border={true}>
                                 <SøkerSummary søker={søker} apiValues={apiValues} />
 
-                                <OmBarnaSummary registrertBarn={barn} annetBarn={annetBarn} />
+                                <OmBarnaSummary registrertBarn={barn} />
 
                                 <SummarySection
                                     header={intlHelper(intl, 'step.oppsummering.om-omsorgen-for-barn.barnList.tittle')}>

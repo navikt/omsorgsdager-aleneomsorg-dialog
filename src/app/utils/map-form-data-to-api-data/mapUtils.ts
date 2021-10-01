@@ -1,5 +1,4 @@
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
-import { AndreBarn } from 'app/pre-common/forms/barn/types';
 import { ApiBarn, TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
 import { AleneomsorgTidspunkt, Barn, TidspunktForAleneomsorgFormData } from '../../types/SoknadFormData';
 
@@ -16,22 +15,6 @@ const getTidspunktForAleneomsorg = (
 
 const getDateForAleneomsorg = (barnId: string, aleneomsorgTidspunkter: AleneomsorgTidspunkt[]): string | undefined => {
     return aleneomsorgTidspunkter.find((aleneomsorgTidspunkt) => aleneomsorgTidspunkt.fnrId === barnId)?.dato;
-};
-
-export const mapAndreBarnToApiBarn = (
-    annetBarn: AndreBarn,
-    aleneomsorgTidspunkter: AleneomsorgTidspunkt[]
-): ApiBarn => {
-    const tidspunktForAleneomsorg = getTidspunktForAleneomsorg(annetBarn.fnr, aleneomsorgTidspunkter);
-    return {
-        navn: annetBarn.navn,
-        identitetsnummer: annetBarn.fnr,
-        tidspunktForAleneomsorg: tidspunktForAleneomsorg,
-        dato:
-            tidspunktForAleneomsorg === TidspunktForAleneomsorgApi.SISTE_2_ÅRENE
-                ? getDateForAleneomsorg(annetBarn.fnr, aleneomsorgTidspunkter)
-                : undefined,
-    };
 };
 
 export const mapBarnToApiBarn = (registrertBarn: Barn, aleneomsorgTidspunkter: AleneomsorgTidspunkt[]): ApiBarn => {
