@@ -12,7 +12,6 @@ interface BarnResultType {
 const getBarnRemoteData = async (): Promise<BarnRemoteData> => {
     try {
         const { data } = await api.get<BarnResultType>(ApiEndpoint.barn);
-        console.log('Barn: ', data);
         return Promise.resolve(success(data.barnOppslag));
     } catch (error) {
         return Promise.reject(failure(error));
