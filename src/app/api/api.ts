@@ -35,12 +35,9 @@ export enum ApiEndpoint {
 const api = {
     get: <ResponseType>(endpoint: ApiEndpoint, paramString?: string, config?: AxiosRequestConfig) => {
         const url = `${endpoint}${paramString ? `?${paramString}` : ''}`;
-        console.log('default: ', defaultAxiosConfig);
-        console.log(config);
         return axios.get<ResponseType>(url, config || defaultAxiosConfig);
     },
     post: <DataType = any, ResponseType = any>(endpoint: ApiEndpoint, data: DataType) => {
-        console.log(defaultAxiosConfig);
         return axios.post<ResponseType>(endpoint, data, defaultAxiosConfig);
     },
 };
