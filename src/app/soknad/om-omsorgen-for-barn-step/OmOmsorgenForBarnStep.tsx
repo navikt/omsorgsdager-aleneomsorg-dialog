@@ -41,7 +41,6 @@ const cleanupOmOmsorgenForBarnStep = (formValues: SoknadFormData): SoknadFormDat
 
 const OmOmsorgenForBarnStep = ({ barn }: Props) => {
     const intl = useIntl();
-    console.log('Barn i steg:', barn);
     return (
         <SoknadFormStep
             id={StepID.OM_OMSORGEN_FOR_BARN}

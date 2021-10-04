@@ -4,6 +4,7 @@ import { isUnauthorized, isForbidden } from '@navikt/sif-common-core/lib/utils/a
 
 export const defaultAxiosConfig = {
     withCredentials: true,
+    headers: { 'Content-type': 'application/json; charset=utf-8' },
 };
 
 axios.defaults.baseURL = getEnvironmentVariable('API_URL');
@@ -36,8 +37,9 @@ const api = {
         const url = `${endpoint}${paramString ? `?${paramString}` : ''}`;
         return axios.get<ResponseType>(url, config || defaultAxiosConfig);
     },
-    post: <DataType = any, ResponseType = any>(endpoint: ApiEndpoint, data: DataType) =>
-        axios.post<ResponseType>(endpoint, data, defaultAxiosConfig),
+    post: <DataType = any, ResponseType = any>(endpoint: ApiEndpoint, data: DataType) => {
+        return axios.post<ResponseType>(endpoint, data, defaultAxiosConfig);
+    },
 };
 
 export default api;
