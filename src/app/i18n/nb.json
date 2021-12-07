@@ -7,11 +7,8 @@
     "page.error.pageTitle": "Noe gikk galt ...",
     "page.form.ubesvarteSpørsmålInfo": "For å komme videre, må du svare på alle spørsmålene ovenfor",
 
-    "page.ikkeMyndig.sidetittel": "Søknad om å bli regnet som alene om omsorgen for barn",
-    "page.ikkeMyndig.banner.tittel": "Hei!",
-    "page.ikkeMyndig.banner.tekst": "Fordi du er under 18 år, må en av foreldrene dine eller en foresatt skrive under på søknaden sammen med deg. Du må derfor fylle ut søknaden på papir og sende den i posten.",
-    "page.ikkeMyndig.banner.lastNed": "Søknad om å bli regnet som alene om omsorgen for barn",
-    "page.ikkeMyndig.tittel": "Søknad om å bli regnet som alene om omsorgen for barn",
+    "page.ikkeTilgang.sidetittel": "Søknad om å bli regnet som alene om omsorgen for barn",
+    "page.ikkeTilgang.tekst": "Du har ikke tilgang til denne siden. Dersom du er under 18 år, må en av foreldrene dine eller en foresatt skrive under på søknaden sammen med deg. Du må derfor fylle ut søknaden på papir og sende den i posten.",
 
     "arbeidstaker": "arbeidstaker",
 

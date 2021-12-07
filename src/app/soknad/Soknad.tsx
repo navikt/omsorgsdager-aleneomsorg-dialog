@@ -8,7 +8,6 @@ import soknadStepUtils from '@navikt/sif-common-soknad/lib/soknad-step/soknadSte
 import { ulid } from 'ulid';
 import { sendSoknad } from '../api/sendSoknad';
 import AppRoutes, { getRouteUrl } from '../config/routeConfig';
-import IkkeMyndigPage from '../pages/ikke-myndig-page/IkkeMyndigPage';
 import { Person } from '../types/Person';
 import { SoknadApiData } from '../types/SoknadApiData';
 import { Barn, SoknadFormData } from '../types/SoknadFormData';
@@ -157,9 +156,6 @@ const Soknad = ({ søker, barn, soknadTempStorage: tempStorage }: Props) => {
         <LoadWrapper
             isLoading={initializing}
             contentRenderer={() => {
-                if (søker.myndig === false) {
-                    return <IkkeMyndigPage />;
-                }
                 return (
                     <SoknadFormComponents.FormikWrapper
                         initialValues={initialFormData}
