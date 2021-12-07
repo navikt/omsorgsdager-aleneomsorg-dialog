@@ -5,7 +5,6 @@ interface Lenker {
     saksbehandlingstider: string;
     dittNAV: string;
     merOmFastBostedOgSamvær: string;
-    soknadRegnetSomAleneBrev: string;
     aleneMedBarn: string;
     skrivTilOss: string;
 }
@@ -18,7 +17,6 @@ const LenkerBokmål: Lenker = {
     saksbehandlingstider: 'https://www.nav.no/no/NAV+og+samfunn/Om+NAV/Saksbehandlingstider+i+NAV',
     dittNAV: `https://www.nav.no/no/Ditt+NAV`,
     merOmFastBostedOgSamvær: `https://www.regjeringen.no/no/tema/familie-og-barn/innsiktsartikler/bosted-og-samvar/samvar/id749587/`,
-    soknadRegnetSomAleneBrev: `https://www.nav.no/soknader/nb/person/familie/omsorgspenger/NAV%2009-06.07/brev`,
     aleneMedBarn: 'https://www.nav.no/familie/alene-med-barn',
     skrivTilOss: 'https://www.nav.no/person/kontakt-oss/nb/skriv-til-oss',
 };

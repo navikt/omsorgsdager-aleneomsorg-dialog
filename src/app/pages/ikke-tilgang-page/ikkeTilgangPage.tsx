@@ -6,8 +6,6 @@ import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-p
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
 import StepBanner from '@navikt/sif-common-core/lib/components/step-banner/StepBanner';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import Lenke from 'nav-frontend-lenker';
-import getLenker from '../../lenker';
 
 const IkkeTilgangPage = () => {
     const intl = useIntl();
@@ -22,9 +20,6 @@ const IkkeTilgangPage = () => {
                     <p>
                         <FormattedMessage id="page.ikkeTilgang.tekst" />
                     </p>
-                    <Lenke href={getLenker(intl.locale).soknadRegnetSomAleneBrev} target="_blank">
-                        <FormattedMessage id="page.ikkeTilgang.lastNed" />
-                    </Lenke>
                 </CounsellorPanel>
             </Box>
         </Page>
