@@ -1,6 +1,5 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
@@ -52,11 +51,6 @@ const webpackConfig = {
                     },
                 ],
             },
-            {
-                test: /\.svg$/,
-                loader: 'svg-sprite-loader',
-                options: {},
-            },
         ],
     },
     plugins: [
@@ -68,9 +62,6 @@ const webpackConfig = {
         new ESLintPlugin({
             extensions: ['ts', 'tsx'],
             failOnWarning: false,
-        }),
-        new SpriteLoaderPlugin({
-            plainSprite: true,
         }),
     ],
 };
