@@ -17,7 +17,7 @@ export const APPLICATION_KEY = 'omsorgsdager-aleneomsorg-dialog';
 export const SKJEMANAVN = 'Registrering av aleneomsorg for omsorgsdager';
 
 const publicPath = getEnvironmentVariable('PUBLIC_PATH');
-
+// trigger deploy
 render(
     <AmplitudeProvider applicationKey={APPLICATION_KEY}>
         <SoknadApplication
