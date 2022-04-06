@@ -26,10 +26,10 @@ axios.interceptors.response.use(
 );
 
 export enum ApiEndpoint {
-    'soker' = 'soker',
-    'mellomlagring' = 'mellomlagring',
-    'barn' = 'barn',
-    'sendSoknad' = 'soknad',
+    'soker' = 'oppslag/soker?ytelse=omsorgsdager-aleneomsorg',
+    'mellomlagring' = 'mellomlagring/OMSORGSDAGER_ALENEOMSORG',
+    'barn' = 'oppslag/barn?ytelse=omsorgsdager-aleneomsorg',
+    'sendSoknad' = 'omsorgsdager-aleneomsorg/innsending',
 }
 
 const api = {

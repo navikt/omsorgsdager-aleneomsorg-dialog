@@ -29,7 +29,7 @@
         "@navikt/sif-common-core": "^11.1.0",
         "@navikt/sif-common-formik": "^20.4.6",
         "@navikt/sif-common-soknad": "^5.1.0",
-        "@snyk/protect": "^1.890.0",
+        "@snyk/protect": "^1.896.0",
         "axios": "^0.21.4",
         "compression": "^1.7.4",
         "dayjs": "^1.11.0",
@@ -60,8 +60,8 @@
         "@types/react": "^17.0.43",
         "@types/react-dom": "^17.0.14",
         "@types/react-router-dom": "^5.3.3",
-        "@typescript-eslint/eslint-plugin": "^5.17.0",
-        "@typescript-eslint/parser": "^5.17.0",
+        "@typescript-eslint/eslint-plugin": "^5.18.0",
+        "@typescript-eslint/parser": "^5.18.0",
         "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
         "babel-polyfill": "^6.26.0",
         "case-sensitive-paths-webpack-plugin": "^2.4.0",
@@ -79,14 +79,14 @@
         "less": "^4.1.2",
         "less-loader": "^10.2.0",
         "npm-run-all": "^4.1.5",
-        "prettier": "^2.6.1",
+        "prettier": "^2.6.2",
         "rimraf": "^3.0.2",
         "source-map-loader": "^3.0.1",
         "ts-jest": "^27.1.4",
         "ts-loader": "^9.2.8",
         "typescript": "^4.6.3",
-        "webpack": "^5.70.0",
-        "webpack-dev-server": "^4.7.4"
+        "webpack": "^5.71.0",
+        "webpack-dev-server": "^4.8.0"
     },
     "resolutions": {
         "babel-core": "7.0.0-bridge.0"
