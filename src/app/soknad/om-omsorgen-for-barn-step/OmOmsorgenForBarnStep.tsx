@@ -13,10 +13,24 @@ import { CheckboksPanelProps } from 'nav-frontend-skjema';
 import SoknadFormComponents from '../SoknadFormComponents';
 import { barnFinnesIArray } from '../../utils/map-form-data-to-api-data/mapBarnToApiData';
 import { getListValidator } from '@navikt/sif-common-formik/lib/validation';
+import ItemList from '@navikt/sif-common-core/lib/components/item-list/ItemList';
+import bemUtils from '@navikt/sif-common-core/lib/utils/bemUtils';
+import './dineBarn.less';
 
+const bem = bemUtils('dineBarn');
 interface Props {
     barn: Barn[];
 }
+
+const barnItemLabelRenderer = (barn: Barn, intl: IntlShape): React.ReactNode => {
+    return (
+        <div className={bem.element('label')}>
+            <div>{intlHelper(intl, 'step.om-omsorgen-for-barn.form.født')}</div>
+            <div className={bem.element('fodselsdato')}>{prettifyDate(barn.fødselsdato)}</div>
+            <div className={bem.element('navn')}>{formatName(barn.fornavn, barn.etternavn, barn.mellomnavn)}</div>
+        </div>
+    );
+};
 
 const getBarnOptions = (barn: Barn[] = [], intl: IntlShape): CheckboksPanelProps[] => {
     return barn.map((barnet) => ({
@@ -54,6 +68,17 @@ const OmOmsorgenForBarnStep = ({ barn }: Props) => {
                     <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.2" />
                 </p>
             </CounsellorPanel>
+
+            {barn.length > 0 && (
+                <Box margin="xl">
+                    <ItemList<Barn>
+                        getItemId={(registrerteBarn): string => registrerteBarn.aktørId}
+                        getItemTitle={(registrerteBarn): string => registrerteBarn.etternavn}
+                        labelRenderer={(barn): React.ReactNode => barnItemLabelRenderer(barn, intl)}
+                        items={barn}
+                    />
+                </Box>
+            )}
 
             {barn.length > 0 && (
                 <Box margin="xl">
