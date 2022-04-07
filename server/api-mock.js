@@ -60,14 +60,7 @@ const søkerMock = {
 };
 
 const barnMock = {
-    barnOppslag: [
-        { fødselsdato: '1990-01-02', fornavn: 'Barn', mellomnavn: 'Barne', etternavn: 'Barnesen', aktørId: '1' },
-        { fødselsdato: '1990-01-02', fornavn: 'Mock', etternavn: 'Mocknes', aktørId: '2' },
-    ],
-};
-
-const barnMock2 = {
-    barnOppslag: [
+    barn: [
         { fødselsdato: '1990-01-02', fornavn: 'Barn', mellomnavn: 'Barne', etternavn: 'Barnesen', aktørId: '1' },
         { fødselsdato: '1990-01-02', fornavn: 'Mock', etternavn: 'Mocknes', aktørId: '2' },
     ],
@@ -75,18 +68,15 @@ const barnMock2 = {
 
 const startExpressServer = () => {
     const port = process.env.PORT || 8089;
-
     server.get('/health/isAlive', (req, res) => res.sendStatus(200));
-
     server.get('/health/isReady', (req, res) => res.sendStatus(200));
-
     server.get('/login', (req, res) => {
         setTimeout(() => {
             res.sendStatus(404);
         }, 2000);
     });
 
-    server.get('/soker', (req, res) => {
+    server.get('/oppslag/soker', (req, res) => {
         setTimeout(() => {
             res.send(søkerMock);
         }, 200);
@@ -95,25 +85,19 @@ const startExpressServer = () => {
     server.get('/soker-not-logged-in', (req, res) => {
         res.sendStatus(401);
     });
-    server.get('/soker-err', (req, res) => {
+    server.get('/oppslag/soker-err', (req, res) => {
         setTimeout(() => {
             res.sendStatus(501);
         }, 200);
     });
 
-    server.get('/barn', (req, res) => {
+    server.get('/oppslag/barn', (req, res) => {
         setTimeout(() => {
             res.send(barnMock);
         }, 200);
     });
 
-    server.get('/barn2', (req, res) => {
-        setTimeout(() => {
-            res.send(barnMock2);
-        }, 200);
-    });
-
-    server.get('/barn-err', (req, res) => {
+    server.get('/oppslag/barn-err', (req, res) => {
         setTimeout(() => {
             res.sendStatus(501);
         }, 200);
@@ -122,15 +106,15 @@ const startExpressServer = () => {
     server.get('/soker-logget-ut', (req, res) => {
         res.sendStatus(401);
     });
-    // TODO: endre her
-    server.post('/soknad', (req, res) => {
+
+    server.post('/omsorgsdager-aleneomsorg/innsending', (req, res) => {
         const body = req.body;
         console.log('[POST] body', body);
         setTimeout(() => {
             res.sendStatus(200);
         }, 2500);
     });
-    // TODO: endre her
+
     server.post('/soknad/alene-err', (req, res) => {
         const body = req.body;
         console.log('[POST] body', body);
@@ -143,7 +127,7 @@ const startExpressServer = () => {
         res.sendStatus(401);
     });
 
-    server.get('/mellomlagring', (req, res) => {
+    server.get('/mellomlagring/OMSORGSDAGER_ALENEOMSORG', (req, res) => {
         if (existsSync(MELLOMLAGRING_JSON)) {
             const body = readFileSync(MELLOMLAGRING_JSON);
             res.send(JSON.parse(body));
@@ -152,21 +136,21 @@ const startExpressServer = () => {
         }
     });
 
-    server.put('/mellomlagring', (req, res) => {
+    server.put('/mellomlagring/OMSORGSDAGER_ALENEOMSORG', (req, res) => {
         const body = req.body;
         const jsBody = isJSON(body) ? JSON.parse(body) : body;
         writeFileAsync(MELLOMLAGRING_JSON, JSON.stringify(jsBody, null, 2));
         res.sendStatus(200);
     });
 
-    server.post('/mellomlagring', (req, res) => {
+    server.post('/mellomlagring/OMSORGSDAGER_ALENEOMSORG', (req, res) => {
         const body = req.body;
         const jsBody = isJSON(body) ? JSON.parse(body) : body;
         writeFileAsync(MELLOMLAGRING_JSON, JSON.stringify(jsBody, null, 2));
         res.sendStatus(200);
     });
 
-    server.delete('/mellomlagring', (req, res) => {
+    server.delete('/mellomlagring/OMSORGSDAGER_ALENEOMSORG', (req, res) => {
         writeFileAsync(MELLOMLAGRING_JSON, JSON.stringify({}, null, 2));
         res.sendStatus(200);
     });

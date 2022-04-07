@@ -6,11 +6,12 @@
     "minReplicas": "1",
     "maxReplicas": "1",
     "ingresses": ["https://www.nav.no/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg"],
+    "externalHosts": [],
     "livenessPath": "/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg/health/isAlive",
     "readinessPath": "/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg/health/isReady",
     "env": {
         "DEKORATOR_URL": "https://www.nav.no/dekoratoren/?simple=true&chatbot=false",
-        "API_URL": "https://omsorgsdager-aleneomsorg-api.nav.no",
+        "API_URL": "https://k9-brukerdialog-api.nav.no",
         "PUBLIC_PATH": "/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg",
         "LOGIN_URL": "https://loginservice.nav.no/login?redirect=https://www.nav.no/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg/soknad",
         "APPSTATUS_PROJECT_ID": "ryujtq87",

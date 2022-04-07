@@ -8,9 +8,12 @@
     "introform.informationPoster.avsnitt.5.lenkeTittel": "skrive en beskjed til oss.",
 
     "introForm.erSokerlestInformasjonen.spm": "Har du lest informasjonen over?",
-    "introForm.erSokerlestInformasjonen.stopMessage": "Du må lese informasjonen over for å gå videre.",
     "introForm.erSokerAleneOmsorg.spm": "Er du alene om omsorgen for barn?",
-    "introForm.erSokerAleneOmsorg.stopMessage": "Du må være alene om omsorgen for minst ett barn for å kunne registrere deg med aleneomsorg.",
+
+    "introForm.validation.erSokerlestInformasjonen.yesOrNoIsUnanswered": "Du må svare ja eller nei på om har du lest informasjonen over.",
+    "introForm.validation.erSokerlestInformasjonen.nei": "Du må lese informasjonen over for å gå videre.",
+    "introForm.validation.erSokerAleneOmsorg.yesOrNoIsUnanswered": "Du må svare ja eller nei på om du er alene om omsorgen for barn.",
+    "introForm.validation.erSokerAleneOmsorg.nei": "Du må være alene om omsorgen for minst ett barn for å kunne registrere aleneomsorg.",
 
     "introForm.start": "Start registrering"
 }
