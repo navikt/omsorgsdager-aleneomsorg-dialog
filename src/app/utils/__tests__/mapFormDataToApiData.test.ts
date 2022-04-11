@@ -6,7 +6,7 @@ import {
     SoknadFormData,
     SoknadFormField,
 } from '../../types/SoknadFormData';
-import { ApiBarn, SoknadApiData, TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
+import { ApiBarn, RegisterteBarnTypeApi, SoknadApiData, TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
 import { mapFormDataToApiData } from '../map-form-data-to-api-data/mapFormDataToApiData';
 
 const barnsFødselsdato = new Date(2021, 0, 20);
@@ -31,12 +31,14 @@ const mockApiBarn: ApiBarn[] = [
         aktørId: '84589',
         tidspunktForAleneomsorg: TidspunktForAleneomsorgApi.TIDLIGERE,
         dato: undefined,
+        type: RegisterteBarnTypeApi.fraOppslag,
     },
     {
         navn: 'Mock2 Mocknes2',
         aktørId: '87857',
         tidspunktForAleneomsorg: TidspunktForAleneomsorgApi.TIDLIGERE,
         dato: undefined,
+        type: RegisterteBarnTypeApi.fraOppslag,
     },
 ];
 const formDataMock: SoknadFormData = {
@@ -44,6 +46,7 @@ const formDataMock: SoknadFormData = {
     [SoknadFormField.harBekreftetOpplysninger]: true,
     [SoknadFormField.harAleneomsorgFor]: harAleneomsorgFor,
     [SoknadFormField.aleneomsorgTidspunkt]: aleneomsorgTidspunkt,
+    [SoknadFormField.annetBarn]: [],
 };
 
 describe('mapFormDataToApiData', () => {

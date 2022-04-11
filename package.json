@@ -28,6 +28,7 @@
         "@navikt/sif-common-amplitude": "^2.2.3",
         "@navikt/sif-common-core": "^11.1.0",
         "@navikt/sif-common-formik": "^20.4.6",
+        "@navikt/sif-common-forms": "^16.7.0",
         "@navikt/sif-common-soknad": "^5.1.0",
         "@snyk/protect": "^1.896.0",
         "axios": "^0.21.4",

@@ -2,6 +2,7 @@ import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { Barn } from '../types/SoknadFormData';
 import dayjs from 'dayjs';
 import dayOfYear from 'dayjs/plugin/dayOfYear';
+import { AnnetBarn } from '@navikt/sif-common-forms/lib/annet-barn/types';
 
 export interface BarnMedAleneomsorg {
     idFnr: string;
@@ -23,6 +24,12 @@ export const mapRegistrerteBarnToBarnMedAleneomsorg = (registrertBarn: Barn): Ba
     };
 };
 
+export const mapAnnetBarnToBarnMedAleneomsorg = (annetBarn: AnnetBarn): BarnMedAleneomsorg => {
+    return {
+        idFnr: annetBarn.fnr,
+        navn: annetBarn.navn,
+    };
+};
 export const getYear = (yearsToSubtract: number): string => (dayjs().year() - yearsToSubtract).toString();
 
 export const getMinDateYearAgo = (): Date => {

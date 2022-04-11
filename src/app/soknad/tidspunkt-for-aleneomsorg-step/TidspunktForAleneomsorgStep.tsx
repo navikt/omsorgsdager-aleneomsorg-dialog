@@ -13,6 +13,7 @@ import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-p
 import {
     barnFinnesIArray,
     BarnMedAleneomsorg,
+    mapAnnetBarnToBarnMedAleneomsorg,
     mapRegistrerteBarnToBarnMedAleneomsorg,
 } from '../../utils/tidspunktForAleneomsorgUtils';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
@@ -31,10 +32,15 @@ const TidspunktForAleneomsorgStep = ({ barn }: Props) => {
     const { harAleneomsorgFor } = values;
 
     const registrerteBarnMedAleneOmsorg = barn.filter((b) => barnFinnesIArray(b.aktørId, harAleneomsorgFor));
+    const annetBarnMedAleneOmsorg = values.annetBarn
+        ? values.annetBarn.filter((b) => barnFinnesIArray(b.fnr, harAleneomsorgFor))
+        : [];
 
-    const barnMedAleneomsorg: BarnMedAleneomsorg[] = registrerteBarnMedAleneOmsorg.map((barn) =>
-        mapRegistrerteBarnToBarnMedAleneomsorg(barn)
-    );
+    const barnMedAleneomsorg: BarnMedAleneomsorg[] = [
+        ...registrerteBarnMedAleneOmsorg.map((barn) => mapRegistrerteBarnToBarnMedAleneomsorg(barn)),
+        ...annetBarnMedAleneOmsorg.map((barn) => mapAnnetBarnToBarnMedAleneomsorg(barn)),
+    ];
+
     const getFieldName = (key: string, fieldName: AleneomsorgTidspunktField): string => {
         return `${fieldName}_${key}`;
     };
