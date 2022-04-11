@@ -16,7 +16,6 @@ import { getListValidator } from '@navikt/sif-common-formik/lib/validation';
 import ItemList from '@navikt/sif-common-core/lib/components/item-list/ItemList';
 import bemUtils from '@navikt/sif-common-core/lib/utils/bemUtils';
 import { Undertittel } from 'nav-frontend-typografi';
-import './dineBarn.less';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import ContentWithHeader from '@navikt/sif-common-core/lib/components/content-with-header/ContentWithHeader';
 import AnnetBarnListAndDialog from '@navikt/sif-common-forms/lib/annet-barn/AnnetBarnListAndDialog';
@@ -24,6 +23,7 @@ import { nYearsAgo } from '../../utils/aldersUtils';
 import { AnnetBarn } from '@navikt/sif-common-forms/lib/annet-barn/types';
 import { Person } from '../../types/Person';
 import SoknadTempStorage from '../SoknadTempStorage';
+import './dineBarn.less';
 
 const bem = bemUtils('dineBarn');
 interface Props {
@@ -42,15 +42,6 @@ const barnItemLabelRenderer = (barn: Barn, intl: IntlShape): React.ReactNode => 
         </div>
     );
 };
-
-/*const getBarnOptions = (barn: Barn[] = [], intl: IntlShape): CheckboksPanelProps[] => {
-    return barn.map((barnet) => ({
-        label: `${intlHelper(intl, 'step.om-omsorgen-for-barn.form.født')} ${prettifyDate(
-            barnet.fødselsdato
-        )} ${formatName(barnet.fornavn, barnet.etternavn)}`,
-        value: barnet.aktørId,
-    }));
-};*/
 
 export const getBarnOptions = (
     barn: Barn[] = [],
@@ -90,7 +81,7 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
     const [annetBarnChanged, setAnnetBarnChanged] = useState(false);
     const { annetBarn = [] } = formData;
     const annetBarnFnr = annetBarn.map((barn) => barn.fnr);
-
+    const kanFortsette = barn.length > 0 || annetBarn.length > 0;
     useEffect(() => {
         if (annetBarnChanged === true && soknadId !== undefined) {
             setAnnetBarnChanged(false);
@@ -102,7 +93,7 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
         <SoknadFormStep
             id={StepID.OM_OMSORGEN_FOR_BARN}
             onStepCleanup={cleanupOmOmsorgenForBarnStep}
-            buttonDisabled={barn.length === 0}>
+            buttonDisabled={!kanFortsette}>
             <CounsellorPanel>
                 <p>
                     <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.1" />
@@ -149,7 +140,7 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
                     onAfterChange={() => setAnnetBarnChanged(true)}
                 />
             </Box>
-            {barn.length > 0 && (
+            {kanFortsette && (
                 <Box margin="xl">
                     <SoknadFormComponents.CheckboxPanelGroup
                         legend={intlHelper(intl, 'step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg')}
@@ -160,7 +151,7 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
                 </Box>
             )}
 
-            {barn.length === 0 && (
+            {!kanFortsette && (
                 <Box margin="l">
                     <AlertStripe type={'advarsel'}>
                         {intlHelper(intl, 'step.om-omsorgen-for-barn.ingenbarn')}

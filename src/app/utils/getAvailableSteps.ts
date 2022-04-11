@@ -8,13 +8,18 @@ const welcomingPageIsComplete = ({ harForståttRettigheterOgPlikter }: SoknadFor
 };
 
 const omOmsorgenForBarnIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
-    return welcomingPageIsComplete(values) && barn.length > 0 && (values.harAleneomsorgFor || []).length > 0;
+    return (
+        welcomingPageIsComplete(values) &&
+        (barn.length > 0 || (values.annetBarn || []).length > 0) &&
+        (values.harAleneomsorgFor || []).length > 0
+    );
 };
 
 const tidspunktForAleneomsorgIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
     const barnUtenAleneomsorgITidspunkt = values.aleneomsorgTidspunkt.filter((b) =>
         barnFinnesIkkeIArray(b.fnrId, values.harAleneomsorgFor)
     );
+
     return (
         omOmsorgenForBarnIsComplete(values, barn) &&
         (values.aleneomsorgTidspunkt || []).length > 0 &&
