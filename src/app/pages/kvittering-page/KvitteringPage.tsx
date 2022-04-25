@@ -14,7 +14,7 @@ const KvitteringPage = () => {
                 tittel={intlHelper(intl, 'kvittering.tittel')}
                 liste={{
                     tittel: intlHelper(intl, 'kvittering.info.tittel'),
-                    punkter: [intlHelper(intl, 'kvittering.info.1')],
+                    punkter: [intlHelper(intl, 'kvittering.info.1'), intlHelper(intl, 'kvittering.info.2')],
                 }}></Kvittering>
         </Page>
     );

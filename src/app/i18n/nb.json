@@ -98,7 +98,8 @@
 
     "kvittering.tittel": "Registrering av aleneomsorg for omsorgsdager er mottatt",
     "kvittering.info.tittel": "Hva skjer videre nå?",
-    "kvittering.info.1": "Når vi har behandlet registreringen din får du en bekreftelse både per post og på Ditt NAV.",
+    "kvittering.info.1": "Når vi har behandlet registreringen din får du vedtak både per post og på Ditt NAV.",
+    "kvittering.info.2": "Hvis du har registrert aleneomsorg for flere barn får du ett vedtak per barn.",
 
     "validation.harForståttRettigheterOgPlikter.notChecked": "Du må bekrefte at du har lest og forstått dine plikter.",
     "validation.harBekreftetOpplysninger.notChecked": "Du må bekrefte at opplysningene du har gitt er riktige.",
