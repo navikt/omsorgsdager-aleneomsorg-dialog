@@ -5,11 +5,6 @@ export const aldersBegrensingOver = (fødselsdato: Date, maxGrenseYears: number)
     return dayjs().diff(fødselsdato, 'year') <= maxGrenseYears;
 };
 
-/*export const nYearsAgo = (years: number): Date => {
-    return dayjs(dateToday).subtract(years, 'y').add(1, 'day').toDate();
-};
-*/
-
 export const nYearsAgo = (years: number): Date => {
     return dayjs(dateToday).subtract(years, 'y').startOf('year').toDate();
 };
