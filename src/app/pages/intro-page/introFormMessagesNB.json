@@ -1,11 +1,18 @@
 {
-    "introform.informationPoster.avsnitt.1": "Her kan du registrere at du er alene om omsorgen for barn i forbindelse med bruk av omsorgsdager.",
-    "introform.informationPoster.avsnitt.2.html": "<strong>Det er viktig å presisere at denne registreringen kun gjelder for bruk av omsorgsdager.</strong> Dette fordi det er forskjellige regler for hva som blir ansett som aleneomsorg for andre enslig forsørger-stønader fra NAV. Hvis du skal",
-    "introform.informationPoster.avsnitt.2.lenkeTittel": "søke om andre stønader fordi har aleneomsorg for barn, kan du lese mer om det her.",
-    "introform.informationPoster.avsnitt.3": "Når det gjelder omsorgsdager blir du ansett som at du er alene om omsorgen når du og den andre forelderen til barnet ikke bor sammen, og barnet bor fast bare hos deg. Det betyr at barnet må ha folkeregistrert adresse hos deg. Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge og ingen av dere blir ansett som alene om omsorgen.",
-    "introform.informationPoster.avsnitt.4": "Du som er alene om omsorgen får doblet antall omsorgsdager. Dette må registreres hos NAV slik at vi kan utbetale for riktig antall dager. Dette gjelder både hvis arbeidsgiver skal utbetale omsorgspenger til deg for brukte omsorgsdager, og hvis du selv skal søke om utbetaling direkte fra NAV.",
-    "introform.informationPoster.avsnitt.5": "Hvis du registrerer at du er alene om omsorgen nå, og senere inngår avtale om delt bosted eller flytter sammen med den andre forelderen, må du gi beskjed til NAV. Det gjør du ved å",
-    "introform.informationPoster.avsnitt.5.lenkeTittel": "skrive en beskjed til oss.",
+    "introform.informationPoster.avsnitt.1": "Her registrerer du at du er alene om omsorgen for barn, slik at du får doblet antall omsorgsdager.",
+    "introform.informationPoster.avsnitt.2.html": "<strong>Når det gjelder omsorgsdager er du alene om omsorgen når.</strong>",
+    "introform.informationPoster.avsnitt.2.list.item.1": "du og den andre forelderen ikke bor sammen",
+    "introform.informationPoster.avsnitt.2.list.item.2": "du er enke eller enkemann",
+    "introform.informationPoster.avsnitt.2.list.item.3": "barnet har folkeregistrert adresse hos deg",
+
+    "introform.informationPoster.avsnitt.3": "Har du og den andre forelderen avtalt delt bosted for barnet, er ingen av dere alene om omsorgen. Da har dere begge rett på ordinære omsorgsdager, og du skal ikke registrere deg som alene.",
+
+    "introform.informationPoster.avsnitt.4.html": "<strong>Du må gi beskjed via skriv til oss hvis</strong>",
+    "introform.informationPoster.avsnitt.4.list.item.1": "dere senere inngår avtale om delt bosted",
+    "introform.informationPoster.avsnitt.4.list.item.2": "flytter sammen igjen",
+    "introform.informationPoster.avsnitt.4.list.item.3": "barnet flytter fra deg",
+
+    "introform.informationPoster.avsnitt.5": "Vær oppmerksom på at vi kan avslå registreringen om aleneomsorg, for eksempel hvis du har samme folkeregistrert adresse som den andre forelderen.",
 
     "introForm.erSokerlestInformasjonen.spm": "Har du lest informasjonen over?",
     "introForm.erSokerAleneOmsorg.spm": "Er du alene om omsorgen for barn?",

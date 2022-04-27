@@ -15,7 +15,6 @@ import { barnFinnesIArray } from '../../utils/map-form-data-to-api-data/mapBarnT
 import { getListValidator } from '@navikt/sif-common-formik/lib/validation';
 import ItemList from '@navikt/sif-common-core/lib/components/item-list/ItemList';
 import bemUtils from '@navikt/sif-common-core/lib/utils/bemUtils';
-import { Undertittel } from 'nav-frontend-typografi';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import ContentWithHeader from '@navikt/sif-common-core/lib/components/content-with-header/ContentWithHeader';
 import AnnetBarnListAndDialog from '@navikt/sif-common-forms/lib/annet-barn/AnnetBarnListAndDialog';
@@ -105,13 +104,14 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
 
             {barn.length > 0 && (
                 <Box margin="xl">
-                    <Undertittel>Dine Barn</Undertittel>
-                    <ItemList<Barn>
-                        getItemId={(registrerteBarn): string => registrerteBarn.aktørId}
-                        getItemTitle={(registrerteBarn): string => registrerteBarn.etternavn}
-                        labelRenderer={(barn): React.ReactNode => barnItemLabelRenderer(barn, intl)}
-                        items={barn}
-                    />
+                    <ContentWithHeader header={intlHelper(intl, 'step.om-omsorgen-for-barn.dineBarn.seksjonsTittel')}>
+                        <ItemList<Barn>
+                            getItemId={(registrerteBarn): string => registrerteBarn.aktørId}
+                            getItemTitle={(registrerteBarn): string => registrerteBarn.etternavn}
+                            labelRenderer={(barn): React.ReactNode => barnItemLabelRenderer(barn, intl)}
+                            items={barn}
+                        />
+                    </ContentWithHeader>
                 </Box>
             )}
             <FormBlock>
