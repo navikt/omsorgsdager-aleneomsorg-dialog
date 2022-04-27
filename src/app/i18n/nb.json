@@ -40,7 +40,19 @@
     "step.om-omsorgen-for-barn.stepIntro.1": "Når det gjelder omsorgsdager blir du ansett som at du er alene om omsorgen når du og den andre forelderen til barnet ikke bor sammen, og barnet bor fast bare hos deg. Det betyr at barnet må ha folkeregistrert adresse hos deg.",
     "step.om-omsorgen-for-barn.stepIntro.2": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge og ingen av dere blir ansett som alene om omsorgen. Det betyr at hvis dere har en slik avtale om delt bosted, skal du ikke registrere aleneomsorg.",
 
+    "step.om-omsorgen-for-barn.dineBarn.seksjonsTittel": "Dine barn",
+
+    "step.om-omsorgen-for-barn.info.spm.andreBarn": "Har du barn som ikke er registrert her?",
+    "step.om-omsorgen-for-barn.info.spm.flereBarn": "Har du flere barn som ikke er registrert her?",
+    "step.om-omsorgen-for-barn.info.spm.text": "Hvis du har barn som ikke er registrert her, kan du legge inn disse selv. Det kan for eksempel være fosterbarn.",
+
+    "step.om-omsorgen-for-barn.annetBarnListAndDialog.addLabel": "Legg til barn",
+    "step.om-omsorgen-for-barn.annetBarnListAndDialog.listTitle": "Barn du har lagt til",
+    "step.om-omsorgen-for-barn.annetBarnListAndDialog.modalTitle": "Legg til barn",
+    "step.om-omsorgen-for-barn.formLeggTilBarn.aldersGrenseInfo": "(Du kan ikke legge til barn som er 19 år i år eller eldre)",
+
     "step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg": "Kryss av for barn du er alene om omsorgen for:",
+
     "step.om-omsorgen-for-barn.form.født": "Født",
     "step.om-omsorgen-for-barn.ingenbarn": "Du må ha minst ett barn for å kunne gå videre.",
     "step.om-omsorgen-for-barn.nextButtonLabel": "Fortsett",
@@ -64,6 +76,7 @@
 
     "step.oppsummering.deres-felles-barn.header": "Barn",
     "step.oppsummering.deres-felles-barn.barn": "Barn",
+    "step.oppsummering.dineBarn.listItem.FOSTERBARN": "(Barnet er mitt fosterbarn).",
 
     "step.oppsummering.om-omsorgen-for-barn.barnList.tittle": "Barn du er alene om omsorgen for",
     "step.oppsummering.om-omsorgen-for-barn.harOmsorgFor.tidspunktForAleneomsorg": "Tidspunkt for aleneomsorg: {dato}",
@@ -85,7 +98,8 @@
 
     "kvittering.tittel": "Registrering av aleneomsorg for omsorgsdager er mottatt",
     "kvittering.info.tittel": "Hva skjer videre nå?",
-    "kvittering.info.1": "Når vi har behandlet registreringen din får du en bekreftelse både per post og på Ditt NAV.",
+    "kvittering.info.1": "Når vi har behandlet registreringen din får du vedtak både per post og på Ditt NAV.",
+    "kvittering.info.2": "Hvis du har registrert aleneomsorg for flere barn får du ett vedtak per barn.",
 
     "validation.harForståttRettigheterOgPlikter.notChecked": "Du må bekrefte at du har lest og forstått dine plikter.",
     "validation.harBekreftetOpplysninger.notChecked": "Du må bekrefte at opplysningene du har gitt er riktige.",

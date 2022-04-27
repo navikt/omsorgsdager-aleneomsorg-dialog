@@ -1,3 +1,4 @@
+import { AnnetBarn } from '@navikt/sif-common-forms/lib/annet-barn/types';
 export interface Barn {
     fødselsdato: Date;
     fornavn: string;
@@ -26,6 +27,7 @@ export enum AleneomsorgTidspunktField {
 export enum SoknadFormField {
     harForståttRettigheterOgPlikter = 'harForståttRettigheterOgPlikter',
     harBekreftetOpplysninger = 'harBekreftetOpplysninger',
+    annetBarn = 'annetBarn',
     harAleneomsorgFor = 'harAleneomsorgFor',
     aleneomsorgTidspunkt = 'aleneomsorgTidspunkt',
 }
@@ -33,10 +35,14 @@ export enum SoknadFormField {
 export interface SoknadFormData {
     [SoknadFormField.harForståttRettigheterOgPlikter]: boolean;
     [SoknadFormField.harBekreftetOpplysninger]: boolean;
+    [SoknadFormField.annetBarn]: AnnetBarn[];
     [SoknadFormField.harAleneomsorgFor]: Array<string>;
     [SoknadFormField.aleneomsorgTidspunkt]: AleneomsorgTidspunkt[];
 }
 
-export type OmOmsorgenForBarnFormData = Pick<SoknadFormData, SoknadFormField.harAleneomsorgFor>;
+export type OmOmsorgenForBarnFormData = Pick<
+    SoknadFormData,
+    SoknadFormField.harAleneomsorgFor | SoknadFormField.annetBarn
+>;
 
 export type TidspunktForAleneomsorg = Pick<SoknadFormData, SoknadFormField.aleneomsorgTidspunkt>;

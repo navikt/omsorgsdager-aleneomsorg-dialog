@@ -2,16 +2,11 @@ import React from 'react';
 import SummaryList from '@navikt/sif-common-core/lib/components/summary-list/SummaryList';
 import { IntlShape, useIntl } from 'react-intl';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import { TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
+import { ApiBarn, TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
 import { apiStringDateToDate, prettifyDateExtended } from '@navikt/sif-common-core/lib/utils/dateUtils';
 
-export interface AlleBarnSummary {
-    navn: string;
-    tidspunktForAleneomsorg?: TidspunktForAleneomsorgApi;
-    dato?: string;
-}
 interface Props {
-    barn: AlleBarnSummary[];
+    barn: ApiBarn[];
 }
 const tidspunktRenderer = (
     intl: IntlShape,
@@ -55,7 +50,7 @@ const BarnSummaryList = ({ barn }: Props) => {
     return (
         <SummaryList
             items={barn}
-            itemRenderer={({ navn, tidspunktForAleneomsorg, dato }: AlleBarnSummary): string | React.ReactNode => {
+            itemRenderer={({ navn, tidspunktForAleneomsorg, dato }: ApiBarn): string | React.ReactNode => {
                 if (tidspunktForAleneomsorg) {
                     return tidspunktRenderer(intl, navn, tidspunktForAleneomsorg, dato);
                 } else return navn;

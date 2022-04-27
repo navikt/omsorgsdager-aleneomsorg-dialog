@@ -1,5 +1,7 @@
+import { formatDateToApiFormat } from '@navikt/sif-common-core/lib/utils/dateUtils';
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
-import { ApiBarn, TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
+import { AnnetBarn, BarnType } from '@navikt/sif-common-forms/lib/annet-barn/types';
+import { ApiBarn, RegisterteBarnTypeApi, TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
 import { AleneomsorgTidspunkt, Barn, TidspunktForAleneomsorgFormData } from '../../types/SoknadFormData';
 
 const getTidspunktForAleneomsorg = (
@@ -27,5 +29,24 @@ export const mapBarnToApiBarn = (registrertBarn: Barn, aleneomsorgTidspunkter: A
             tidspunktForAleneomsorg === TidspunktForAleneomsorgApi.SISTE_2_ÅRENE
                 ? getDateForAleneomsorg(registrertBarn.aktørId, aleneomsorgTidspunkter)
                 : undefined,
+        type: RegisterteBarnTypeApi.fraOppslag,
+    };
+};
+
+export const mapAnnetBarnToApiBarn = (
+    annetBarn: AnnetBarn,
+    aleneomsorgTidspunkter: AleneomsorgTidspunkt[]
+): ApiBarn => {
+    const tidspunktForAleneomsorg = getTidspunktForAleneomsorg(annetBarn.fnr, aleneomsorgTidspunkter);
+    return {
+        navn: annetBarn.navn,
+        identitetsnummer: annetBarn.fnr,
+        fødselsdato: formatDateToApiFormat(annetBarn.fødselsdato),
+        tidspunktForAleneomsorg: tidspunktForAleneomsorg,
+        dato:
+            tidspunktForAleneomsorg === TidspunktForAleneomsorgApi.SISTE_2_ÅRENE
+                ? getDateForAleneomsorg(annetBarn.fnr, aleneomsorgTidspunkter)
+                : undefined,
+        type: annetBarn.type ? annetBarn.type : BarnType.annet,
     };
 };
