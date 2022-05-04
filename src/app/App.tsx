@@ -14,14 +14,14 @@ import '@navikt/sif-common-core/lib/styles/globalStyles.less';
 Modal.setAppElement('#app');
 
 export const APPLICATION_KEY = 'omsorgsdager-aleneomsorg-dialog';
-export const SKJEMANAVN = 'Registrering av aleneomsorg for omsorgsdager';
+export const SKJEMANAVN = 'Søknad om ekstra omsorgsdager ved aleneomsorg for barn';
 
 const publicPath = getEnvironmentVariable('PUBLIC_PATH');
 
 render(
     <AmplitudeProvider applicationKey={APPLICATION_KEY}>
         <SoknadApplication
-            appName="Registrering av aleneomsorg for omsorgsdager"
+            appName="Søknad om ekstra omsorgsdager ved aleneomsorg for barn"
             intlMessages={applicationIntlMessages}
             sentryKey={APPLICATION_KEY}
             appStatus={{

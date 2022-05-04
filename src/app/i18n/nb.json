@@ -1,5 +1,5 @@
 {
-    "application.title": "Registrering av aleneomsorg for omsorgsdager",
+    "application.title": "Søknad om ekstra omsorgsdager ved aleneomsorg for barn",
 
     "application.loadError.title": "Noe gikk galt ...",
     "application.loadError.message": "Beklager, her har det dessverre skjedd en feil. Dersom feilen fortsetter, prøv igjen litt senere.",
@@ -25,8 +25,8 @@
     "lesMerOmFastBostedOgSamvær": "Les mer om fast bosted og samvær",
 
     "step.velkommen.banner.tittel": "Hei!",
-    "step.velkommen.banner.tekst": "Jeg vil hjelpe deg med å registrere aleneomsorg for omsorgsdager.",
-    "step.velkommen.tittel": "Registrering av aleneomsorg for omsorgsdager",
+    "step.velkommen.banner.tekst": "Jeg vil hjelpe deg med å søke om ekstra omsorgsdager ved aleneomsorg for barn.",
+    "step.velkommen.tittel": "Søknad om ekstra omsorgsdager ved aleneomsorg for barn",
     "step.velkommen.personopplysninger.lenketekst": "Les om hvordan NAV behandler personopplysningene dine",
     "step.velkommen.button.start": "Fortsett",
 
@@ -37,8 +37,8 @@
 
     "step.om-omsorgen-for-barn.pageTitle": "Om aleneomsorg for barn",
     "step.om-omsorgen-for-barn.stepTitle": "Om aleneomsorg for barn",
-    "step.om-omsorgen-for-barn.stepIntro.1": "Når det gjelder omsorgsdager blir du ansett som at du er alene om omsorgen når du og den andre forelderen til barnet ikke bor sammen, og barnet bor fast bare hos deg. Det betyr at barnet må ha folkeregistrert adresse hos deg.",
-    "step.om-omsorgen-for-barn.stepIntro.2": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge og ingen av dere blir ansett som alene om omsorgen. Det betyr at hvis dere har en slik avtale om delt bosted, skal du ikke registrere aleneomsorg.",
+    "step.om-omsorgen-for-barn.stepIntro.1": "Når det gjelder omsorgsdager har du aleneomsorg for barn når du og den andre forelderen ikke bor sammen, og barnet bor fast hos deg. Det vil si at barnet har folkeregistrert adresse hos deg.",
+    "step.om-omsorgen-for-barn.stepIntro.2": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge. I disse tilfellene har ingen av dere aleneomsorg, og kan heller ikke søke om ekstra omsorgsdager på grunn av aleneomsorg.",
 
     "step.om-omsorgen-for-barn.dineBarn.seksjonsTittel": "Dine barn",
 
@@ -69,8 +69,8 @@
 
     "step.oppsummering.pageTitle": "Oppsummering",
     "step.oppsummering.stepTitle": "Oppsummering",
-    "step.oppsummering.nextButtonLabel": "Send inn registrering",
-    "step.oppsummering.info": "Les gjennom oppsummeringen og sjekk at alt er riktig før du sender inn registreringen. Hvis du vil gjøre endringer, kan du gå tilbake.",
+    "step.oppsummering.nextButtonLabel": "Send søknad",
+    "step.oppsummering.info": "Les gjennom oppsummeringen og sjekk at alt er riktig før du sender inn søknaden. Hvis du vil gjøre endringer, kan du gå tilbake.",
 
     "step.oppsummering.søker.header": "Om deg",
 
@@ -96,9 +96,9 @@
     "samtykke.harForståttLabel.lenketekst": "dine plikter",
     "fieldvalidation.mottakersFnrErSøkersFnr": "Du har tastet inn ditt eget fødselsnummer",
 
-    "kvittering.tittel": "Registrering av aleneomsorg for omsorgsdager er mottatt",
+    "kvittering.tittel": "Søknad om ekstra omsorgsdager ved aleneomsorg for barn er mottatt",
     "kvittering.info.tittel": "Hva skjer videre nå?",
-    "kvittering.info.1": "Når vi har behandlet registreringen din får du vedtak både per post og på Ditt NAV.",
+    "kvittering.info.1": "Når vi har behandlet søknaden din får du vedtak både per post og på Ditt NAV.",
     "kvittering.info.2": "Hvis du har registrert aleneomsorg for flere barn får du ett vedtak per barn.",
 
     "validation.harForståttRettigheterOgPlikter.notChecked": "Du må bekrefte at du har lest og forstått dine plikter.",

@@ -56,10 +56,6 @@ const IntroPage = () => {
                             <FormattedMessage id="introform.informationPoster.avsnitt.4.list.item.3" />
                         </li>
                     </ul>
-
-                    <p>
-                        <FormattedHtmlMessage id="introform.informationPoster.avsnitt.5" />{' '}
-                    </p>
                 </InformationPoster>
             </Box>
             <FormBlock>

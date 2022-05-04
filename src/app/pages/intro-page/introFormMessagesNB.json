@@ -1,5 +1,5 @@
 {
-    "introform.informationPoster.avsnitt.1": "Her registrerer du at du er alene om omsorgen for barn, slik at du får doblet antall omsorgsdager.",
+    "introform.informationPoster.avsnitt.1": "Her søker du om ekstra omsorgsdager når du er alene om omsorgen for barn. I disse tilfellene får du doblet antall omsorgsdager.",
     "introform.informationPoster.avsnitt.2.html": "<strong>Når det gjelder omsorgsdager er du alene om omsorgen når.</strong>",
     "introform.informationPoster.avsnitt.2.list.item.1": "du og den andre forelderen ikke bor sammen",
     "introform.informationPoster.avsnitt.2.list.item.2": "du er enke eller enkemann",
@@ -12,8 +12,6 @@
     "introform.informationPoster.avsnitt.4.list.item.2": "flytter sammen igjen",
     "introform.informationPoster.avsnitt.4.list.item.3": "barnet flytter fra deg",
 
-    "introform.informationPoster.avsnitt.5": "Vær oppmerksom på at vi kan avslå registreringen om aleneomsorg, for eksempel hvis du har samme folkeregistrert adresse som den andre forelderen.",
-
     "introForm.erSokerlestInformasjonen.spm": "Har du lest informasjonen over?",
     "introForm.erSokerAleneOmsorg.spm": "Er du alene om omsorgen for barn?",
 
@@ -22,5 +20,5 @@
     "introForm.validation.erSokerAleneOmsorg.yesOrNoIsUnanswered": "Du må svare ja eller nei på om du er alene om omsorgen for barn.",
     "introForm.validation.erSokerAleneOmsorg.nei": "Du må være alene om omsorgen for minst ett barn for å kunne registrere aleneomsorg.",
 
-    "introForm.start": "Start registrering"
+    "introForm.start": "Start søknad"
 }
