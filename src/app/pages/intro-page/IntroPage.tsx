@@ -11,8 +11,6 @@ import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { navigateToSoknadFrontpage } from '../../utils/navigationUtils';
 import IntroForm from './IntroForm';
 import { SIFCommonPageKey, useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
-import getLenker from '../../lenker';
-import Lenke from 'nav-frontend-lenker';
 
 const IntroPage = () => {
     const intl = useIntl();
@@ -25,26 +23,39 @@ const IntroPage = () => {
             topContentRenderer={() => <StepBanner tag="h1" text={intlHelper(intl, 'application.title')} />}>
             <Box margin="xxxl">
                 <InformationPoster>
-                    <FormattedMessage id="introform.informationPoster.avsnitt.1" />
-
                     <p>
-                        <FormattedHtmlMessage id="introform.informationPoster.avsnitt.2.html" />{' '}
-                        <Lenke href={getLenker(intl.locale).aleneMedBarn} target="_blank">
-                            <FormattedMessage id="introform.informationPoster.avsnitt.2.lenkeTittel" />
-                        </Lenke>
+                        <FormattedMessage id="introform.informationPoster.avsnitt.1" />
                     </p>
+
+                    <FormattedHtmlMessage id="introform.informationPoster.avsnitt.2.html" />
+                    <ul style={{ marginTop: '0.1rem' }}>
+                        <li>
+                            <FormattedMessage id="introform.informationPoster.avsnitt.2.list.item.1" />
+                        </li>
+                        <li>
+                            <FormattedMessage id="introform.informationPoster.avsnitt.2.list.item.2" />
+                        </li>
+                        <li>
+                            <FormattedMessage id="introform.informationPoster.avsnitt.2.list.item.3" />
+                        </li>
+                    </ul>
+
                     <p>
                         <FormattedHtmlMessage id="introform.informationPoster.avsnitt.3" />
                     </p>
-                    <p>
-                        <FormattedHtmlMessage id="introform.informationPoster.avsnitt.4" />
-                    </p>
-                    <p>
-                        <FormattedHtmlMessage id="introform.informationPoster.avsnitt.5" />{' '}
-                        <Lenke href={getLenker(intl.locale).skrivTilOss} target="_blank">
-                            <FormattedMessage id="introform.informationPoster.avsnitt.5.lenkeTittel" />
-                        </Lenke>
-                    </p>
+
+                    <FormattedHtmlMessage id="introform.informationPoster.avsnitt.4.html" />
+                    <ul style={{ marginTop: '0.1rem' }}>
+                        <li>
+                            <FormattedMessage id="introform.informationPoster.avsnitt.4.list.item.1" />
+                        </li>
+                        <li>
+                            <FormattedMessage id="introform.informationPoster.avsnitt.4.list.item.2" />
+                        </li>
+                        <li>
+                            <FormattedMessage id="introform.informationPoster.avsnitt.4.list.item.3" />
+                        </li>
+                    </ul>
                 </InformationPoster>
             </Box>
             <FormBlock>

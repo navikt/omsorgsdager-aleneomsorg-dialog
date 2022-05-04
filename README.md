@@ -1,4 +1,4 @@
-# Registrering av aleneomsorg for omsorgsdager
+# Søknad om ekstra omsorgsdager ved aleneomsorg for barn
 
 ## Komme i gang
 
