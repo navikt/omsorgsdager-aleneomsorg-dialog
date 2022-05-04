@@ -1,7 +1,7 @@
 {
     "name": "omsorgsdager-aleneomsorg-dialog",
     "version": "0.0.1",
-    "description": "Søknadsdialog for å bli anset som midlertidig alene",
+    "description": "Søknad om ekstra omsorgsdager ved aleneomsorg for barn",
     "repository": "https://github.com/navikt/omsorgsdager-aleneomsorg-dialog",
     "license": "MIT",
     "author": "NAV",
