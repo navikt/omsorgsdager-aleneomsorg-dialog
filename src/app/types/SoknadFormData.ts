@@ -1,3 +1,4 @@
+import { YesOrNo } from '@navikt/sif-common-formik/lib';
 import { AnnetBarn } from '@navikt/sif-common-forms/lib/annet-barn/types';
 export interface Barn {
     fødselsdato: Date;
@@ -28,6 +29,8 @@ export enum SoknadFormField {
     harForståttRettigheterOgPlikter = 'harForståttRettigheterOgPlikter',
     harBekreftetOpplysninger = 'harBekreftetOpplysninger',
     annetBarn = 'annetBarn',
+    avtaleOmDeltBosted = 'avtaleOmDeltBosted',
+    harAvtaleOmDeltBostedFor = 'harAvtaleOmDeltBostedFor',
     harAleneomsorgFor = 'harAleneomsorgFor',
     aleneomsorgTidspunkt = 'aleneomsorgTidspunkt',
 }
@@ -36,6 +39,8 @@ export interface SoknadFormData {
     [SoknadFormField.harForståttRettigheterOgPlikter]: boolean;
     [SoknadFormField.harBekreftetOpplysninger]: boolean;
     [SoknadFormField.annetBarn]: AnnetBarn[];
+    [SoknadFormField.avtaleOmDeltBosted]: YesOrNo;
+    [SoknadFormField.harAvtaleOmDeltBostedFor]: Array<string>;
     [SoknadFormField.harAleneomsorgFor]: Array<string>;
     [SoknadFormField.aleneomsorgTidspunkt]: AleneomsorgTidspunkt[];
 }

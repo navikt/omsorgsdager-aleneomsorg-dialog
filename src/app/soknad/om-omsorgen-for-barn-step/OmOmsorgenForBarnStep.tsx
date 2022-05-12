@@ -12,7 +12,7 @@ import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-p
 import { CheckboksPanelProps } from 'nav-frontend-skjema';
 import SoknadFormComponents from '../SoknadFormComponents';
 import { barnFinnesIArray } from '../../utils/map-form-data-to-api-data/mapBarnToApiData';
-import { getListValidator } from '@navikt/sif-common-formik/lib/validation';
+import { getListValidator, getYesOrNoValidator } from '@navikt/sif-common-formik/lib/validation';
 import ItemList from '@navikt/sif-common-core/lib/components/item-list/ItemList';
 import bemUtils from '@navikt/sif-common-core/lib/utils/bemUtils';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
@@ -23,6 +23,9 @@ import { AnnetBarn } from '@navikt/sif-common-forms/lib/annet-barn/types';
 import { Person } from '../../types/Person';
 import SoknadTempStorage from '../SoknadTempStorage';
 import './dineBarn.less';
+import { barnFinnesIkkeIArray } from '../../utils/tidspunktForAleneomsorgUtils';
+import { YesOrNo } from '@navikt/sif-common-formik/lib';
+import { useFormikContext } from 'formik';
 
 const bem = bemUtils('dineBarn');
 interface Props {
@@ -45,16 +48,24 @@ const barnItemLabelRenderer = (barn: Barn, intl: IntlShape): React.ReactNode => 
 export const getBarnOptions = (
     barn: Barn[] = [],
     andreBarn: AnnetBarn[] = [],
-    intl: IntlShape
+    intl: IntlShape,
+    harAvtaleOmDeltBostedFor?: string[]
 ): CheckboksPanelProps[] => {
+    const filtrertBarn = harAvtaleOmDeltBostedFor
+        ? barn.filter((b) => barnFinnesIkkeIArray(b.aktørId, harAvtaleOmDeltBostedFor))
+        : barn;
+    const filtrertAndreBarn = harAvtaleOmDeltBostedFor
+        ? andreBarn.filter((b) => barnFinnesIkkeIArray(b.fnr, harAvtaleOmDeltBostedFor))
+        : andreBarn;
+
     return [
-        ...barn.map((barnet) => ({
+        ...filtrertBarn.map((barnet) => ({
             label: `${intlHelper(intl, 'step.om-omsorgen-for-barn.form.født')} ${prettifyDate(
                 barnet.fødselsdato
             )} ${formatName(barnet.fornavn, barnet.etternavn)}`,
             value: barnet.aktørId,
         })),
-        ...andreBarn.map((barnet) => ({
+        ...filtrertAndreBarn.map((barnet) => ({
             label: `${intlHelper(intl, 'step.om-omsorgen-for-barn.form.født')} ${prettifyDate(barnet.fødselsdato)} ${
                 barnet.navn
             }`,
@@ -72,27 +83,42 @@ const cleanupOmOmsorgenForBarnStep = (formValues: SoknadFormData): SoknadFormDat
         );
     }
 
+    if (values.avtaleOmDeltBosted === YesOrNo.YES) {
+        values.harAleneomsorgFor = values.harAleneomsorgFor.filter((b) =>
+            barnFinnesIkkeIArray(b, values.harAvtaleOmDeltBostedFor)
+        );
+    }
+
     return values;
 };
 
 const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
     const intl = useIntl();
+    const { setFieldValue } = useFormikContext<SoknadFormData>();
     const [annetBarnChanged, setAnnetBarnChanged] = useState(false);
-    const { annetBarn = [] } = formData;
+    const { annetBarn = [], harAvtaleOmDeltBostedFor, avtaleOmDeltBosted } = formData;
     const annetBarnFnr = annetBarn.map((barn) => barn.fnr);
     const kanFortsette = barn.length > 0 || annetBarn.length > 0;
+
     useEffect(() => {
         if (annetBarnChanged === true && soknadId !== undefined) {
             setAnnetBarnChanged(false);
             SoknadTempStorage.update(soknadId, formData, StepID.OM_OMSORGEN_FOR_BARN, { søker, barn });
         }
     }, [annetBarnChanged, formData, søker, barn, soknadId]);
+    const clearHarAvtaleOmDeltBostedFor = () => {
+        setFieldValue(SoknadFormField.harAvtaleOmDeltBostedFor, []);
+    };
 
     return (
         <SoknadFormStep
             id={StepID.OM_OMSORGEN_FOR_BARN}
             onStepCleanup={cleanupOmOmsorgenForBarnStep}
-            buttonDisabled={!kanFortsette}>
+            buttonDisabled={
+                !kanFortsette ||
+                (getBarnOptions(barn, annetBarn, intl, harAvtaleOmDeltBostedFor).length === 0 &&
+                    avtaleOmDeltBosted === YesOrNo.YES)
+            }>
             <CounsellorPanel>
                 <p>
                     <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.1" />
@@ -140,15 +166,50 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
                     onAfterChange={() => setAnnetBarnChanged(true)}
                 />
             </Box>
+
             {kanFortsette && (
-                <Box margin="xl">
-                    <SoknadFormComponents.CheckboxPanelGroup
-                        legend={intlHelper(intl, 'step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg')}
-                        name={SoknadFormField.harAleneomsorgFor}
-                        checkboxes={getBarnOptions(barn, annetBarn, intl)}
-                        validate={getListValidator({ required: true })}
-                    />
-                </Box>
+                <>
+                    <Box margin="xl">
+                        <SoknadFormComponents.YesOrNoQuestion
+                            legend={intlHelper(intl, 'step.om-omsorgen-for-barn.deltBosted.spm')}
+                            name={SoknadFormField.avtaleOmDeltBosted}
+                            validate={getYesOrNoValidator()}
+                            afterOnChange={clearHarAvtaleOmDeltBostedFor}
+                        />
+                    </Box>
+                    {avtaleOmDeltBosted === YesOrNo.YES && (
+                        <Box margin="xl">
+                            <SoknadFormComponents.CheckboxPanelGroup
+                                legend={intlHelper(intl, 'step.om-omsorgen-for-barn.deltBosted')}
+                                name={SoknadFormField.harAvtaleOmDeltBostedFor}
+                                checkboxes={getBarnOptions(barn, annetBarn, intl)}
+                                validate={getListValidator({ required: true })}
+                            />
+                        </Box>
+                    )}
+                    {getBarnOptions(barn, annetBarn, intl, harAvtaleOmDeltBostedFor).length === 0 &&
+                        avtaleOmDeltBosted === YesOrNo.YES && (
+                            <Box margin="l">
+                                <AlertStripe type={'advarsel'}>
+                                    {intlHelper(intl, 'step.om-omsorgen-for-barn.alleBarnMedDeltBosted')}
+                                </AlertStripe>
+                            </Box>
+                        )}
+                    {getBarnOptions(barn, annetBarn, intl, harAvtaleOmDeltBostedFor).length > 0 &&
+                        avtaleOmDeltBosted !== YesOrNo.UNANSWERED && (
+                            <Box margin="xl">
+                                <SoknadFormComponents.CheckboxPanelGroup
+                                    legend={intlHelper(
+                                        intl,
+                                        'step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg'
+                                    )}
+                                    name={SoknadFormField.harAleneomsorgFor}
+                                    checkboxes={getBarnOptions(barn, annetBarn, intl, harAvtaleOmDeltBostedFor)}
+                                    validate={getListValidator({ required: true })}
+                                />
+                            </Box>
+                        )}
+                </>
             )}
 
             {!kanFortsette && (

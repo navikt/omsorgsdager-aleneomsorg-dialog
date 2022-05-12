@@ -8,6 +8,7 @@ import {
 } from '../../types/SoknadFormData';
 import { ApiBarn, RegisterteBarnTypeApi, SoknadApiData, TidspunktForAleneomsorgApi } from '../../types/SoknadApiData';
 import { mapFormDataToApiData } from '../map-form-data-to-api-data/mapFormDataToApiData';
+import { YesOrNo } from '@navikt/sif-common-formik/lib';
 
 const barnsFødselsdato = new Date(2021, 0, 20);
 const registrerteBarnMock: Barn[] = [
@@ -47,6 +48,8 @@ const formDataMock: SoknadFormData = {
     [SoknadFormField.harAleneomsorgFor]: harAleneomsorgFor,
     [SoknadFormField.aleneomsorgTidspunkt]: aleneomsorgTidspunkt,
     [SoknadFormField.annetBarn]: [],
+    [SoknadFormField.avtaleOmDeltBosted]: YesOrNo.NO,
+    [SoknadFormField.harAvtaleOmDeltBostedFor]: [],
 };
 
 describe('mapFormDataToApiData', () => {
