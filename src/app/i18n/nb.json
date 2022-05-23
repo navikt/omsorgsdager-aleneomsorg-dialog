@@ -53,7 +53,11 @@
 
     "step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg": "Kryss av for barn du er alene om omsorgen for:",
 
+    "step.om-omsorgen-for-barn.deltBosted.spm": "Har du avtale om delt bosted for barnet/noen av barna?",
+    "step.om-omsorgen-for-barn.deltBosted": "Kryss av for hvilke barn du har delt bosted for:",
+
     "step.om-omsorgen-for-barn.form.født": "Født",
+    "step.om-omsorgen-for-barn.alleBarnMedDeltBosted": "Du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge. I disse tilfellene har ingen av dere aleneomsorg, og kan heller ikke søke om ekstra omsorgsdager på grunn av aleneomsorg.",
     "step.om-omsorgen-for-barn.ingenbarn": "Du må ha minst ett barn for å kunne gå videre.",
     "step.om-omsorgen-for-barn.nextButtonLabel": "Fortsett",
 
@@ -96,13 +100,14 @@
     "samtykke.harForståttLabel.lenketekst": "dine plikter",
     "fieldvalidation.mottakersFnrErSøkersFnr": "Du har tastet inn ditt eget fødselsnummer",
 
-    "kvittering.tittel": "Søknad om ekstra omsorgsdager ved aleneomsorg for barn er mottatt",
+    "kvittering.tittel": "Søknad om ekstra omsorgsdager ved aleneomsorg er mottatt",
     "kvittering.info.tittel": "Hva skjer videre nå?",
-    "kvittering.info.1": "Når vi har behandlet søknaden din får du vedtak både per post og på Ditt NAV.",
-    "kvittering.info.2": "Hvis du har registrert aleneomsorg for flere barn får du ett vedtak per barn.",
+    "kvittering.info.1": "Når vi har behandlet søknaden din, får du et svar på Ditt NAV.",
+    "kvittering.info.2": "Hvis du har registrert deg mot å motta digital post, får du svaret tilsendt i posten.",
 
     "validation.harForståttRettigheterOgPlikter.notChecked": "Du må bekrefte at du har lest og forstått dine plikter.",
     "validation.harBekreftetOpplysninger.notChecked": "Du må bekrefte at opplysningene du har gitt er riktige.",
+    "validation.harAvtaleOmDeltBostedFor.listIsEmpty": "Du må krysse av for barn du har delt bosted for eller svare «Nei» på spørsmålet ovenfor.",
     "validation.harAleneomsorgFor.listIsEmpty": "Du må krysse av for barn du er alene om omsorgen for.",
     "validation.tidspunktForAleneomsorg.noValue": "Du må oppgi hvilket år du ble alene om omsorgen for barnet.",
     "validation.tidspunktForAleneomsorg.dato.dateHasNoValue": "Du må oppgi hvilken dato du ble alene om omsorgen for barnet.",
