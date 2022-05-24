@@ -1,17 +1,24 @@
 import { StepID } from '../soknad/soknadStepsConfig';
 
 import { Barn, SoknadFormData } from '../types/SoknadFormData';
-import { barnFinnesIkkeIArray } from './tidspunktForAleneomsorgUtils';
+import { barnFinnesIArray, barnFinnesIkkeIArray } from './tidspunktForAleneomsorgUtils';
 
 const welcomingPageIsComplete = ({ harForståttRettigheterOgPlikter }: SoknadFormData) => {
     return harForståttRettigheterOgPlikter === true;
 };
 
 const omOmsorgenForBarnIsComplete = (values: SoknadFormData, barn: Barn[]): boolean => {
+    const harAleneomsorgFor = values.harAleneomsorgFor.filter((b) =>
+        barnFinnesIkkeIArray(b, values.harAvtaleOmDeltBostedFor)
+    );
+    const barnMedAleneomsorgOgDeltBosted = values.harAleneomsorgFor.filter((b) =>
+        barnFinnesIArray(b, values.harAvtaleOmDeltBostedFor)
+    );
     return (
         welcomingPageIsComplete(values) &&
         (barn.length > 0 || (values.annetBarn || []).length > 0) &&
-        (values.harAleneomsorgFor || []).length > 0
+        (harAleneomsorgFor || []).length > 0 &&
+        barnMedAleneomsorgOgDeltBosted.length === 0
     );
 };
 

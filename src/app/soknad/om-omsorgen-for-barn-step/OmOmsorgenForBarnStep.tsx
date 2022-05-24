@@ -106,10 +106,13 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
             SoknadTempStorage.update(soknadId, formData, StepID.OM_OMSORGEN_FOR_BARN, { søker, barn });
         }
     }, [annetBarnChanged, formData, søker, barn, soknadId]);
+
     const clearHarAvtaleOmDeltBostedFor = () => {
         setFieldValue(SoknadFormField.harAvtaleOmDeltBostedFor, []);
     };
 
+    console.log(formData.harAvtaleOmDeltBostedFor);
+    console.log(formData.harAleneomsorgFor);
     return (
         <SoknadFormStep
             id={StepID.OM_OMSORGEN_FOR_BARN}
