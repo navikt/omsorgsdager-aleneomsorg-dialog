@@ -51,9 +51,13 @@
     "step.om-omsorgen-for-barn.annetBarnListAndDialog.modalTitle": "Legg til barn",
     "step.om-omsorgen-for-barn.formLeggTilBarn.aldersGrenseInfo": "(Du kan ikke legge til barn som er 19 år i år eller eldre)",
 
+    "step.om-omsorgen-for-barn.aleneomsorg.seksjonsTittel": "Aleneomsorg",
     "step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg": "Kryss av for barn du er alene om omsorgen for:",
 
+    "step.om-omsorgen-for-barn.deltBosted.seksjonsTittel": "Delt bosted",
     "step.om-omsorgen-for-barn.deltBosted.spm": "Har du avtale om delt bosted for barnet/noen av barna?",
+    "step.om-omsorgen-for-barn.deltBosted.description.tittel": "Hva er avtale om delt bosted?",
+    "step.om-omsorgen-for-barn.deltBosted.description": "Det er ..... TODO",
     "step.om-omsorgen-for-barn.deltBosted": "Kryss av for hvilke barn du har delt bosted for:",
 
     "step.om-omsorgen-for-barn.form.født": "Født",
