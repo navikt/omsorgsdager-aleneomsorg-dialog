@@ -62,7 +62,7 @@
     "step.om-omsorgen-for-barn.deltBosted": "Kryss av for hvilke barn du har delt bosted for:",
 
     "step.om-omsorgen-for-barn.form.født": "Født",
-    "step.om-omsorgen-for-barn.alleBarnMedDeltBosted": "Du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge. I disse tilfellene har ingen av dere aleneomsorg, og kan heller ikke søke om ekstra omsorgsdager på grunn av aleneomsorg.",
+    "step.om-omsorgen-for-barn.alleBarnMedDeltBosted": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge. I disse tilfellene har ingen av dere aleneomsorg, og kan heller ikke søke om ekstra omsorgsdager på grunn av aleneomsorg.",
     "step.om-omsorgen-for-barn.ingenbarn": "Du må ha minst ett barn for å kunne gå videre.",
     "step.om-omsorgen-for-barn.nextButtonLabel": "Fortsett",
 
@@ -112,6 +112,7 @@
 
     "validation.harForståttRettigheterOgPlikter.notChecked": "Du må bekrefte at du har lest og forstått dine plikter.",
     "validation.harBekreftetOpplysninger.notChecked": "Du må bekrefte at opplysningene du har gitt er riktige.",
+    "validation.avtaleOmDeltBosted.yesOrNoIsUnanswered": "Du må svare ja eller nei på om har du avtale om delt bosted.",
     "validation.harAvtaleOmDeltBostedFor.listIsEmpty": "Du må krysse av for barn du har delt bosted for eller svare «Nei» på spørsmålet ovenfor.",
     "validation.harAleneomsorgFor.listIsEmpty": "Du må krysse av for barn du er alene om omsorgen for.",
     "validation.tidspunktForAleneomsorg.noValue": "Du må oppgi hvilket år du ble alene om omsorgen for barnet.",
