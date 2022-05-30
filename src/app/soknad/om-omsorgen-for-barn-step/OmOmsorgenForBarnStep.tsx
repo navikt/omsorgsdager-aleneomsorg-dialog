@@ -50,24 +50,16 @@ const barnItemLabelRenderer = (barn: Barn, intl: IntlShape): React.ReactNode => 
 export const getBarnOptions = (
     barn: Barn[] = [],
     andreBarn: AnnetBarn[] = [],
-    intl: IntlShape,
-    harAvtaleOmDeltBostedFor?: string[]
+    intl: IntlShape
 ): CheckboksPanelProps[] => {
-    const filtrertBarn = harAvtaleOmDeltBostedFor
-        ? barn.filter((b) => barnFinnesIkkeIArray(b.aktørId, harAvtaleOmDeltBostedFor))
-        : barn;
-    const filtrertAndreBarn = harAvtaleOmDeltBostedFor
-        ? andreBarn.filter((b) => barnFinnesIkkeIArray(b.fnr, harAvtaleOmDeltBostedFor))
-        : andreBarn;
-
     return [
-        ...filtrertBarn.map((barnet) => ({
+        ...barn.map((barnet) => ({
             label: `${intlHelper(intl, 'step.om-omsorgen-for-barn.form.født')} ${prettifyDate(
                 barnet.fødselsdato
             )} ${formatName(barnet.fornavn, barnet.etternavn)}`,
             value: barnet.aktørId,
         })),
-        ...filtrertAndreBarn.map((barnet) => ({
+        ...andreBarn.map((barnet) => ({
             label: `${intlHelper(intl, 'step.om-omsorgen-for-barn.form.født')} ${prettifyDate(barnet.fødselsdato)} ${
                 barnet.navn
             }`,
@@ -100,30 +92,58 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
     const [annetBarnChanged, setAnnetBarnChanged] = useState(false);
     const { annetBarn = [], harAvtaleOmDeltBostedFor, avtaleOmDeltBosted, harAleneomsorgFor } = formData;
     const annetBarnFnr = annetBarn.map((barn) => barn.fnr);
-    const kanFortsette = barn.length > 0 || annetBarn.length > 0;
+
+    const harBarn = barn.length > 0 || annetBarn.length > 0;
+    const flereBarn = barn.length + annetBarn.length > 1;
+    const ettBarn = barn.length + annetBarn.length === 1;
+    const visDeltBostedBarnValg = avtaleOmDeltBosted === YesOrNo.YES && flereBarn;
+
+    const filtrertBarn = harAvtaleOmDeltBostedFor
+        ? barn.filter((b) => barnFinnesIkkeIArray(b.aktørId, harAvtaleOmDeltBostedFor))
+        : barn;
+    const filtrertAnnetBarn = harAvtaleOmDeltBostedFor
+        ? annetBarn.filter((b) => barnFinnesIkkeIArray(b.fnr, harAvtaleOmDeltBostedFor))
+        : annetBarn;
+
+    const alleBarnMedDeltBosted =
+        filtrertBarn.length + filtrertAnnetBarn.length === 0 && avtaleOmDeltBosted === YesOrNo.YES;
+
+    const ettBarnOgDeltBosted = ettBarn && harAleneomsorgFor.length > 0 && avtaleOmDeltBosted === YesOrNo.YES;
+
+    const barnMedDeltBostedHarAleneomsorg =
+        harAvtaleOmDeltBostedFor.find((b) => barnFinnesIArray(b, harAleneomsorgFor)) !== undefined;
 
     useEffect(() => {
         if (annetBarnChanged === true && soknadId !== undefined) {
             setAnnetBarnChanged(false);
             SoknadTempStorage.update(soknadId, formData, StepID.OM_OMSORGEN_FOR_BARN, { søker, barn });
         }
-    }, [annetBarnChanged, formData, søker, barn, soknadId]);
+        if (annetBarnChanged === true) {
+            setFieldValue(
+                SoknadFormField.harAleneomsorgFor,
+                harAleneomsorgFor.filter((b) => annetBarn.find((ab) => ab.fnr === b))
+            );
+        }
+    }, [annetBarnChanged, formData, søker, barn, soknadId, annetBarn, harAleneomsorgFor, setFieldValue]);
 
-    const clearHarAvtaleOmDeltBostedFor = () => {
-        setFieldValue(SoknadFormField.harAvtaleOmDeltBostedFor, []);
+    const clearHarAvtaleOmDeltBostedFor = (newvalue: string) => {
+        if (ettBarn) {
+            console.log('on change avtaleOmDeltBosted: ', avtaleOmDeltBosted);
+            setFieldValue(SoknadFormField.harAvtaleOmDeltBostedFor, newvalue === YesOrNo.YES ? harAleneomsorgFor : []);
+        }
+        if (flereBarn) {
+            setFieldValue(SoknadFormField.harAvtaleOmDeltBostedFor, []);
+        }
     };
 
-    console.log(formData.harAvtaleOmDeltBostedFor);
-    console.log(formData.harAleneomsorgFor);
+    console.log('harAvtaleOmDeltBostedFor', formData.harAvtaleOmDeltBostedFor);
+    console.log('harAleneomsorgFor', formData.harAleneomsorgFor);
     return (
         <SoknadFormStep
             id={StepID.OM_OMSORGEN_FOR_BARN}
             onStepCleanup={cleanupOmOmsorgenForBarnStep}
             buttonDisabled={
-                !kanFortsette ||
-                (getBarnOptions(barn, annetBarn, intl, harAvtaleOmDeltBostedFor).length === 0 &&
-                    avtaleOmDeltBosted === YesOrNo.YES) ||
-                harAleneomsorgFor.filter((b) => barnFinnesIArray(b, harAvtaleOmDeltBostedFor)).length > 0
+                !harBarn || alleBarnMedDeltBosted || ettBarnOgDeltBosted || barnMedDeltBostedHarAleneomsorg
             }>
             <CounsellorPanel>
                 <p>
@@ -180,7 +200,7 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
                     </Box>
                 </FormSection>
             </Box>
-            {kanFortsette && (
+            {harBarn && (
                 <>
                     <Box margin="xl">
                         <FormSection title={intlHelper(intl, 'step.om-omsorgen-for-barn.aleneomsorg.seksjonsTittel')}>
@@ -195,10 +215,15 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
                     <Box margin="xl">
                         <FormSection title={intlHelper(intl, 'step.om-omsorgen-for-barn.deltBosted.seksjonsTittel')}>
                             <SoknadFormComponents.YesOrNoQuestion
-                                legend={intlHelper(intl, 'step.om-omsorgen-for-barn.deltBosted.spm')}
+                                legend={intlHelper(
+                                    intl,
+                                    flereBarn
+                                        ? 'step.om-omsorgen-for-barn.deltBosted.flereBarn.spm'
+                                        : 'step.om-omsorgen-for-barn.deltBosted.spm'
+                                )}
                                 name={SoknadFormField.avtaleOmDeltBosted}
                                 validate={getYesOrNoValidator()}
-                                afterOnChange={clearHarAvtaleOmDeltBostedFor}
+                                afterOnChange={(newvalue) => clearHarAvtaleOmDeltBostedFor(newvalue)}
                                 description={
                                     <ExpandableInfo
                                         title={intlHelper(
@@ -210,7 +235,7 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
                                 }
                             />
 
-                            {avtaleOmDeltBosted === YesOrNo.YES && (
+                            {visDeltBostedBarnValg && (
                                 <Box margin="xl">
                                     <SoknadFormComponents.CheckboxPanelGroup
                                         legend={intlHelper(intl, 'step.om-omsorgen-for-barn.deltBosted')}
@@ -222,19 +247,17 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
                             )}
                         </FormSection>
                     </Box>
-                    {(getBarnOptions(barn, annetBarn, intl, harAvtaleOmDeltBostedFor).length === 0 ||
-                        harAleneomsorgFor.filter((b) => barnFinnesIArray(b, harAvtaleOmDeltBostedFor)).length > 0) &&
-                        avtaleOmDeltBosted === YesOrNo.YES && (
-                            <Box margin="l">
-                                <AlertStripe type={'advarsel'}>
-                                    {intlHelper(intl, 'step.om-omsorgen-for-barn.alleBarnMedDeltBosted')}
-                                </AlertStripe>
-                            </Box>
-                        )}
+                    {(alleBarnMedDeltBosted || ettBarnOgDeltBosted || barnMedDeltBostedHarAleneomsorg) && (
+                        <Box margin="l">
+                            <AlertStripe type={'advarsel'}>
+                                {intlHelper(intl, 'step.om-omsorgen-for-barn.alleBarnMedDeltBosted')}
+                            </AlertStripe>
+                        </Box>
+                    )}
                 </>
             )}
 
-            {!kanFortsette && (
+            {!harBarn && (
                 <Box margin="l">
                     <AlertStripe type={'advarsel'}>
                         {intlHelper(intl, 'step.om-omsorgen-for-barn.ingenbarn')}

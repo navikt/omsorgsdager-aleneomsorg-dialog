@@ -55,7 +55,8 @@
     "step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg": "Kryss av for barn du er alene om omsorgen for:",
 
     "step.om-omsorgen-for-barn.deltBosted.seksjonsTittel": "Delt bosted",
-    "step.om-omsorgen-for-barn.deltBosted.spm": "Har du avtale om delt bosted for barnet/noen av barna?",
+    "step.om-omsorgen-for-barn.deltBosted.spm": "Har du avtale om delt bosted for barnet?",
+    "step.om-omsorgen-for-barn.deltBosted.flereBarn.spm": "Har du avtale om delt bosted for noen av barna?",
     "step.om-omsorgen-for-barn.deltBosted.description.tittel": "Hva er avtale om delt bosted?",
     "step.om-omsorgen-for-barn.deltBosted.description": "Det er ..... TODO",
     "step.om-omsorgen-for-barn.deltBosted": "Kryss av for hvilke barn du har delt bosted for:",
