@@ -38,7 +38,7 @@
     "step.om-omsorgen-for-barn.pageTitle": "Om aleneomsorg for barn",
     "step.om-omsorgen-for-barn.stepTitle": "Om aleneomsorg for barn",
     "step.om-omsorgen-for-barn.stepIntro.1": "Når det gjelder omsorgsdager har du aleneomsorg for barn når du og den andre forelderen ikke bor sammen, og barnet bor fast hos deg. Det vil si at barnet har folkeregistrert adresse hos deg.",
-    "step.om-omsorgen-for-barn.stepIntro.2": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge. I disse tilfellene har ingen av dere aleneomsorg, og kan heller ikke søke om ekstra omsorgsdager på grunn av aleneomsorg.",
+    "step.om-omsorgen-for-barn.stepIntro.2": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge. I disse tilfellene kan ingen av dere få ekstra dager på grunn av aleneomsorg, men dere har begge rett til ordinære omsorgsdager.",
 
     "step.om-omsorgen-for-barn.dineBarn.seksjonsTittel": "Dine barn",
 
@@ -58,11 +58,11 @@
     "step.om-omsorgen-for-barn.deltBosted.spm": "Har du avtale om delt bosted for barnet?",
     "step.om-omsorgen-for-barn.deltBosted.flereBarn.spm": "Har du avtale om delt bosted for noen av barna?",
     "step.om-omsorgen-for-barn.deltBosted.description.tittel": "Hva er avtale om delt bosted?",
-    "step.om-omsorgen-for-barn.deltBosted.description": "Det er ..... TODO",
+    "step.om-omsorgen-for-barn.deltBosted.description": "Avtale om delt bosted er en juridisk avtale i henhold til barneloven §36 og betyr at barnet har fast bosted hos begge foreldrene. Hvis det er avtalt delt bosted er ingen av foreldrene alene om omsorgen for barnet, men begge har rett til ordinære omsorgsdager.",
     "step.om-omsorgen-for-barn.deltBosted": "Kryss av for hvilke barn du har delt bosted for:",
 
     "step.om-omsorgen-for-barn.form.født": "Født",
-    "step.om-omsorgen-for-barn.alleBarnMedDeltBosted": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge. I disse tilfellene har ingen av dere aleneomsorg, og kan heller ikke søke om ekstra omsorgsdager på grunn av aleneomsorg.",
+    "step.om-omsorgen-for-barn.alleBarnMedDeltBosted": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge. I disse tilfellene kan ingen av dere få ekstra dager på grunn av aleneomsorg, men dere har begge rett til ordinære omsorgsdager.",
     "step.om-omsorgen-for-barn.ingenbarn": "Du må ha minst ett barn for å kunne gå videre.",
     "step.om-omsorgen-for-barn.nextButtonLabel": "Fortsett",
 
