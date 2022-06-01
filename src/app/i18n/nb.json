@@ -38,7 +38,7 @@
     "step.om-omsorgen-for-barn.pageTitle": "Om aleneomsorg for barn",
     "step.om-omsorgen-for-barn.stepTitle": "Om aleneomsorg for barn",
     "step.om-omsorgen-for-barn.stepIntro.1": "Når det gjelder omsorgsdager har du aleneomsorg for barn når du og den andre forelderen ikke bor sammen, og barnet bor fast hos deg. Det vil si at barnet har folkeregistrert adresse hos deg.",
-    "step.om-omsorgen-for-barn.stepIntro.2": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge. I disse tilfellene har ingen av dere aleneomsorg, og kan heller ikke søke om ekstra omsorgsdager på grunn av aleneomsorg.",
+    "step.om-omsorgen-for-barn.stepIntro.2": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge. I disse tilfellene kan ingen av dere få ekstra dager på grunn av aleneomsorg, men dere har begge rett til ordinære omsorgsdager.",
 
     "step.om-omsorgen-for-barn.dineBarn.seksjonsTittel": "Dine barn",
 
@@ -51,13 +51,18 @@
     "step.om-omsorgen-for-barn.annetBarnListAndDialog.modalTitle": "Legg til barn",
     "step.om-omsorgen-for-barn.formLeggTilBarn.aldersGrenseInfo": "(Du kan ikke legge til barn som er 19 år i år eller eldre)",
 
+    "step.om-omsorgen-for-barn.aleneomsorg.seksjonsTittel": "Aleneomsorg",
     "step.om-omsorgen-for-barn.form.spm.hvilkeAvBarnaAleneomsorg": "Kryss av for barn du er alene om omsorgen for:",
 
-    "step.om-omsorgen-for-barn.deltBosted.spm": "Har du avtale om delt bosted for barnet/noen av barna?",
+    "step.om-omsorgen-for-barn.deltBosted.seksjonsTittel": "Delt bosted",
+    "step.om-omsorgen-for-barn.deltBosted.spm": "Har du avtale om delt bosted for barnet?",
+    "step.om-omsorgen-for-barn.deltBosted.flereBarn.spm": "Har du avtale om delt bosted for noen av barna?",
+    "step.om-omsorgen-for-barn.deltBosted.description.tittel": "Hva er avtale om delt bosted?",
+    "step.om-omsorgen-for-barn.deltBosted.description": "Avtale om delt bosted er en juridisk avtale i henhold til barneloven §36 og betyr at barnet har fast bosted hos begge foreldrene. Hvis det er avtalt delt bosted er ingen av foreldrene alene om omsorgen for barnet, men begge har rett til ordinære omsorgsdager.",
     "step.om-omsorgen-for-barn.deltBosted": "Kryss av for hvilke barn du har delt bosted for:",
 
     "step.om-omsorgen-for-barn.form.født": "Født",
-    "step.om-omsorgen-for-barn.alleBarnMedDeltBosted": "Du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge. I disse tilfellene har ingen av dere aleneomsorg, og kan heller ikke søke om ekstra omsorgsdager på grunn av aleneomsorg.",
+    "step.om-omsorgen-for-barn.alleBarnMedDeltBosted": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge. I disse tilfellene kan ingen av dere få ekstra dager på grunn av aleneomsorg, men dere har begge rett til ordinære omsorgsdager.",
     "step.om-omsorgen-for-barn.ingenbarn": "Du må ha minst ett barn for å kunne gå videre.",
     "step.om-omsorgen-for-barn.nextButtonLabel": "Fortsett",
 
@@ -107,6 +112,7 @@
 
     "validation.harForståttRettigheterOgPlikter.notChecked": "Du må bekrefte at du har lest og forstått dine plikter.",
     "validation.harBekreftetOpplysninger.notChecked": "Du må bekrefte at opplysningene du har gitt er riktige.",
+    "validation.avtaleOmDeltBosted.yesOrNoIsUnanswered": "Du må svare ja eller nei på om har du avtale om delt bosted.",
     "validation.harAvtaleOmDeltBostedFor.listIsEmpty": "Du må krysse av for barn du har delt bosted for eller svare «Nei» på spørsmålet ovenfor.",
     "validation.harAleneomsorgFor.listIsEmpty": "Du må krysse av for barn du er alene om omsorgen for.",
     "validation.tidspunktForAleneomsorg.noValue": "Du må oppgi hvilket år du ble alene om omsorgen for barnet.",
