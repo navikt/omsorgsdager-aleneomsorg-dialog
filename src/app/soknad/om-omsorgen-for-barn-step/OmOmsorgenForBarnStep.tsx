@@ -128,7 +128,6 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
 
     const clearHarAvtaleOmDeltBostedFor = (newvalue: string) => {
         if (ettBarn) {
-            console.log('on change avtaleOmDeltBosted: ', avtaleOmDeltBosted);
             setFieldValue(SoknadFormField.harAvtaleOmDeltBostedFor, newvalue === YesOrNo.YES ? harAleneomsorgFor : []);
         }
         if (flereBarn) {
@@ -136,8 +135,6 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
         }
     };
 
-    console.log('harAvtaleOmDeltBostedFor', formData.harAvtaleOmDeltBostedFor);
-    console.log('harAleneomsorgFor', formData.harAleneomsorgFor);
     return (
         <SoknadFormStep
             id={StepID.OM_OMSORGEN_FOR_BARN}
