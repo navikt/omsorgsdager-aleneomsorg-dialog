@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const jsdom = require('jsdom');
 const { default: axios } = require('axios');
 const { JSDOM } = jsdom;
