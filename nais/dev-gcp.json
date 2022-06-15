@@ -12,10 +12,12 @@
     "env": {
         "DEKORATOR_URL": "https://dekoratoren.dev.nav.no/?simple=true&chatbot=false&urlLookupTable=false",
         "API_URL": "https://k9-brukerdialog-api.dev.nav.no",
+        "FRONTEND_API_PATH": "/api",
         "PUBLIC_PATH": "/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg",
         "LOGIN_URL": "https://loginservice.dev.nav.no/login?redirect=https://omsorgsdager-aleneomsorg-dialog.dev.nav.no/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg/soknad",
         "APPSTATUS_PROJECT_ID": "ryujtq87",
         "APPSTATUS_DATASET": "staging",
-        "USE_AMPLITUDE": "true"
+        "USE_AMPLITUDE": "true",
+        "API_TOKENX_AUDIENCE": "dev-gcp:dusseldorf:k9-brukerdialog-api"
     }
 }
