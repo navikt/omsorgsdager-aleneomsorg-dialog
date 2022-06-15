@@ -60,6 +60,7 @@ const isExpiredOrNotAuthorized = (token) => {
 
 const startServer = async (html) => {
     await Promise.all([initTokenX()]);
+
     server.use(`${process.env.PUBLIC_PATH}/dist/js`, express.static(path.resolve(__dirname, 'dist/js')));
     server.use(`${process.env.PUBLIC_PATH}/dist/css`, express.static(path.resolve(__dirname, 'dist/css')));
     server.get(`${process.env.PUBLIC_PATH}/health/isAlive`, (req, res) => res.sendStatus(200));
