@@ -7,7 +7,7 @@ export const defaultAxiosConfig = {
     headers: { 'Content-type': 'application/json; charset=utf-8' },
 };
 
-axios.defaults.baseURL = getEnvironmentVariable('API_URL');
+// axios.defaults.baseURL = getEnvironmentVariable('API_URL');
 axios.defaults.withCredentials = true;
 axios.interceptors.request.use((config) => {
     return config;
