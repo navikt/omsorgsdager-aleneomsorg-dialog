@@ -1,4 +1,5 @@
 import persistence, { PersistenceInterface } from '@navikt/sif-common-core/lib/utils/persistence/persistence';
+import { getApiUrl } from '../utils/apiUtils';
 import { AxiosResponse } from 'axios';
 import hash from 'object-hash';
 import { ApiEndpoint, defaultAxiosConfig } from '../api/api';
@@ -24,7 +25,7 @@ interface SoknadTemporaryStorage extends Omit<PersistenceInterface<SoknadTempSto
 }
 
 const persistSetup = persistence<SoknadTempStorageData>({
-    url: ApiEndpoint.mellomlagring,
+    url: getApiUrl(ApiEndpoint.mellomlagring),
     requestConfig: { ...defaultAxiosConfig },
 });
 
