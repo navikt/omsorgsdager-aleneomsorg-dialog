@@ -76,6 +76,9 @@ const startServer = async (html) => {
             target: process.env.API_URL,
             changeOrigin: true,
             pathRewrite: (path) => {
+                console.log('path: ', path);
+
+                console.log('replace: ', path.replace(process.env.FRONTEND_API_PATH, ''));
                 return path.replace(process.env.FRONTEND_API_PATH, '');
             },
 

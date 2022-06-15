@@ -7,6 +7,7 @@ import api, { ApiEndpoint } from './api';
 export type SokerRemoteData = RemoteData<AxiosError, Person>;
 
 const getSokerRemoteData = async (): Promise<SokerRemoteData> => {
+    console.log('getApiUrl(ApiEndpoint.soker): ', getApiUrl(ApiEndpoint.soker));
     try {
         const { data } = await api.get<Person>(getApiUrl(ApiEndpoint.soker));
         return Promise.resolve(success(data));
