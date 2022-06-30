@@ -2,11 +2,11 @@ import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 import { isUnauthorized, isForbidden } from '@navikt/sif-common-core/lib/utils/apiUtils';
 
 export const defaultAxiosConfig = {
-    withCredentials: true,
+    withCredentials: false,
     headers: { 'Content-type': 'application/json; charset=utf-8' },
 };
 
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = false;
 axios.interceptors.request.use((config) => {
     return config;
 });
