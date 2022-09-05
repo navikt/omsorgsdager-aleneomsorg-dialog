@@ -149,6 +149,18 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
                 <p>
                     <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.2" />
                 </p>
+                <ul style={{ marginTop: '0.1rem' }}>
+                    <li>
+                        <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.2.list.item.1" />
+                    </li>
+                    <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.2.list.item.og" />
+                    <li>
+                        <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.2.list.item.2" />
+                    </li>
+                </ul>
+                <p>
+                    <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.3" />
+                </p>
             </CounsellorPanel>
             <Box margin="xl">
                 <FormSection title={intlHelper(intl, 'step.om-omsorgen-for-barn.dineBarn.seksjonsTittel')}>

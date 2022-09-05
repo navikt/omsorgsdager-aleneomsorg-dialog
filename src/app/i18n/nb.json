@@ -37,8 +37,12 @@
 
     "step.om-omsorgen-for-barn.pageTitle": "Om aleneomsorg for barn",
     "step.om-omsorgen-for-barn.stepTitle": "Om aleneomsorg for barn",
-    "step.om-omsorgen-for-barn.stepIntro.1": "Når det gjelder omsorgsdager er du alene om omsorgen når barnet har folkeregistrert adresse hos deg og du og den andre forelderen ikke bor sammen. Dette gjelder også når du er enke/enkemann, eller er alene med et donorbarn.",
-    "step.om-omsorgen-for-barn.stepIntro.2": "Hvis du og den andre forelderen har en avtale om delt bosted, bor barnet fast hos dere begge. I disse tilfellene kan ingen av dere få ekstra dager på grunn av aleneomsorg, men dere har begge rett til ordinære omsorgsdager.",
+    "step.om-omsorgen-for-barn.stepIntro.1": "Når det gjelder omsorgsdager er du alene om omsorgen når barnet bor fast hos deg, og du ikke bor med den andre forelderen. Det kan for eksempel være på grunn av samlivsbrudd, at du er blitt enke/enkemann, eller at du er alene med et donorbarn.",
+    "step.om-omsorgen-for-barn.stepIntro.2": "At barnet bor fast hos deg vil si at",
+    "step.om-omsorgen-for-barn.stepIntro.2.list.item.1": "barnet har folkeregistrert adresse hos deg",
+    "step.om-omsorgen-for-barn.stepIntro.2.list.item.og": "og",
+    "step.om-omsorgen-for-barn.stepIntro.2.list.item.2": "du og den andre forelderen ikke har avtale om delt bosted.",
+    "step.om-omsorgen-for-barn.stepIntro.3": "Delt bosted betyr at barnet bor fast hos dere begge. I disse tilfellene har dere begge rett på ordinære omsorgsdager, og ingen av dere skal søke om ekstra omsorgsdager på grunn av aleneomsorg.",
 
     "step.om-omsorgen-for-barn.dineBarn.seksjonsTittel": "Dine barn",
 
