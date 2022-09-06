@@ -27,33 +27,35 @@ const IntroPage = () => {
                         <FormattedMessage id="introform.informationPoster.avsnitt.1" />
                     </p>
 
-                    <FormattedHtmlMessage id="introform.informationPoster.avsnitt.2.html" />
+                    <p>
+                        <FormattedMessage id="introform.informationPoster.avsnitt.2" />
+                    </p>
+
+                    <FormattedHtmlMessage id="introform.informationPoster.avsnitt.3.html" />
                     <ul style={{ marginTop: '0.1rem' }}>
                         <li>
-                            <FormattedMessage id="introform.informationPoster.avsnitt.2.list.item.1" />
+                            <FormattedMessage id="introform.informationPoster.avsnitt.3.list.item.1" />
                         </li>
+                        <FormattedMessage id="introform.informationPoster.avsnitt.3.list.item.og" />
                         <li>
-                            <FormattedMessage id="introform.informationPoster.avsnitt.2.list.item.2" />
-                        </li>
-                        <li>
-                            <FormattedMessage id="introform.informationPoster.avsnitt.2.list.item.3" />
+                            <FormattedMessage id="introform.informationPoster.avsnitt.3.list.item.2" />
                         </li>
                     </ul>
 
                     <p>
-                        <FormattedHtmlMessage id="introform.informationPoster.avsnitt.3" />
+                        <FormattedHtmlMessage id="introform.informationPoster.avsnitt.4" />
                     </p>
 
-                    <FormattedHtmlMessage id="introform.informationPoster.avsnitt.4.html" />
+                    <FormattedHtmlMessage id="introform.informationPoster.avsnitt.5.html" />
                     <ul style={{ marginTop: '0.1rem' }}>
                         <li>
-                            <FormattedMessage id="introform.informationPoster.avsnitt.4.list.item.1" />
+                            <FormattedMessage id="introform.informationPoster.avsnitt.5.list.item.1" />
                         </li>
                         <li>
-                            <FormattedMessage id="introform.informationPoster.avsnitt.4.list.item.2" />
+                            <FormattedMessage id="introform.informationPoster.avsnitt.5.list.item.2" />
                         </li>
                         <li>
-                            <FormattedMessage id="introform.informationPoster.avsnitt.4.list.item.3" />
+                            <FormattedMessage id="introform.informationPoster.avsnitt.5.list.item.3" />
                         </li>
                     </ul>
                 </InformationPoster>

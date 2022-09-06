@@ -1,16 +1,17 @@
 {
     "introform.informationPoster.avsnitt.1": "Her søker du om ekstra omsorgsdager når du er alene om omsorgen for barn. I disse tilfellene får du doblet antall omsorgsdager.",
-    "introform.informationPoster.avsnitt.2.html": "<strong>Når det gjelder omsorgsdager er du alene om omsorgen når</strong>",
-    "introform.informationPoster.avsnitt.2.list.item.1": "du og den andre forelderen ikke bor sammen",
-    "introform.informationPoster.avsnitt.2.list.item.2": "du er enke eller enkemann",
-    "introform.informationPoster.avsnitt.2.list.item.3": "barnet har folkeregistrert adresse hos deg",
+    "introform.informationPoster.avsnitt.2": "Når det gjelder omsorgsdager er du alene om omsorgen når barnet bor fast hos deg, og du ikke bor med den andre forelderen. Det kan for eksempel være på grunn av samlivsbrudd, at du er blitt enke/enkemann, eller at du er alene med et donorbarn.",
+    "introform.informationPoster.avsnitt.3.html": "<strong>At barnet bor fast hos deg vil si at</strong>",
+    "introform.informationPoster.avsnitt.3.list.item.1": "barnet har folkeregistrert adresse hos deg",
+    "introform.informationPoster.avsnitt.3.list.item.og": "og",
+    "introform.informationPoster.avsnitt.3.list.item.2": "du og den andre forelderen ikke har avtale om delt bosted.",
 
-    "introform.informationPoster.avsnitt.3": "Har du og den andre forelderen avtalt delt bosted for barnet, er ingen av dere alene om omsorgen. Da har dere begge rett på ordinære omsorgsdager, og du skal ikke søke om ekstra omsorgsdager.",
+    "introform.informationPoster.avsnitt.4": "Delt bosted betyr at barnet bor fast hos dere begge. I disse tilfellene har dere begge rett på ordinære omsorgsdager, og ingen av dere skal søke om ekstra omsorgsdager på grunn av aleneomsorg.",
 
-    "introform.informationPoster.avsnitt.4.html": "<strong>Du må gi beskjed til oss hvis</strong>",
-    "introform.informationPoster.avsnitt.4.list.item.1": "dere senere inngår avtale om delt bosted",
-    "introform.informationPoster.avsnitt.4.list.item.2": "flytter sammen igjen",
-    "introform.informationPoster.avsnitt.4.list.item.3": "barnet flytter fra deg",
+    "introform.informationPoster.avsnitt.5.html": "<strong>Du må gi beskjed til oss hvis</strong>",
+    "introform.informationPoster.avsnitt.5.list.item.1": "dere senere inngår avtale om delt bosted",
+    "introform.informationPoster.avsnitt.5.list.item.2": "flytter sammen igjen",
+    "introform.informationPoster.avsnitt.5.list.item.3": "barnet flytter fra deg",
 
     "introForm.erSokerlestInformasjonen.spm": "Har du lest informasjonen over?",
     "introForm.erSokerAleneOmsorg.spm": "Er du alene om omsorgen for barn?",
