@@ -112,9 +112,8 @@
     "kvittering.info.tittel": "Hva skjer videre nå?",
     "kvittering.info.1": "Vi behandler søknaden din.",
     "kvittering.info.2": "Vi kontakter deg hvis vi trenger flere opplysninger.",
-    "kvittering.info.3.1": "Når søknaden er ferdigbehandlet, får du et svar fra oss på «Min side». Du kan se",
-    "kvittering.info.3.2.lenke": "saksbehandlingstiden",
-    "kvittering.info.3.3": "for ditt fylke her.",
+    "kvittering.info.3.1": "Når søknaden er ferdigbehandlet, får du et svar fra oss på «Min side».",
+    "kvittering.info.3.2.lenke": "Du kan sjekke saksbehandlingstiden her.",
 
     "validation.harForståttRettigheterOgPlikter.notChecked": "Du må bekrefte at du har lest og forstått dine plikter.",
     "validation.harBekreftetOpplysninger.notChecked": "Du må bekrefte at opplysningene du har gitt er riktige.",
