@@ -1,6 +1,6 @@
 {
     "name": "omsorgsdager-aleneomsorg-dialog",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Søknad om ekstra omsorgsdager ved aleneomsorg for barn",
     "repository": "https://github.com/navikt/omsorgsdager-aleneomsorg-dialog",
     "license": "MIT",
