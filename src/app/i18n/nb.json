@@ -10,6 +10,21 @@
     "page.ikkeTilgang.sidetittel": "Søknad om å bli regnet som alene om omsorgen for barn",
     "page.ikkeTilgang.tekst": "Du har ikke tilgang til denne siden. Dersom du er under 18 år, må en av foreldrene dine eller en foresatt skrive under på søknaden sammen med deg. Du må derfor fylle ut søknaden på papir og sende den i posten.",
 
+    "avbrytSøknadDialog.avbrytSøknadLabel": "Ja, avbryt søknad",
+    "avbrytSøknadDialog.fortsettSøknadLabel": "Nei",
+    "avbrytSøknadDialog.intro": "Det du har fylt ut i søknaden blir slettet, og du kommer tilbake til velkomstsiden.",
+    "avbrytSøknadDialog.spørsmål": "Ønsker du å slette søknaden?",
+    "avbrytSøknadDialog.tittel": "Avbryt og slett søknad",
+
+    "fortsettSøknadSenereDialog.avbrytSøknadLabel": "Ja, fortsett senere",
+    "fortsettSøknadSenereDialog.fortsettSøknadLabel": "Nei",
+    "fortsettSøknadSenereDialog.intro": "Vi lagrer det du har fylt ut i 72 timer. Når du vil fortsette, starter du bare søknaden på nytt.",
+    "fortsettSøknadSenereDialog.spørsmål": "Vil du avslutte nå og fortsette senere?",
+    "fortsettSøknadSenereDialog.tittel": "Avslutt og fortsett senere",
+
+    "steg.footer.avbryt": "Avbryt og slett søknad",
+    "steg.footer.fortsettSenere": "Avslutt og fortsett senere",
+
     "arbeidstaker": "arbeidstaker",
 
     "validationText.mindre_5_bokstaver": "Du må skrive minst 5 tegn",
@@ -98,9 +113,6 @@
 
     "step.oppsummering.sendMelding.feilmelding.førsteGang": "Det oppstod en feil under innsending. Vennligst prøv på nytt.",
     "step.oppsummering.sendMelding.feilmelding.andreGang": "Det oppstod fortsatt en feil under innsending. Vennligst vent litt og prøv på nytt.",
-
-    "steg.footer.avbryt": "Avbryt",
-    "steg.footer.fortsettSenere": "Fortsett senere",
 
     "samtykke.tekst": "Jeg bekrefter at jeg har lest og forstått",
     "samtykke.harIkkeGodkjentVilkår": "Du må godkjenne vilkårene",
