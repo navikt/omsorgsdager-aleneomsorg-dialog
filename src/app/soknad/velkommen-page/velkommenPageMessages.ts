@@ -25,6 +25,7 @@ export const velkommenPageMessages: MessageFileFormat = {
             'Vi tar vare på svarene dine i 72 timer. Så, hvis du innenfor den tiden for eksempel vil ta en pause eller blir automatisk logget ut, fortsetter du der du var når du kommer tilbake.',
         'page.velkommen.omSøknaden.3':
             'Du må svare på alle spørsmålene for å kunne gå videre. Hvis du mangler etterspurt dokumentasjon, kan du ettersende det så snart du kan.',
+        'page.velkommen.omSøknaden.4': 'Om hvordan vi innhenter opplysninger om deg',
         'page.velkommen.form.bekreftLabel': 'Jeg bekrefter at jeg har lest og forstått',
         'page.velkommen.form.ansvar.tittel': 'Ditt ansvar som søker',
         'page.velkommen.form.ansvar.list.1':
