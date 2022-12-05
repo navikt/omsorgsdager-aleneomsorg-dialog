@@ -153,7 +153,6 @@ const OmOmsorgenForBarnStep = ({ barn, formData, søker, soknadId }: Props) => {
                     <li>
                         <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.2.list.item.1" />
                     </li>
-                    <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.2.list.item.og" />
                     <li>
                         <FormattedMessage id="step.om-omsorgen-for-barn.stepIntro.2.list.item.2" />
                     </li>
