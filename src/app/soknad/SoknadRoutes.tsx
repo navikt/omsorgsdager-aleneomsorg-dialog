@@ -58,7 +58,7 @@ const SoknadRoutes = ({ soknadId, søker, barn = [] }: Props) => {
     return (
         <Switch>
             <Route path={AppRoutes.SOKNAD} exact={true}>
-                <VelkommenPage />
+                <VelkommenPage søker={søker} />
             </Route>
             <Route path={AppRoutes.SOKNAD_SENT} exact={true}>
                 <LoadWrapper
