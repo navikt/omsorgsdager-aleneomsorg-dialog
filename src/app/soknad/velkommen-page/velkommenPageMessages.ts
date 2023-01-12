@@ -6,17 +6,16 @@ export const velkommenPageMessages: MessageFileFormat = {
         'page.velkommen.guide.tittel': 'Hei {navn}',
         'page.velkommen.guide.ingress': 'Velkommen til søknad om ekstra omsorgsdager.',
         'page.velkommen.guide.tekst.1':
-            'Her søker du om ekstra omsorgsdager når du er alene om omsorgen for barn. I disse tilfellene får du doblet antall omsorgsdager.',
+            'Her søker du om ekstra omsorgsdager når du er alene om omsorgen for barn. I disse tilfellene får du doblet antall omsorgsdager. Doblingen gjelder så lenge du er alene om omsorgen, og så lenge retten din til å bruke omsorgsdager gjelder. Du trenger altså ikke søke på nytt ved nytt kalenderår.',
         'page.velkommen.guide.tekst.2':
             'Når det gjelder omsorgsdager er du alene om omsorgen når barnet bor fast hos deg, og du ikke bor med den andre forelderen. Det kan for eksempel være på grunn av samlivsbrudd, at du er blitt enke/enkemann, eller at du er alene med et donorbarn.',
-        'page.velkommen.guide.tekst.3': 'At barnet bor fast hos deg vil si at:',
-        'page.velkommen.guide.tekst.3.1': 'barnet har folkeregistrert adresse hos deg, og',
-        'page.velkommen.guide.tekst.3.2': 'du og den andre forelderen ikke har avtale om delt bosted.',
+        'page.velkommen.guide.tekst.3':
+            'At barnet bor fast hos deg betyr at barnet har folkeregistrert adresse hos deg, og at du og den andre forelderen ikke har avtale om delt bosted.',
         'page.velkommen.guide.tekst.4':
-            'Delt bosted betyr at barnet bor fast hos dere begge. I disse tilfellene har dere begge rett på ordinære omsorgsdager, og ingen av dere skal søke om ekstra omsorgsdager på grunn av aleneomsorg.',
+            'Hvis dere har avtalt delt bosted for barnet har begge foreldre rett på ordinære omsorgsdager, og ingen av dere skal søke om ekstra omsorgsdager på grunn av aleneomsorg.',
         'page.velkommen.guide.tekst.5': 'Du må gi beskjed til oss hvis',
-        'page.velkommen.guide.tekst.5.1': 'dere senere inngår avtale om delt bosted',
-        'page.velkommen.guide.tekst.5.2': 'flytter sammen igjen',
+        'page.velkommen.guide.tekst.5.1': 'dere inngår avtale om delt bosted',
+        'page.velkommen.guide.tekst.5.2': 'du og den andre forelderen flytter sammen igjen',
         'page.velkommen.guide.tekst.5.3': 'barnet flytter fra deg',
 
         'page.velkommen.omSøknaden.tittel': 'Om søknaden',

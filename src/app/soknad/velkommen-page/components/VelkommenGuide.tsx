@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
-import { Systemtittel, Ingress, Element } from 'nav-frontend-typografi';
+import { Systemtittel, Ingress } from 'nav-frontend-typografi';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import InfoList from './info-list/InfoList';
 
@@ -25,36 +25,28 @@ const VelkommenGuide: React.FunctionComponent<Props> = ({ navn }) => (
         <p>
             <FormattedMessage id="page.velkommen.guide.tekst.2" />
         </p>
-        <Element>
+        <p>
             <FormattedMessage id="page.velkommen.guide.tekst.3" />
-        </Element>
-        <InfoList>
-            <li>
-                <FormattedMessage id="page.velkommen.guide.tekst.3.1" />
-            </li>
-            <li>
-                <FormattedMessage id="page.velkommen.guide.tekst.3.2" />
-            </li>
-        </InfoList>
+        </p>
         <p>
             <FormattedMessage id="page.velkommen.guide.tekst.4" />
         </p>
-        <Box margin="xl">
-            <Element>
+        <p>
+            <strong>
                 <FormattedMessage id="page.velkommen.guide.tekst.5" />
-            </Element>
-            <InfoList>
-                <li>
-                    <FormattedMessage id="page.velkommen.guide.tekst.5.1" />
-                </li>
-                <li>
-                    <FormattedMessage id="page.velkommen.guide.tekst.5.2" />
-                </li>
-                <li>
-                    <FormattedMessage id="page.velkommen.guide.tekst.5.3" />
-                </li>
-            </InfoList>
-        </Box>
+            </strong>
+        </p>
+        <InfoList>
+            <li>
+                <FormattedMessage id="page.velkommen.guide.tekst.5.1" />
+            </li>
+            <li>
+                <FormattedMessage id="page.velkommen.guide.tekst.5.2" />
+            </li>
+            <li>
+                <FormattedMessage id="page.velkommen.guide.tekst.5.3" />
+            </li>
+        </InfoList>
     </CounsellorPanel>
 );
 
