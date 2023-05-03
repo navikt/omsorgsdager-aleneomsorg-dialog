@@ -6,11 +6,11 @@
     "minReplicas": "1",
     "maxReplicas": "1",
     "ingresses": ["https://omsorgsdager-aleneomsorg-dialog.intern.dev.nav.no"],
-    "externalHosts": ["www.nav.no", "dekoratoren.dev.nav.no", "dekoratoren.ekstern.dev.nav.no"],
+    "externalHosts": ["www.nav.no", "dekoratoren.ekstern.dev.nav.no"],
     "livenessPath": "/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg/health/isAlive",
     "readinessPath": "/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg/health/isReady",
     "env": {
-        "DEKORATOR_URL": "https://dekoratoren.dev.nav.no/?simple=true&chatbot=false&urlLookupTable=false&logoutUrl=https://omsorgsdager-aleneomsorg-dialog.intern.dev.nav.no/oauth2/logout&redirectToApp=true",
+        "DEKORATOR_URL": "https://dekoratoren.ekstern.dev.nav.no/?simple=true&chatbot=false&urlLookupTable=false&logoutUrl=https://omsorgsdager-aleneomsorg-dialog.intern.dev.nav.no/oauth2/logout&redirectToApp=true",
         "API_URL": "http://k9-brukerdialog-api",
         "FRONTEND_API_PATH": "/api",
         "PUBLIC_PATH": "/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg",
