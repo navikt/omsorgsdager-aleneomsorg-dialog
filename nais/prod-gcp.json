@@ -6,7 +6,7 @@
     "minReplicas": "1",
     "maxReplicas": "1",
     "ingresses": ["https://www.nav.no/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg"],
-    "externalHosts": [],
+    "externalHosts": ["www.nav.no"],
     "livenessPath": "/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg/health/isAlive",
     "readinessPath": "/familie/sykdom-i-familien/soknad/omsorgsdager-aleneomsorg/health/isReady",
     "env": {
