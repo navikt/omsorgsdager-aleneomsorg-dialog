@@ -10,10 +10,8 @@
         "dev-api": "PORT=8089 node ./server/api-mock.js",
         "dev": "npm-run-all -p rm:dist dev-api start-no-decorator",
         "devd": "npm-run-all -p rm:dist dev-api start",
-        "prepare": "npm run snyk-protect",
         "rm:dist": "rimraf dist/",
         "rm:nodemods": "rimraf node_modles/",
-        "snyk-protect": "snyk-protect",
         "start-api-mock": "PORT=8089 node ./server/api-mock.js",
         "start-express": "node ./server.js",
         "snd": "node ./src/build/scripts/start-dev-no-decorator.js",
@@ -31,7 +29,6 @@
         "@navikt/sif-common-forms": "^17.0.1",
         "@navikt/sif-common-sentry": "^0.3.1",
         "@navikt/sif-common-soknad": "^5.3.0",
-        "@snyk/protect": "^1.1128.0",
         "axios": "^0.27.2",
         "compression": "^1.7.4",
         "cookie-parser": "^1.4.6",
@@ -100,6 +97,5 @@
     },
     "resolutions": {
         "babel-core": "7.0.0-bridge.0"
-    },
-    "snyk": true
+    }
 }
